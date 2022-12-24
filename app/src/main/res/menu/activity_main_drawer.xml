@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_personal_records"
+            android:icon="@drawable/ic_baseline_upload_file_24"
+            android:title="@string/personal_records" />
+        <item
+            android:id="@+id/nav_disease_information"
+            android:icon="@drawable/ic_baseline_coronavirus_24"
+            android:title="@string/disease_information" />
+        <item
+            android:id="@+id/nav_vaccine_information"
+            android:icon="@drawable/ic_baseline_healing_24"
+            android:title="@string/vaccine_information" />
+
+        <item
+            android:id="@+id/nav_childcare_centres"
+            android:icon="@drawable/ic_baseline_local_hospital_24"
+            android:title="@string/childcare_centres" />
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/ic_baseline_tips_and_updates_24"
+            android:title="@string/about_us" />
+    </group>
+</menu>

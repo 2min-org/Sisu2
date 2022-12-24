@@ -1,0 +1,251 @@
+<resources>
+    <string name="app_name">Sisu</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="Sisu">Sisu</string>
+    <string name="No_Member">Not a member? Sign up</string>
+    <string name="Sign_up">Sign up</string>
+    <string name="User_name">Username</string>
+    <string name="register_cpassword">Confirm Password</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="text_login">Log in</string>
+    <string name="digits_email">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890@.</string>
+    <string name="hint_email">Email</string>
+    <string name="digits_password">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^*-=_+:;,.?</string>
+    <string name="hint_password">Password</string>
+    <string name="text_register">Create an Account</string>
+    <string name="digits_name">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="text_button_register">Create Account</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_admin_schedule">Admin Schedule</string>
+    <string name="title_admin_request">Admin Request</string>
+    <string name="title_schedule">Schedule</string>
+    <string name="title_profile">Profile</string>
+    <string name="text_button_logout">Log out</string>
+    <string name="text_select">Select a date</string>
+    <string name="hint_enter">Enter a value</string>
+    <string name="text_button_create">Create Slot</string>
+    <string name="text_select_1">Select your birthdate</string>
+    <string name="digits_contact">0123456789</string>
+    <string name="hint_enter_1">Enter your contact no.</string>
+    <string name="text_upload">Upload your valid ID</string>
+    <string name="text_upload_1">Upload the selfie</string>
+    <string name="text_button_create_1">Submit Request</string>
+    <string name="text_button_reject">Reject</string>
+    <string name="text_button_accept">Accept</string>
+    <string name="text_button_remove">Remove from list</string>
+
+    <string-array name="VaccineNames">
+        <item>Select a Vaccine</item>
+        <item>Pfizer-BioNTech</item>
+        <item>Moderna</item>
+        <item>Johnson and Johnson</item>
+        <item>SinoVac</item>
+        <item>AstraZeneca</item>
+    </string-array>
+
+    <string-array name="VaccineSites">
+        <item>Select Vaccine Site</item>
+        <item>Arenas Complex</item>
+        <item>City Mall</item>
+        <item>Manzon</item>
+        <item>Talang</item>
+        <item>Pagal</item>
+    </string-array>
+
+    <string-array name="UserCategories">
+        <item>Select Priority Category</item>
+        <item>A1 - Health Workers</item>
+        <item>A2 - Senior Citizens</item>
+        <item>A3 - Person with Comorbidities</item>
+        <item>A4 - Economic Frontliners</item>
+        <item>A5 - Indigent Sector</item>
+        <item>B1 - Teachers, Social Workers</item>
+        <item>B2 - Other Government Workers</item>
+        <item>B3 - Other Essential Workers</item>
+        <item>B4 - Socio-Demographic Groups</item>
+        <item>B5 - Overseas Filipino</item>
+        <item>B6 - Other Workforce</item>
+        <item>C - Rest of the Filipino Population</item>
+    </string-array>
+
+    <string-array name="UserStreets">
+        <item>Select Street</item>
+        <item>Abanon</item>
+        <item>Agdao</item>
+        <item>Ano</item>
+        <item>Anando</item>
+        <item>Antipangol</item>
+        <item>Aponit</item>
+        <item>Bacnar</item>
+        <item>Balaya</item>
+        <item>Balayong</item>
+        <item>Baldog</item>
+        <item>Balite Sur</item>
+        <item>Balococ</item>
+        <item>Bani</item>
+        <item>Bocboc</item>
+        <item>Bugallon-Posadas</item>
+        <item>Bogaoan</item>
+        <item>Bolingit</item>
+        <item>Bolosan</item>
+        <item>Bonifacio</item>
+        <item>Buenglat</item>
+        <item>Burgos-Padlan</item>
+        <item>Cacaritan</item>
+        <item>Caingal</item>
+        <item>Calobaoan</item>
+        <item>Calomboyan</item>
+        <item>Burgos-Padlan</item>
+        <item>Cacaritan</item>
+        <item>Caingal</item>
+        <item>Calobaoan</item>
+        <item>Calomboyan</item>
+        <item>Burgos-Padlan</item>
+        <item>Cacaritan</item>
+        <item>Caingal</item>
+        <item>Calobaoan</item>
+        <item>Calomboyan</item>
+        <item>Isla</item>
+        <item>Libas</item>
+        <item>Lilimasan</item>
+        <item>Longos</item>
+        <item>Lucban</item>
+        <item>Mabalbalino</item>
+        <item>Mabini</item>
+        <item>Magtaking</item>
+        <item>Malacañang</item>
+        <item>Maliwara</item>
+        <item>M.Soriano</item>
+        <item>Mamarlao</item>
+        <item>Manzon</item>
+        <item>Matangdem</item>
+        <item>Mestizo Norte</item>
+        <item>Naguilayan</item>
+        <item>Nelintap</item>
+        <item>Padilla-Gomez</item>
+        <item>Pagal</item>
+        <item>Palaming</item>
+        <item>Palaris</item>
+        <item>Palospos</item>
+        <item>Pangalangan</item>
+        <item>Pangoloan</item>
+        <item>Pangpang</item>
+        <item>Paitan-Panoypoy</item>
+        <item>Parayao</item>
+        <item>Payapa</item>
+        <item>Payar</item>
+        <item>Perez Boulevard</item>
+        <item>PNR Site</item>
+        <item>Polo</item>
+        <item>Quezon Boulevard</item>
+        <item>Quintong</item>
+        <item>Rizal Avenue</item>
+        <item>Roxas Boulevard</item>
+        <item>Salinap</item>
+        <item>San Juan</item>
+        <item>San Pedro</item>
+        <item>Sapinit</item>
+        <item>Supo</item>
+        <item>Talang</item>
+        <item>Taloy</item>
+        <item>Tamayo</item>
+        <item>Tandoc</item>
+        <item>Tarece</item>
+        <item>Tarectec</item>
+        <item>Tayambani</item>
+        <item>Tebag</item>
+        <item>Turac</item>
+        <item>Tangdang Sora</item>
+    </string-array>
+
+    <string-array name="VaccineArmSideEffects">
+        <item>In the arm where you got the shot: \n\n•Pain\n•Redness\n•Swelling</item>
+        <item>In the arm where you got the shot: \n\n•Pain\n•Redness\n•Swelling</item>
+        <item>In the arm where you got the shot: \n\n•Pain\n•Redness\n•Swelling</item>
+        <item>In the arm where you got the shot: \n\n•Pain\n•Redness\n•Swelling</item>
+        <item>In the arm where you got the shot: \n\n•Pain\n•Redness\n•Swelling</item>
+    </string-array>
+
+    <string-array name="VaccineBodySideEffects">
+        <item>Throughout the rest of your body:\n\n•Tiredness\n•Headache\n•Muscle pain\n•Chills\n•Fever\n•Nausea</item>
+        <item>Throughout the rest of your body:\n\n•Tiredness\n•Headache\n•Muscle pain\n•Chills\n•Fever\n•Nausea</item>
+        <item>Throughout the rest of your body:\n\n•Tiredness\n•Headache\n•Muscle pain\n•Chills\n•Fever\n•Nausea</item>
+        <item>Throughout the rest of your body:\n\n•Fever\n•Fatigue\n•Muscle pain\n•Diarrhea</item>
+        <item>Throughout the rest of your body:\n\n•Fever\n•Discomfort\n•Fatigue\n•Muscle pain\n•Diarrhea\n•Nausea</item>
+    </string-array>
+
+    <string-array name="VaccineInformation">
+        <item>Pfizer-BioNTech (COMIRNATY) vaccine was 95% effective at preventing laboratory-confirmed infection with the virus that causes COVID-19 in people who received two doses and had no evidence of being previously infected.</item>
+        <item>Based on evidence from clinical trials, in people aged 18 years and older, the Moderna vaccine was 94.1% effective at preventing laboratory-confirmed COVID-19 infection in people who received two doses and had no evidence of being previously infected.</item>
+        <item>The JandJ/Janssen COVID-19 Vaccine was 66.3% effective in clinical trials (efficacy) at preventing laboratory-confirmed COVID-19 infection in people who received the vaccine. People had the most protection 2 weeks after getting vaccinated.</item>
+        <item>A large phase 3 trial in Brazil showed that two doses of 14 days interval, had an efficacy of 51% against symptomatic SARS-CoV-2 infection, 100% against severe COVID-19, and 100% against hospitalization starting 14 days after receiving the second dose.</item>
+        <item>The AZD1222 vaccine against COVID-19 has an efficacy of 63.09% against symptomatic COVID-19 infection. Longer dose intervals within the 8 to 12 weeks range are associated with greater vaccine efficacy.</item>
+    </string-array>
+
+    <string-array name="VaccineManufacturers">
+        <item>Pfizer, Inc., and BioNTech</item>
+        <item>Moderna, NIAID</item>
+        <item>Janssen Pharmaceutical Companies</item>
+        <item>Sinovac</item>
+        <item>Oxford Uni-AstraZeneca</item>
+    </string-array>
+
+    <string-array name="VaccineShots">
+        <item>2 doses at least 21 days apart</item>
+        <item>2 doses at least 28 days apart</item>
+        <item>1 dose</item>
+        <item>2 doses at least 2–4 weeks apart</item>
+        <item>2 doses at least 4–12 weeks apart</item>
+    </string-array>
+
+    <string-array name="VaccineTypes">
+        <item>messenger RNA (mRNA) vaccines</item>
+        <item>messenger RNA (mRNA) vaccines</item>
+        <item>Viral Vector</item>
+        <item>Inactive COVID-19 Virus</item>
+        <item>Viral Vector</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="numbers">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    //Headings
+    <string name="heading_one">Sisu The Health Care App</string>
+    <string name="heading_two">Record Tracker</string>
+    <string name="heading_three">Be Aware</string>
+    <string name="heading_four">Childcare Facility Locater</string>
+
+
+    //Description
+    <string name="desc_one">Know all the information you need to take care of your babies!</string>
+    <string name="desc_two">Keep track of vaccine taken by your child!</string>
+    <string name="desc_three">Know about the diseases that your child may contract!</string>
+    <string name="desc_four">Find the nearest childcare facility easily!</string>
+    <string name="todo">TODO</string>
+    <string name="vaccine_name">Vaccine Name</string>
+    <string name="product_name">Product Name</string>
+    <string name="sisu_the_childcare_app">Sisu The Childcare App</string>
+    <string name="sisucarenepal_gmail_com">sisucarenepal@gmail.com</string>
+    <string name="personal_records">Personal Records</string>
+    <string name="disease_information">Disease Information</string>
+    <string name="vaccine_information">Vaccine Information</string>
+    <string name="childcare_centres">Childcare Centres</string>
+    <string name="about_us">About Us</string>
+    <string name="search_about_diseases">search_about_diseases</string>
+
+</resources>

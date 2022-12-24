@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1038884954342",
+    "firebase_url": "https://sisu2-2fd9d-default-rtdb.firebaseio.com",
+    "project_id": "sisu2-2fd9d",
+    "storage_bucket": "sisu2-2fd9d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1038884954342:android:6e9337c2eaeee123759b27",
+        "android_client_info": {
+          "package_name": "com.sanjit.sisu2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1038884954342-on54g17830er79td3phelisebqg77lol.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACMvnt90SCUYzQgp8S6uTsfK0iDHF-FA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1038884954342-on54g17830er79td3phelisebqg77lol.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
