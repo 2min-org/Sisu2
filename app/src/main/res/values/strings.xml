@@ -248,4 +248,43 @@
     <string name="about_us">About Us</string>
     <string name="search_about_diseases">search_about_diseases</string>
 
+    <string-array name="position">
+        <item>Doctor</item>
+        <item>Patient</item>
+        <item>Admin</item>
+    </string-array>
+    <string name="MakeAnAppointment">Make an Appointment</string>
+    <string name="Login">Login</string>
+    <string name="SignUp">Sign Up</string>
+    <string name="WaitingList">Waiting List</string>
+    <string name="DoctorName">"doctor's name: "</string>
+    <string name="DoctorPro">"specialization: "</string>
+    <string name="CancelAppointment">Cancel appointment</string>
+    <string name="DoctorQueue">Doctor\'s Queue:</string>
+    <string name="Name">name:</string>
+    <string name="Age">age:</string>
+    <string name="Enteryourname">Enter your name</string>
+    <string name="Enteryourproficiency">Enter your specialization</string>
+    <string name="UploadPic">Upload Picture</string>
+    <string name="Credentials">Credentials</string>
+    <string name="Enteryouremail">Enter your email</string>
+    <string name="EnterYourPassword">Enter your password</string>
+    <string name="SignUpAs">Sign up as:</string>
+    <string name="Book">Book</string>
+    <string name="Patients">Patients</string>
+    <string name="Showavailable">Filter available</string>
+    <string name="ShownotAvailable">Filter not Available</string>
+    <string name="EnterYouremail">Enter your email</string>
+    <string name="EnterYourAge">Enter your age</string>
+    <string name="EnterYourPhone">Enter your phone</string>
+    <string name="Doctors">Doctors</string>
+    <string name="Patientss">Patients</string>
+    <string name="full_name">Full Name</string>
+    <string name="register">Register</string>
+    <string name="upload">Upload</string>
+    <string name="sisu">SISU</string>
+    <string name="tel">Tel</string>
+    <string name="email2">Email</string>
+    <string name="address">Address</string>
+
 </resources>

@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,12 +60,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
         profilePic= (ImageView) findViewById(R.id.photo);
-
         storage= FirebaseStorage.getInstance();
         storageReference= storage.getReference();
-
         uploadPic= (Button) findViewById(R.id.upload);
         uploadPic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +91,22 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.numbers,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Gender.setAdapter(adapter);
+        Spinner account_type = (Spinner) findViewById(R.id.spinner);
+        adapter = ArrayAdapter.createFromResource(this,R.array.position,android.R.layout.simple_spinner_item );
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        account_type.setAdapter(adapter);
+        account_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String user_mode = (String)parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
