@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sanjit.sisu2.databinding.ActivityMainBinding;
+import com.sanjit.sisu2.ui.Setting;
 import com.sanjit.sisu2.ui.agalleryf.agallery;
 import com.sanjit.sisu2.ui.login_register_user.Login;
 
@@ -73,12 +74,17 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, Setting.class);
+                startActivity(intent);
+                finish();
                 return true;
+
             case R.id.action_logout:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
