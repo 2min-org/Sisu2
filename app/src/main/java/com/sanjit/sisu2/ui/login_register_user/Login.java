@@ -53,7 +53,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         loginpassword=findViewById(R.id.loginpassword);
 
         progressBar=findViewById(R.id.loginprogressBar);
-
+        progressBar.setVisibility(View.GONE);
         mAuth = FirebaseAuth.getInstance();
 
         forgotPassword =findViewById(R.id.forgotpassword);
@@ -118,13 +118,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 if(task.isSuccessful()){
                         //redirect to user profile
                       Intent intent = new Intent(Login.this, MainActivity.class);
-
                       startActivity(intent);
-
                       finish();
 
                 }else{
                     Toast.makeText(Login.this,"Failed to login! Please check your credentials",Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.GONE);
                 }
             }
         });
