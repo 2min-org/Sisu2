@@ -15,14 +15,14 @@
     </style>
 
     <!-- Light mode -->
-    <!-- Screen background if Light mode On -->
+    <!-- Screen background if Dark mode On -->
     <style name="SCREEN">
-        <item name="android:background">#FFF</item>
+        <item name="android:background">#000000</item>
     </style>
 
     <!-- Text backgound if Light mode On -->
     <style name="TEXT">
-        <item name="android:textColor">#000</item>
+        <item name="android:textColor">#FFFFFF</item>
     </style>
 
     <!-- button backgound if Light mode On -->

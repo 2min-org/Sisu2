@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.sanjit.sisu2.R;
@@ -29,10 +28,6 @@ public class Setting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
-
-        setSupportActionBar(findViewById(R.id.toolbar));
-
         getSupportActionBar().hide();
         switcher= findViewById(R.id.switcher);
 
@@ -43,6 +38,7 @@ public class Setting extends AppCompatActivity {
 
         if(nightMode){
             switcher.setChecked(true);
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
         switcher.setOnClickListener(new View.OnClickListener() {
             @Override
