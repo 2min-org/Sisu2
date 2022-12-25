@@ -35,9 +35,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, agallery.class);
                 startActivity(intent);
             }
-            public void onClick2(View view) {
-                System.out.println("Clicked");
-            }
 
         });
         DrawerLayout drawer = binding.drawerLayout;
