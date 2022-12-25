@@ -36,11 +36,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 System.out.println("Clicked");
                 System.out.println("aba ta atti vayo");
-
-                public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, agallery.class);
-                    System.out.println("farak xa yo mero");
-                }
             }
 
         });
