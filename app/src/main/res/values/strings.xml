@@ -288,5 +288,6 @@
     <string name="tel">Tel</string>
     <string name="email2">Email</string>
     <string name="address">Address</string>
+    <string name="choose">Choose..</string>
 
 </resources>

@@ -109,6 +109,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
 
     }
 
