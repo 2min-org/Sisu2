@@ -16,8 +16,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.SQLOutput;
-
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -38,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 System.out.println("Clicked");
 
+                System.out.println("aba ta atti vayo");
             }
 
         });
