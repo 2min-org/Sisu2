@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, agallery.class);
                 startActivity(intent);
                 System.out.println("Clicked");
-                System.out.println("Maybe Clicked");
+
             }
 
         });
