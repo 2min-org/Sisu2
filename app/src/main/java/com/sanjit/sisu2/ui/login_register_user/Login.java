@@ -4,6 +4,7 @@ package com.sanjit.sisu2.ui.login_register_user;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -25,6 +26,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.sanjit.sisu2.MainActivity;
 import com.sanjit.sisu2.R;
 
@@ -112,18 +118,71 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }
         progressBar.setVisibility(View.VISIBLE);
 
-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                        //redirect to user profile
-                      Intent intent = new Intent(Login.this, MainActivity.class);
-                      startActivity(intent);
-                      finish();
+                    Toast.makeText(Login.this, "Welcome!" , Toast.LENGTH_LONG).show();
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users/Doctor/"+FirebaseAuth.getInstance().getCurrentUser().getUid() );
+                    reference.addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                            Intent intentq = new Intent(Login.this, MainActivity.class);
+                            intentq.putExtra("Sign In", true);
+                            startActivity(intentq);
+                            finish();
+                        }
+                        @Override
+                        public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                        }
 
-                }else{
-                    Toast.makeText(Login.this,"Failed to login! Please check your credentials",Toast.LENGTH_LONG).show();
-                    progressBar.setVisibility(View.GONE);
+                        @Override
+                        public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                        }
+
+                        @Override
+                        public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+
+                    DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("users/patient/"+FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    reference1.addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                            Intent intentq = new Intent(Login.this, MainActivity.class);
+                            intentq.putExtra("Sign In", true);
+                            startActivity(intentq);
+                            finish();
+                        }
+
+                        @Override
+                        public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                        }
+
+                        @Override
+                        public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                        }
+
+                        @Override
+                        public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+                else{
+                    Toast.makeText(Login.this, "Failed to login", Toast.LENGTH_SHORT).show();
                 }
             }
         });

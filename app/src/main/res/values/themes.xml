@@ -12,12 +12,13 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
     </style>
     <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/active</item>
-        <item name="colorPrimaryDark">@color/background</item>
-        <item name="colorAccent">@color/background</item>
-        <item name="android:statusBarColor">@color/active</item>
+        <item name="colorPrimary">#9C27B0</item>
+        <item name="colorPrimaryDark">@color/purple_200</item>
+        <item name="colorAccent">@color/login_button_text</item>
+        <item name="android:statusBarColor">@color/color_primary</item>
     </style>
 
     <!-- Light mode -->

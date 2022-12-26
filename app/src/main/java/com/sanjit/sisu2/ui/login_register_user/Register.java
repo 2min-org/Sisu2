@@ -45,7 +45,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
     private TextView banner, registerUser;
     private EditText Fullname, Email, Password, Birthday, Telephone,Address;
-    private Spinner Gender;
+    private Spinner Gender, account_type;
     private ProgressBar progressBar;
     private ImageView profilePic;
     private Button uploadPic;
@@ -91,7 +91,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.numbers,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Gender.setAdapter(adapter);
-        Spinner account_type = (Spinner) findViewById(R.id.spinner);
+
+        account_type = (Spinner) findViewById(R.id.spinner);
         adapter = ArrayAdapter.createFromResource(this,R.array.position,android.R.layout.simple_spinner_item );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         account_type.setAdapter(adapter);
@@ -135,7 +136,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         String birthday = Birthday.getText().toString().trim();
         String gender=Gender.getSelectedItem().toString();
         String address=Address.getText().toString().trim();
-
+        String user_mode = account_type.getSelectedItem().toString().trim();
 
         if (email.isEmpty()) {
             Email.setError("Email is required");
@@ -180,9 +181,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    User user = new User(fullname, email, birthday, telephone,gender,address);
+                    User user = new User(fullname, email, birthday, telephone,gender,address,user_mode);
 
-                    databaseReference.child(telephone).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    databaseReference.child(user_mode).child(telephone).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
