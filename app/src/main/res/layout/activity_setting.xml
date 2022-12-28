@@ -24,7 +24,7 @@
                 android:layout_weight="8"
                 android:gravity="center_vertical"
                 android:padding="10dp"
-                android:text="Change Theme"
+                android:text="@string/Change_Theme"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

@@ -11,7 +11,7 @@
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Log Out"
+        android:text="@string/Logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.469"
@@ -130,7 +130,7 @@
                                     android:id="@+id/greeting"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="             Welcome to SISU"
+                                    android:text="@string/Welcome"
                                     android:textColor="@color/black"
                                     android:textSize="24sp"
                                     android:textStyle="bold" />
@@ -148,7 +148,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Mobile:"
+                                android:text="@string/Mobile"
                                 android:textColor="#182693"
                                 android:textSize="18sp" />
 
@@ -180,7 +180,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Password:"
+                                android:text="@string/hint_password"
                                 android:textColor="#182693"
                                 android:textSize="18sp" />
 
@@ -189,7 +189,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Change"
+                                android:text="@string/Change"
                                 android:textAlignment="viewEnd"
                                 android:textColor="#5B5B5B"
                                 android:textSize="16sp" />/>
@@ -213,7 +213,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Address:"
+                                android:text="@string/Address"
                                 android:textColor="#182693"
                                 android:textSize="18sp" />
 
@@ -245,7 +245,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Gender:"
+                                android:text="@string/Gender"
                                 android:textColor="#182693"
                                 android:textSize="18sp" />
 
@@ -277,7 +277,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Date Of Birth:"
+                                android:text="@string/Date_of_Birth"
                                 android:textColor="#182693"
                                 android:textSize="18sp" />
 

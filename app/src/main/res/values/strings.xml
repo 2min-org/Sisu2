@@ -289,5 +289,34 @@
     <string name="email2">Email</string>
     <string name="address">Address</string>
     <string name="choose">Choose..</string>
+    <string name="enteringmail">Enter your mail here</string>
+    <string name="sisu_capital">SISU</string>
+    <string name="reseting_password">Reset Password</string>
+    <string name="registering_email">Register</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="Skip">Skip</string>
+    <string name="Back">Back</string>
+    <string name="Next">Next</string>
+    <string name="Welcome">Welcome To SISU</string>
+    <string name="Mobile">Mobile</string>
+    <string name="Change">Change</string>
+    <string name="Address">Address</string>
+    <string name="Gender">Gender</string>
+    <string name="Date_of_Birth">Date of Birth</string>
+    <string name="Birthday">Birthday</string>
+    <string name="Change_Theme">Change Theme</string>
+    <string name="Asthma">Asthma</string>
+    <string name="Hello">Hello</string>
+    <string name="Search">Search</string>
+    <string name="Choose_File">Choose File</string>
+    <string name="Upload">Upload</string>
+    <string name="Enter_File_name">Enter File Name</string>
+    <string name="Show_Uploads">Show Uploads</string>
+    <string name="Search_Vaccine_Info">Search Vaccine Info ...</string>
+    <string name="Name.">Name</string>
+    <string name="Vaccine_Name">Vaccine Name</string>
+    <string name="Vaccine_Date">Vaccine Date</string>
+    <string name="Vaccine_Data">Vaccine Data</string>
+    <string name="Know_All_Info">Know all the information you need to take care of your babies!</string>
 
 </resources>
