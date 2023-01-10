@@ -4,10 +4,10 @@ package com.sanjit.sisu2.ui.login_register_user;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -20,8 +20,6 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,8 +27,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -42,28 +42,46 @@ import java.util.UUID;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
 
-
-    private TextView banner, registerUser;
-    private EditText Fullname, Email, Password, Birthday, Telephone,Address;
+//declarations
+    private EditText FullName, Email, Password, Birthday, Telephone,Address;
     private Spinner Gender, account_type;
     private ProgressBar progressBar;
     private ImageView profilePic;
-    private Button uploadPic;
     public Uri imageUri;
-    private FirebaseStorage storage;
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
-
     private FirebaseAuth mAuth;
+    ProgressDialog progressDialog;
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+//declarations
 
+//onCreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        profilePic= (ImageView) findViewById(R.id.photo);
-        storage= FirebaseStorage.getInstance();
-        storageReference= storage.getReference();
-        uploadPic= (Button) findViewById(R.id.upload);
+
+        //declarations
+            profilePic= (ImageView) findViewById(R.id.photo);
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            storageReference= storage.getReference();
+            Button uploadPic = (Button) findViewById(R.id.upload);
+            mAuth = FirebaseAuth.getInstance();
+            TextView banner = (TextView) findViewById(R.id.banner);
+            TextView registerUser = (TextView) findViewById(R.id.registerUser);
+            FullName = (EditText) findViewById(R.id.Fullname);
+            Email = (EditText) findViewById(R.id.Email);
+            Password = (EditText) findViewById(R.id.Password);
+            Birthday = (EditText) findViewById(R.id.Birthday);
+            Telephone = (EditText) findViewById(R.id.Telephone);
+            Address=(EditText)findViewById(R.id.address);
+            Gender=(Spinner) findViewById(R.id.Gender);
+            account_type = (Spinner) findViewById(R.id.spinner);
+            progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        //declarations
+
+        //onClickListeners
         uploadPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,28 +89,16 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
-
-        mAuth = FirebaseAuth.getInstance();
-
-        banner = (TextView) findViewById(R.id.banner);
         banner.setOnClickListener(this);
-
-        registerUser = (TextView) findViewById(R.id.registerUser);
         registerUser.setOnClickListener(this);
+        //onClickListeners
 
-        Fullname = (EditText) findViewById(R.id.Fullname);
-        Email = (EditText) findViewById(R.id.Email);
-        Password = (EditText) findViewById(R.id.Password);
-        Birthday = (EditText) findViewById(R.id.Birthday);
-        Telephone = (EditText) findViewById(R.id.Telephone);
-        Address=(EditText)findViewById(R.id.address);
-
-        Gender=(Spinner) findViewById(R.id.Gender);
+        //select gender
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.numbers,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Gender.setAdapter(adapter);
 
-        account_type = (Spinner) findViewById(R.id.spinner);
+        //select user mode
         adapter = ArrayAdapter.createFromResource(this,R.array.position,android.R.layout.simple_spinner_item );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         account_type.setAdapter(adapter);
@@ -108,17 +114,18 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
+        //progress bar
 
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
 
     }
 
+    //onClick actions
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.banner:
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, Login.class));
                 break;
             case R.id.registerUser:
                 registerUser();
@@ -128,16 +135,20 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void registerUser() {
+
+        //get values
+
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         String email = Email.getText().toString().trim();
         String password = Password.getText().toString().trim();
-        String fullname = Fullname.getText().toString().trim();
+        String fullname = FullName.getText().toString().trim();
         String telephone = Telephone.getText().toString().trim();
         String birthday = Birthday.getText().toString().trim();
         String gender=Gender.getSelectedItem().toString();
         String address=Address.getText().toString().trim();
         String user_mode = account_type.getSelectedItem().toString().trim();
 
+        //cases
         if (email.isEmpty()) {
             Email.setError("Email is required");
             Email.requestFocus();
@@ -154,8 +165,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
         if (fullname.isEmpty()) {
-            Fullname.setError("Fullname is required");
-            Fullname.requestFocus();
+            FullName.setError("Fullname is required");
+            FullName.requestFocus();
             return;
         }
         if (telephone.isEmpty()) {
@@ -174,36 +185,59 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-
+        //if everything is ok now move onto
         progressBar.setVisibility(View.INVISIBLE);
+        //new ProgressDialog
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Registering User...");
+        progressDialog.show();
 
         mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     User user = new User(fullname, email, birthday, telephone,gender,address,user_mode);
-
-                    databaseReference.child(user_mode).child(telephone).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    db.collection("Users").document(mAuth.getCurrentUser().getUid()).set(user)
+                       .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(Register.this, "User has been registered successfully", Toast.LENGTH_LONG).show();
-                                progressBar.setVisibility(View.GONE);
-                                startActivity(new Intent(Register.this,MainActivity.class));
-                            } else {
-                                Toast.makeText(Register.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();
-                                progressBar.setVisibility(View.GONE);
-                            }
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(Register.this, "User has been registered successfully!", Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.GONE);
+                            uploadPicture();
+                            progressDialog.dismiss();
+                            startActivity(new Intent(Register.this, Login.class));
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(Register.this, "Failed to set data! Try again!", Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                         }
                     });
                 } else {
+                    if(task.getException() instanceof FirebaseAuthUserCollisionException)
+                        Toast.makeText(Register.this, "You are already registered", Toast.LENGTH_SHORT).show();
+
                     Toast.makeText(Register.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();
                     progressBar.setVisibility(View.GONE);
+                    progressDialog.dismiss();
                 }
             }
 
         });
 
+    }
+    private class registering extends AsyncTask<Void, Void, Void >{
+        @Override
+        protected Void doInBackground(Void... voids) {
+            return null;
+        }
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+        }
     }
     private void choosePicture(){
         Intent intent=new Intent();
@@ -217,15 +251,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         if(requestCode==1 && resultCode==RESULT_OK && data!=null && data.getData()!=null){
             imageUri=data.getData();
             profilePic.setImageURI(imageUri);
-            uploadPicture();
         }
     }
 
     private void uploadPicture() {
-
-        final ProgressDialog pd=new ProgressDialog(this);
-        pd.setTitle("Uploading Image...");
-        pd.show();
 
         final String randomKey= UUID.randomUUID().toString();
         StorageReference riversRef=storageReference.child("images/"+randomKey);
@@ -234,22 +263,19 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        pd.dismiss();
                         Snackbar.make(findViewById(android.R.id.content),"Image Uploaded",Snackbar.LENGTH_LONG);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        pd.dismiss();
                         Toast.makeText(Register.this,"Failed",Toast.LENGTH_LONG).show();
                     }
                 })
                 .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onProgress(@NonNull UploadTask.TaskSnapshot tasksnapshot) {
-                        double progressPercent=(100.00 * tasksnapshot.getBytesTransferred()/tasksnapshot.getTotalByteCount());
-                        pd.setMessage("Percentage: "+(int)progressPercent+"%");
+
                     }
                 });
     }

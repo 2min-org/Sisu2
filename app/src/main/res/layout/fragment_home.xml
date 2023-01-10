@@ -47,6 +47,7 @@
                 android:drawablePadding="20dp"
                 android:fontFamily="@font/comic_neue"
                 android:hint="Search Vaccine info..."
+                android:minHeight="48dp"
                 android:padding="5dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
