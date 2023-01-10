@@ -31,6 +31,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.sanjit.sisu2.MainActivity;
 import com.sanjit.sisu2.R;
 
@@ -41,6 +43,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private Button login;
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+
 
 
     @Override
@@ -118,67 +122,44 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         progressBar.setVisibility(View.VISIBLE);
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
+
         auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(Login.this, "Welcome!" , Toast.LENGTH_LONG).show();
-                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users/Doctor/"+FirebaseAuth.getInstance().getCurrentUser().getUid() );
-                    reference.addChildEventListener(new ChildEventListener() {
+                    //reading user_mode field of user document in users collection
+                    DocumentReference docref = db.collection("Users").document(auth.getCurrentUser().getUid());
+                    docref.get().addOnCompleteListener(new OnCompleteListener<com.google.firebase.firestore.DocumentSnapshot>() {
                         @Override
-                        public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                            Intent intentq = new Intent(Login.this, MainActivity.class);
-                            intentq.putExtra("Sign In", true);
-                            startActivity(intentq);
-                            finish();
-                        }
-                        @Override
-                        public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                        }
-
-                        @Override
-                        public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                        }
-
-                        @Override
-                        public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                        }
-                    });
-
-                    DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("users/patient/"+FirebaseAuth.getInstance().getCurrentUser().getUid());
-                    reference1.addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                            Intent intentq = new Intent(Login.this, MainActivity.class);
-                            intentq.putExtra("Sign In", true);
-                            startActivity(intentq);
-                            finish();
-                        }
-
-                        @Override
-                        public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                        }
-
-                        @Override
-                        public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                        }
-
-                        @Override
-                        public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
+                        public void onComplete(@NonNull Task<com.google.firebase.firestore.DocumentSnapshot> task) {
+                            if(task.isSuccessful()){
+                                com.google.firebase.firestore.DocumentSnapshot document = task.getResult();
+                                if(document.exists()){
+                                    String user_mode = document.getString("user_mode");
+                                    if(user_mode.equals("Doctor")){
+                                        Intent i = new Intent(Login.this, MainActivity.class);
+                                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        Toast.makeText(Login.this, "Welcome Doctor!" , Toast.LENGTH_LONG).show();
+                                        startActivity(i);
+                                    }
+                                    else if(user_mode.equals("Patient")){
+                                        Intent i = new Intent(Login.this, MainActivity.class);
+                                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        Toast.makeText(Login.this, "Welcome Patient!" , Toast.LENGTH_LONG).show();
+                                        startActivity(i);
+                                    }
+                                    else if(user_mode.equals("Admin")){
+                                        Intent i = new Intent(Login.this, MainActivity.class);
+                                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        Toast.makeText(Login.this, "Welcome Admin!" , Toast.LENGTH_LONG).show();
+                                        startActivity(i);
+                                    }
+                                }
+                            }
                         }
                     });
+
                 }
                 else{
                     Toast.makeText(Login.this, "Failed to login", Toast.LENGTH_SHORT).show();
