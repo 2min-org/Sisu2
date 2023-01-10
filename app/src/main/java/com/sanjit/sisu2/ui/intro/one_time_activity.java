@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -101,21 +101,6 @@ public class one_time_activity extends AppCompatActivity {
 
         //ekchoti matra kholna
 
-        SharedPreferences preferences=getSharedPreferences("PREFERENCES",MODE_PRIVATE);
-        String FirstTime=preferences.getString("FirstTimeInstall","");
-        if(FirstTime.equals("Yes")){
-            //first time khuleko raicha bhayue
-            Intent intent=new Intent(one_time_activity.this,Login.class);
-            startActivity(intent);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            finish();
-        }
-        else {
-            //natra
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("FirstTimeInstall", "Yes");
-            editor.apply();
-        }
 
     }
 

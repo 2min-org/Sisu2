@@ -37,9 +37,8 @@ import com.sanjit.sisu2.R;
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private TextView forgotPassword,register;
-    private EditText loginemail, loginpassword;
+    private EditText loginEmail, loginPassword;
     private Button login;
-
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
 
@@ -55,8 +54,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         login=findViewById(R.id.login);
         login.setOnClickListener(this);
 
-        loginemail=findViewById(R.id.loginemail);
-        loginpassword=findViewById(R.id.loginpassword);
+        loginEmail =findViewById(R.id.loginemail);
+        loginPassword =findViewById(R.id.loginpassword);
 
         progressBar=findViewById(R.id.loginprogressBar);
         progressBar.setVisibility(View.GONE);
@@ -93,27 +92,27 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void userLogin() {
-        String email=loginemail.getText().toString().trim();
-        String password=loginpassword.getText().toString().trim();
+        String email= loginEmail.getText().toString().trim();
+        String password= loginPassword.getText().toString().trim();
 
         if(email.isEmpty()){
-            loginemail.setError("Email is required");
-            loginemail.requestFocus();
+            loginEmail.setError("Email is required");
+            loginEmail.requestFocus();
             return;
         }
         if(password.isEmpty()){
-            loginpassword.setError("Password is required");
-            loginpassword.requestFocus();
+            loginPassword.setError("Password is required");
+            loginPassword.requestFocus();
             return;
         }
         if(password.length()<8){
-            loginpassword.setError("Minimum length of password should be 8");
-            loginpassword.requestFocus();
+            loginPassword.setError("Minimum length of password should be 8");
+            loginPassword.requestFocus();
             return;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            loginemail.setError("Please provide valid email");
-            loginemail.requestFocus();
+            loginEmail.setError("Please provide valid email");
+            loginEmail.requestFocus();
             return;
         }
         progressBar.setVisibility(View.VISIBLE);

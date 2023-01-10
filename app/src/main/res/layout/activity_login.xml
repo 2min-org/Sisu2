@@ -46,7 +46,7 @@
         android:background="@drawable/rounded_edittext"
         android:ems="10"
         android:fontFamily="@font/comic_neue_bold"
-        android:hint="@string/digits_email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:paddingLeft="20dp"
         android:textColor="#000000"
