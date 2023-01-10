@@ -17,7 +17,7 @@
             android:background="@drawable/search_bg"
             android:drawableStart="@drawable/ic_baseline_search_24"
             android:drawablePadding="5dp"
-            android:hint="Search"
+            android:hint="@string/Search"
             android:minHeight="48dp"
             android:padding="10dp"
             android:textSize="20sp"
