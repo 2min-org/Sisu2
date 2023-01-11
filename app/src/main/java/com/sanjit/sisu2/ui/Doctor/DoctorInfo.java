@@ -1,5 +1,7 @@
 package com.sanjit.sisu2.ui.Doctor;
 
+import com.sanjit.sisu2.ui.Patient.PatientInfo;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
