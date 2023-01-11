@@ -1,7 +1,7 @@
 package com.sanjit.sisu2.ui.login_register_user;
 
 public class User {
-    public String Fullname,Email,Birthday,Telephone,Gender,Address,user_mode;
+    public String Fullname,Email,Birthday,Telephone,Gender,Address,user_mode,spec;
 
     public User(String fullname, String email){
 
@@ -15,6 +15,10 @@ public class User {
         this.Gender=gender;
         this.Address=address;
         this.user_mode=user_mode;
+        this.spec=null;
+    }
+    public void setspec(String spec){
+        this.spec=spec;
     }
 
 }

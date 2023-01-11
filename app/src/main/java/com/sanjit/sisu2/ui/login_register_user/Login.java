@@ -42,8 +42,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sanjit.sisu2.MainActivity;
 import com.sanjit.sisu2.R;
-import com.sanjit.sisu2.ui.Doctor.Doctor;
-import com.sanjit.sisu2.ui.Patient.Patient;
+
 import com.sanjit.sisu2.ui.Setting;
 
 import java.util.Locale;
@@ -208,13 +207,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                 if(document.exists()){
                                     String user_mode = document.getString("user_mode");
                                     if(user_mode.equals("Doctor")){
-                                        Intent i = new Intent(Login.this, Doctor.class);
+
+                                        Intent i = new Intent(Login.this, MainActivity.class);
                                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         Toast.makeText(Login.this, "Welcome Doctor!" , Toast.LENGTH_LONG).show();
                                         startActivity(i);
                                     }
                                     else if(user_mode.equals("Patient")){
-                                        Intent i = new Intent(Login.this, Patient.class);
+                                        Intent i = new Intent(Login.this, MainActivity.class);
                                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         Toast.makeText(Login.this, "Welcome Patient!" , Toast.LENGTH_LONG).show();
                                         startActivity(i);

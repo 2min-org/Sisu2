@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -35,7 +34,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.sanjit.sisu2.MainActivity;
 import com.sanjit.sisu2.R;
 
 import java.util.UUID;
@@ -52,6 +50,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
     ProgressDialog progressDialog;
+
+    private User user;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 //declarations
 
@@ -147,6 +147,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         String gender=Gender.getSelectedItem().toString();
         String address=Address.getText().toString().trim();
         String user_mode = account_type.getSelectedItem().toString().trim();
+        String doc_spec = null;
 
         //cases
         if (email.isEmpty()) {
@@ -197,7 +198,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    User user = new User(fullname, email, birthday, telephone,gender,address,user_mode);
+                    user = new User(fullname, email, birthday, telephone,gender,address,user_mode);
+
                     db.collection("Users").document(mAuth.getCurrentUser().getUid()).set(user)
                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -206,6 +208,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                             progressBar.setVisibility(View.GONE);
                             uploadPicture();
                             progressDialog.dismiss();
+
                             startActivity(new Intent(Register.this, Login.class));
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -229,16 +232,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         });
 
     }
-    private class registering extends AsyncTask<Void, Void, Void >{
-        @Override
-        protected Void doInBackground(Void... voids) {
-            return null;
-        }
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-        }
-    }
+
+
     private void choosePicture(){
         Intent intent=new Intent();
         intent.setType("image/*");
@@ -279,4 +274,5 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     }
                 });
     }
+
 }

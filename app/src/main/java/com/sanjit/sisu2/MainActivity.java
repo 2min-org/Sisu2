@@ -7,8 +7,16 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.sanjit.sisu2.adapters.sec_doc;
 import com.sanjit.sisu2.databinding.ActivityMainBinding;
 import com.sanjit.sisu2.ui.Setting;
 import com.sanjit.sisu2.ui.agalleryf.agallery;
@@ -22,22 +30,41 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_listener {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private FirebaseAuth mAuth;
+    private DatabaseReference databaseReference;
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         setSupportActionBar(binding.appBarMain.toolbar);
-
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+        mAuth = FirebaseAuth.getInstance();
+
+        db.collection("Users").document(mAuth.getCurrentUser().getUid()).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                       String spec_doc = documentSnapshot.getString("spec");
+                       if (spec_doc == null){
+                           sec_doc sec_doc = new sec_doc();
+                           sec_doc.show(getSupportFragmentManager(),"sec_doc");
+                       }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                    }
+                });
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -48,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+    }
+
+    private void openDialog() {
+        sec_doc sec_doc = new sec_doc();
+        sec_doc.show(getSupportFragmentManager(),"sec_doc");
     }
 
     @Override
@@ -84,4 +116,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void applyTexts(String spec_doc) {
+        Toast.makeText(this, "Specialist Doctor: "+spec_doc, Toast.LENGTH_SHORT).show();
+        db.collection("Users").document(mAuth.getCurrentUser().getUid()).update("spec",spec_doc);
+    }
 }
