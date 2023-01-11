@@ -97,6 +97,20 @@
                 android:resource="@array/preloaded_fonts" />
         </activity>
         <activity
+            android:name=".ui.Patient.Patient"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.Doctor.Doctor"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.login_register_user.Register"
             android:exported="false"
             android:parentActivityName=".ui.login_register_user.Login"
