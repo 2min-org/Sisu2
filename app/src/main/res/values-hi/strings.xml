@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">सिसु</string>
+    <string name="login">लॉग इन करें</string>
+    <string name="email">ईमेल</string>
+    <string name="password">कूटशब्द</string>
+    <string name="Sisu">सिसु</string>
+    <string name="No_Member">सदस्य नहीं हैं? साइन अप करें</string>
+    <string name="Sign_up">साइन अप करें</string>
+    <string name="User_name">Username</string>
+    <string name="register_cpassword">उपयोगकर्ता नाम</string>
+    <string name="navigation_drawer_open">नेविगेशन ड्रावर खोलें</string>
+    <string name="navigation_drawer_close">नेविगेशन ड्रावर बंद करें</string>
+    <string name="nav_header_title">एंड्रॉइड स्टूडियो</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">नेविगेशन हेडर</string>
+    <string name="action_settings">समायोजन</string>
+
+    <string name="menu_home">घर</string>
+    <string name="menu_gallery">गेलरी</string>
+    <string name="menu_slideshow">स्लाइड शो</string>
+    <string name="text_login">लॉग इन करें</string>
+    <string name="digits_email">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890@.</string>
+    <string name="hint_email">ईमेल</string>
+    <string name="digits_password">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^*-=_+:;,.?</string>
+    <string name="hint_password">कूटशब्द</string>
+    <string name="text_register">खाता बनाएं</string>
+    <string name="digits_name">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
+    <string name="hint_first_name">प्रथम नाम</string>
+    <string name="hint_last_name">अंतिम नाम</string>
+    <string name="text_button_register">खाता बनाएं</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_admin_schedule">व्यवस्थापक अनुसूची</string>
+    <string name="title_admin_request">व्यवस्थापक अनुरोध</string>
+    <string name="title_schedule">अनुसूची</string>
+    <string name="title_profile">प्रोफ़ाइल</string>
+    <string name="text_button_logout">लॉग आउट
+</string>
+    <string name="text_select">एक तिथि चुनें</string>
+    <string name="hint_enter">एक मूल्य दर्ज करें</string>
+    <string name="text_button_create">स्लॉट बनाएँ</string>
+    <string name="text_select_1">अपनी जन्मतिथि चुनें</string>
+    <string name="digits_contact">0123456789</string>
+    <string name="hint_enter_1">अपना संपर्क नंबर दर्ज करें</string>
+    <string name="text_upload">अपनी वैध आईडी अपलोड करें</string>
+    <string name="text_upload_1">सेल्फी अपलोड करें</string>
+    <string name="text_button_create_1">अनुरोध प्रस्तुत करें</string>
+    <string name="text_button_reject">अस्वीकार</string>
+    <string name="text_button_accept">स्वीकार</string>
+    <string name="text_button_remove">सूची से हटाएं</string>
+</resources>
