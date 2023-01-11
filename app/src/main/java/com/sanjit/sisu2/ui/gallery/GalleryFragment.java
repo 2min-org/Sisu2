@@ -70,6 +70,8 @@ public class GalleryFragment extends Fragment {
         mProgressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
+
+
         ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {

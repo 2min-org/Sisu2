@@ -96,6 +96,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void userLogin() {
+
         String email= loginEmail.getText().toString().trim();
         String password= loginPassword.getText().toString().trim();
 
@@ -196,10 +197,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 //            }
 //        }
 //    }
-    private void isUser(){
-
-
-}
 
 }
 
