@@ -5,9 +5,15 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -15,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,10 +42,13 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sanjit.sisu2.MainActivity;
 import com.sanjit.sisu2.R;
+import com.sanjit.sisu2.ui.Setting;
+
+import java.util.Locale;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView forgotPassword,register;
+    private TextView forgotPassword,register,changeLanguage;
     private EditText loginEmail, loginPassword;
     private Button login;
     private FirebaseAuth mAuth;
@@ -50,7 +60,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        loadLocale();
+
         setContentView(R.layout.activity_login);
+
+        changeLanguage =findViewById(R.id.Change_language);
+        changeLanguage.setOnClickListener(this);
+
 
         register= findViewById(R.id.CreateAccount);
         register.setOnClickListener(this);
@@ -67,6 +84,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         forgotPassword =findViewById(R.id.forgotpassword);
         forgotPassword.setOnClickListener(this);
+
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // User is signed in
@@ -92,7 +111,55 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             case R.id.forgotpassword:
                 startActivity(new Intent(this, ForgotPassword.class));
                 break;
+            case R.id.Change_language:
+                showChangeLanguageDialog();
+                break;
         }
+    }
+
+    private void showChangeLanguageDialog() {
+            final String [] listItems = {"English","नेपाली"};
+            AlertDialog.Builder mBuilder = new AlertDialog.Builder(Login.this);
+            mBuilder.setTitle("Choose Language...");
+            mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    if (i == 0) {
+                        //English
+                        setLocale("en");
+                        recreate();
+                    } else if (i == 1) {
+                        //Hindi
+                        setLocale("hi");
+                        recreate();
+                    }
+                    //dismiss alert dialog when language selected
+                    dialogInterface.dismiss();
+                }
+            });
+            AlertDialog mDialog = mBuilder.create();
+            //show alert dialog
+            mDialog.show();
+
+        }
+
+    private void setLocale(String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration configuration = new Configuration();
+        configuration.locale = locale;
+        getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
+        //save data to shared preferences
+        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang", lang);
+        editor.apply();
+    }
+
+    private void loadLocale() {
+        SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
+        String language = prefs.getString("My_Lang", "");
+        setLocale(language);
+
     }
 
     private void userLogin() {
