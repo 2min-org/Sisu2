@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Hi,Your Name"
+                android:text="Hi,Your Name is"
                 android:textColor="#ffffff"
                 android:textSize="23sp"
                 android:textStyle="bold"
