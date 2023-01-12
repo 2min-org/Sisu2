@@ -50,10 +50,26 @@ public class HomeFragment extends Fragment {
         //Here,i'm preparing list of images from drawable
         // You can also prepare list of images from server or get it from API.
         List<SliderItem> sliderItems=new ArrayList<>();
-        sliderItems.add(new SliderItem(R.drawable.pic1));
-        sliderItems.add(new SliderItem(R.drawable.pic2));
-        sliderItems.add(new SliderItem(R.drawable.pic3));
-        sliderItems.add(new SliderItem(R.drawable.pic4));
+        sliderItems.add(new SliderItem(R.drawable.shr5));
+        sliderItems.add(new SliderItem(R.drawable.shr2));
+        sliderItems.add(new SliderItem(R.drawable.shr3));
+        sliderItems.add(new SliderItem(R.drawable.shr4));
+        sliderItems.add(new SliderItem(R.drawable.shr1));
+        sliderItems.add(new SliderItem(R.drawable.shr5));
+        sliderItems.add(new SliderItem(R.drawable.shr2));
+        sliderItems.add(new SliderItem(R.drawable.shr3));
+        sliderItems.add(new SliderItem(R.drawable.shr4));
+        sliderItems.add(new SliderItem(R.drawable.shr1));
+        sliderItems.add(new SliderItem(R.drawable.shr5));
+        sliderItems.add(new SliderItem(R.drawable.shr2));
+        sliderItems.add(new SliderItem(R.drawable.shr3));
+        sliderItems.add(new SliderItem(R.drawable.shr4));
+        sliderItems.add(new SliderItem(R.drawable.shr1));
+        sliderItems.add(new SliderItem(R.drawable.shr5));
+        sliderItems.add(new SliderItem(R.drawable.shr2));
+        sliderItems.add(new SliderItem(R.drawable.shr3));
+        sliderItems.add(new SliderItem(R.drawable.shr4));
+        sliderItems.add(new SliderItem(R.drawable.shr1));
 
         viewPager2.setAdapter(new SliderAdapter(sliderItems,viewPager2));
 
