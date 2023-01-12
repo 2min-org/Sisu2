@@ -1,10 +1,12 @@
 package com.sanjit.sisu2.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,6 +24,7 @@ import com.sanjit.sisu2.adapters.home_horizontal_adapter;
 import com.sanjit.sisu2.models.HomeVerModel;
 import com.sanjit.sisu2.models.Home_hor_model;
 import com.sanjit.sisu2.models.SliderItem;
+import com.sanjit.sisu2.ui.vaccineinformation.VaccineInformation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +32,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
    private ViewPager2 viewPager2;
    private Handler sliderHandler = new Handler();
+   private ImageView imageVacc;
 
 
 //    RecyclerView home_hor_recycler,home_ver_recycler,home_ver_recycler2,home_ver_recycler3;
@@ -46,6 +50,14 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         viewPager2=root.findViewById(R.id.viewPagerImageSliderHome);
+        imageVacc=root.findViewById(R.id.imageVacc);
+        imageVacc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(getActivity(), VaccineInformation.class);
+                startActivity(intent);
+            }
+        });
 
         //Here,i'm preparing list of images from drawable
         // You can also prepare list of images from server or get it from API.
