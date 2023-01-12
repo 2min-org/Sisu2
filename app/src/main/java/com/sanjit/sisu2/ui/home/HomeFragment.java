@@ -26,7 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-//    private ViewPager2 viewPager2;
+   private ViewPager2 viewPager2;
+
 
 //    RecyclerView home_hor_recycler,home_ver_recycler,home_ver_recycler2,home_ver_recycler3;
 //    List<Home_hor_model> home_horizontal_modelList;
@@ -41,6 +42,21 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+        viewPager2=root.findViewById(R.id.viewPagerImageSliderHome);
+
+        //Here,i'm preparing list of images from drawable
+        // You can also prepare list of images from server or get it from API.
+        List<SliderItem> sliderItems=new ArrayList<>();
+        sliderItems.add(new SliderItem(R.drawable.pic1));
+        sliderItems.add(new SliderItem(R.drawable.pic2));
+        sliderItems.add(new SliderItem(R.drawable.pic3));
+        sliderItems.add(new SliderItem(R.drawable.pic4));
+        sliderItems.add(new SliderItem(R.drawable.pic5));
+
+        viewPager2.setAdapter(new SliderAdapter(sliderItems,viewPager2));
+
+
 //        home_hor_recycler = root.findViewById(R.id.home_horizontal_recycler);
 //        home_ver_recycler = root.findViewById(R.id.home_vertical_recycler);
 //        home_ver_recycler2 = root.findViewById(R.id.home_vertical_recycler2);

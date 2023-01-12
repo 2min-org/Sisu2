@@ -72,6 +72,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5">
 
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPagerImageSliderHome"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="80dp"
+                    android:paddingEnd="80dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <TableLayout
                     android:id="@+id/tableLayout"
                     android:layout_width="match_parent"
