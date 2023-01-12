@@ -1,6 +1,7 @@
 package com.sanjit.sisu2.ui.home;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
    private ViewPager2 viewPager2;
+   private Handler sliderHandler = new Handler();
 
 
 //    RecyclerView home_hor_recycler,home_ver_recycler,home_ver_recycler2,home_ver_recycler3;
@@ -54,6 +56,30 @@ public class HomeFragment extends Fragment {
         sliderItems.add(new SliderItem(R.drawable.pic4));
 
         viewPager2.setAdapter(new SliderAdapter(sliderItems,viewPager2));
+
+        viewPager2.setClipToPadding(false);
+        viewPager2.setClipChildren(false);
+        viewPager2.setOffscreenPageLimit(3);
+        viewPager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+
+        CompositePageTransformer compositePageTransformer=new CompositePageTransformer();
+        compositePageTransformer.addTransformer(new MarginPageTransformer(40));
+        compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
+            @Override
+            public void transformPage(@NonNull View page, float position) {
+                float r=1-Math.abs(position);
+                page.setScaleY(0.85f+r*0.15f);
+            }
+        });
+        viewPager2.setPageTransformer(compositePageTransformer);
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                sliderHandler.removeCallbacks(sliderRunnable);
+                sliderHandler.postDelayed(sliderRunnable,3000); //Slide duration 3 seconds
+            }
+        });
 
 
 //        home_hor_recycler = root.findViewById(R.id.home_horizontal_recycler);
@@ -167,4 +193,10 @@ public class HomeFragment extends Fragment {
 
         return root;
     }
+    private Runnable sliderRunnable = new Runnable() {
+        @Override
+        public void run() {
+            viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
+        }
+    };
 }
