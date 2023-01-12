@@ -113,10 +113,10 @@
 
                                 <ImageView
                                     android:id="@+id/imageVacc"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="80dp"
+                                    android:layout_height="74dp"
                                     android:layout_margin="8dp"
-                                    android:src="@drawable/circle_green"
+                                    android:src="@drawable/circle_baby_blue"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -157,10 +157,10 @@
 
                                 <ImageView
                                     android:id="@+id/imagelocc"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="80dp"
+                                    android:layout_height="74dp"
                                     android:layout_margin="8dp"
-                                    android:src="@drawable/circle_green"
+                                    android:src="@drawable/circle_baby_blue"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -202,10 +202,10 @@
 
                                 <ImageView
                                     android:id="@+id/imagerecc"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="80dp"
+                                    android:layout_height="74dp"
                                     android:layout_margin="8dp"
-                                    android:src="@drawable/circle_green"
+                                    android:src="@drawable/circle_baby_blue"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -253,10 +253,10 @@
 
                                 <ImageView
                                     android:id="@+id/imagemess"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="80dp"
+                                    android:layout_height="74dp"
                                     android:layout_margin="8dp"
-                                    android:src="@drawable/circle_green"
+                                    android:src="@drawable/circle_baby_blue"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -298,10 +298,10 @@
 
                                 <ImageView
                                     android:id="@+id/imageset"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="80dp"
+                                    android:layout_height="74dp"
                                     android:layout_margin="8dp"
-                                    android:src="@drawable/circle_green"
+                                    android:src="@drawable/circle_baby_blue"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -343,10 +343,10 @@
 
                                 <ImageView
                                     android:id="@+id/imageup"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="80dp"
+                                    android:layout_height="74dp"
                                     android:layout_margin="8dp"
-                                    android:src="@drawable/circle_green"
+                                    android:src="@drawable/circle_baby_blue"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
