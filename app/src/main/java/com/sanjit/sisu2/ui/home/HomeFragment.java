@@ -24,6 +24,7 @@ import com.sanjit.sisu2.adapters.home_horizontal_adapter;
 import com.sanjit.sisu2.models.HomeVerModel;
 import com.sanjit.sisu2.models.Home_hor_model;
 import com.sanjit.sisu2.models.SliderItem;
+import com.sanjit.sisu2.ui.diseaseinformation.DiseaseInformation;
 import com.sanjit.sisu2.ui.vaccineinformation.VaccineInformation;
 
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class HomeFragment extends Fragment {
         imageVacc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(getActivity(), VaccineInformation.class);
+                Intent intent =new Intent(getActivity(), DiseaseInformation.class);
                 startActivity(intent);
             }
         });
