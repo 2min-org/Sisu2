@@ -33,6 +33,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_listener {
 
     //declarations
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
     private ActivityMainBinding binding;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
+    private List<String> appointment_id ;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     //declarations
 
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
                            if (spec_doc == null) {
 
                                // making a new collection with information of doctor in firebase
-                               Doctor_info doctor_info = new Doctor_info(dName, dEmail, "null");
+                               Doctor_info doctor_info = new Doctor_info( dName, dEmail, "null", null);
                                db.collection("Doctors").document(mAuth.getCurrentUser().getUid()).set(doctor_info)
                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                                            @Override

@@ -18,7 +18,7 @@
 
     //indicator color
     <color name="inactive">#fcd6b1</color>
-    <color name="active">#6a7183</color>
+    <color name="active">#93acff</color>
 
     //login colors
 
