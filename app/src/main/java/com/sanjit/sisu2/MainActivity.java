@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
         setSupportActionBar(binding.appBarMain.toolbar);
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+
+
         mAuth = FirebaseAuth.getInstance();
 
         db.collection("Users").document(mAuth.getCurrentUser().getUid()).get()
