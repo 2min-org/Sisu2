@@ -20,7 +20,6 @@ public class Share extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        item=findViewById(R.id.action_share);
 
         item.setOnClickListener(new View.OnClickListener() {
             @Override
