@@ -24,6 +24,7 @@ import com.sanjit.sisu2.adapters.home_horizontal_adapter;
 import com.sanjit.sisu2.models.HomeVerModel;
 import com.sanjit.sisu2.models.Home_hor_model;
 import com.sanjit.sisu2.models.SliderItem;
+import com.sanjit.sisu2.ui.childcarecentres.ChildcareCentres;
 import com.sanjit.sisu2.ui.diseaseinformation.DiseaseInformation;
 import com.sanjit.sisu2.ui.vaccineinformation.VaccineInformation;
 
@@ -33,7 +34,10 @@ import java.util.List;
 public class HomeFragment extends Fragment {
    private ViewPager2 viewPager2;
    private Handler sliderHandler = new Handler();
-   private ImageView imageVacc;
+   ImageView imageVacc;
+    RecyclerView home_hor_recycler;
+    List<Home_hor_model> home_horizontal_modelList;
+    home_horizontal_adapter home_horizontal_adapter;
 
 
 //    RecyclerView home_hor_recycler,home_ver_recycler,home_ver_recycler2,home_ver_recycler3;
@@ -50,12 +54,26 @@ public class HomeFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
+        home_hor_recycler = root.findViewById(R.id.home_horizontal_recycler);
+        home_horizontal_modelList = new ArrayList<Home_hor_model>();
+
+        setHome_horizontal_modelList(home_horizontal_modelList);
+
+        home_horizontal_adapter = new home_horizontal_adapter(getActivity(),home_horizontal_modelList);
+
+        home_hor_recycler.setAdapter(home_horizontal_adapter);
+
+        home_hor_recycler.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+
+        home_hor_recycler.setHasFixedSize(true);
+        home_hor_recycler.setNestedScrollingEnabled(true);
+
         viewPager2=root.findViewById(R.id.viewPagerImageSliderHome);
+
         imageVacc=root.findViewById(R.id.imageVacc);
         imageVacc.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
-                Intent intent =new Intent(getActivity(), DiseaseInformation.class);
+                Intent intent =new Intent(getActivity(), ChildcareCentres.class);
                 startActivity(intent);
             }
         });
@@ -222,6 +240,23 @@ public class HomeFragment extends Fragment {
 
         return root;
     }
+
+    public void setHome_horizontal_modelList(List<Home_hor_model> home_horizontal_modelList) {
+        this.home_horizontal_modelList = home_horizontal_modelList;
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Polio"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"DPT"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Measles"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hepatitis B"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hepatitis A"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hib"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Rotavirus"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Pneumococcal"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Influenza"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"HPV"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Meningococcal"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Tdap"));
+    }
+
     private Runnable sliderRunnable = new Runnable() {
         @Override
         public void run() {

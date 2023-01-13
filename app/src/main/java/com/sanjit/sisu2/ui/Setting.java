@@ -34,7 +34,7 @@ public class Setting extends AppCompatActivity {
         loadLocale();
         setContentView(R.layout.activity_setting);
 
-        //change actionbar title,if you  dont change it will be according to your systens default language
+        //change actionbar title,if you  don't change it will be according to your systems default language
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle(getResources().getString(R.string.app_name));
 
@@ -112,6 +112,7 @@ public class Setting extends AppCompatActivity {
         editor.putString("My_Lang", lang);
         editor.apply();
     }
+
     private void loadLocale() {
         SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
         String language = prefs.getString("My_Lang", "");
