@@ -14,7 +14,7 @@ import com.sanjit.sisu2.R;
 
 public class PersonalRecords extends Fragment {
 
-    private PersonalRecordsViewModel mViewModel;
+    public PersonalRecordsViewModel mViewModel;
 
     public static PersonalRecords newInstance() {
         return new PersonalRecords();
