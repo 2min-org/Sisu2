@@ -35,7 +35,7 @@ public class HomeFragment extends Fragment {
    private ViewPager2 viewPager2;
    private Handler sliderHandler = new Handler();
    ImageView imageVacc;
-    RecyclerView home_hor_recycler,home_ver_recycler,home_ver_recycler2,home_ver_recycler3;
+    RecyclerView home_hor_recycler,home_hor_recycler2,home_ver_recycler,home_ver_recycler2,home_ver_recycler3;
     List<Home_hor_model> home_horizontal_modelList;
     home_horizontal_adapter home_horizontal_adapter;
     List<HomeVerModel> homeVerModelList;
@@ -51,35 +51,41 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         home_hor_recycler = root.findViewById(R.id.home_horizontal_recycler);
-        home_ver_recycler = root.findViewById(R.id.home_vertical_recycler);
-        home_ver_recycler2 = root.findViewById(R.id.home_vertical_recycler2);
-        home_ver_recycler3 = root.findViewById(R.id.home_vertical_recycler3);
+        home_hor_recycler2 = root.findViewById(R.id.home_horizontal_recycler2);
+//        home_ver_recycler = root.findViewById(R.id.home_vertical_recycler);
+//        home_ver_recycler2 = root.findViewById(R.id.home_vertical_recycler2);
+//        home_ver_recycler3 = root.findViewById(R.id.home_vertical_recycler3);
 
         home_horizontal_modelList = new ArrayList<Home_hor_model>();
-        homeVerModelList = new ArrayList<HomeVerModel>();
+//        homeVerModelList = new ArrayList<HomeVerModel>();
 
         setHome_horizontal_modelList(home_horizontal_modelList);
-        setHomeVerModelList(homeVerModelList);
+//        setHomeVerModelList(homeVerModelList);
 
         home_horizontal_adapter = new home_horizontal_adapter(getActivity(),home_horizontal_modelList);
-        homeVerAdapter = new HomeVerAdapter(getActivity(),homeVerModelList);
+//        homeVerAdapter = new HomeVerAdapter(getActivity(),homeVerModelList);
 
         home_hor_recycler.setAdapter(home_horizontal_adapter);
-        home_ver_recycler.setAdapter(homeVerAdapter);
-        home_ver_recycler2.setAdapter(homeVerAdapter);
+        home_hor_recycler2.setAdapter(home_horizontal_adapter);
+//        home_ver_recycler.setAdapter(homeVerAdapter);
+//        home_ver_recycler2.setAdapter(homeVerAdapter);
 
         home_hor_recycler.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
-        home_ver_recycler.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
-        home_ver_recycler2.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        home_hor_recycler2.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+//        home_ver_recycler.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
+//        home_ver_recycler2.setLayoutManager(new GridLayoutManager(getActivity(),2));
 
         home_hor_recycler.setHasFixedSize(true);
         home_hor_recycler.setNestedScrollingEnabled(true);
 
-        home_ver_recycler.setHasFixedSize(true);
-        home_ver_recycler.setNestedScrollingEnabled(true);
+        home_hor_recycler2.setHasFixedSize(true);
+        home_hor_recycler2.setNestedScrollingEnabled(true);
 
-        home_ver_recycler2.setHasFixedSize(false);
-        home_ver_recycler2.setNestedScrollingEnabled(false);
+//        home_ver_recycler.setHasFixedSize(true);
+//        home_ver_recycler.setNestedScrollingEnabled(true);
+//
+//        home_ver_recycler2.setHasFixedSize(false);
+//        home_ver_recycler2.setNestedScrollingEnabled(false);
 
         viewPager2=root.findViewById(R.id.viewPagerImageSliderHome);
 
@@ -160,19 +166,18 @@ public class HomeFragment extends Fragment {
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Tdap"));
     }
 
-    private void setHomeVerModelList(List<HomeVerModel> homeVerModelList) {
-        this.homeVerModelList = homeVerModelList;
-        homeVerModelList.add(new HomeVerModel(R.drawable.img_johnson_johnson,"jonson"));
-        homeVerModelList.add(new HomeVerModel(R.drawable.img_astra_zeneca,"albert"));
-        homeVerModelList.add(new HomeVerModel(R.drawable.img_moderna,"moderna"));
-        homeVerModelList.add(new HomeVerModel(R.drawable.img_pfizer,"pfizer"));
-        homeVerModelList.add(new HomeVerModel(R.drawable.img_johnson_johnson,"sputnik"));
-        homeVerModelList.add(new HomeVerModel(R.drawable.img_astra_zeneca,"albert"));
-        homeVerModelList.add(new HomeVerModel(R.drawable.img_moderna,"moderna"));
-        homeVerModelList.add(new HomeVerModel(R.drawable.img_pfizer,"pfizer"));
-        homeVerModelList.add(new HomeVerModel(R.drawable.img_johnson_johnson,"sputnik"));
-
-    }
+//    private void setHomeVerModelList(List<HomeVerModel> homeVerModelList) {
+//        this.homeVerModelList = homeVerModelList;
+//        homeVerModelList.add(new HomeVerModel(R.drawable.img_johnson_johnson,"jonson"));
+//        homeVerModelList.add(new HomeVerModel(R.drawable.img_astra_zeneca,"albert"));
+//        homeVerModelList.add(new HomeVerModel(R.drawable.img_moderna,"moderna"));
+//        homeVerModelList.add(new HomeVerModel(R.drawable.img_pfizer,"pfizer"));
+//        homeVerModelList.add(new HomeVerModel(R.drawable.img_johnson_johnson,"sputnik"));
+//        homeVerModelList.add(new HomeVerModel(R.drawable.img_astra_zeneca,"albert"));
+//        homeVerModelList.add(new HomeVerModel(R.drawable.img_moderna,"moderna"));
+//        homeVerModelList.add(new HomeVerModel(R.drawable.img_pfizer,"pfizer"));
+//        homeVerModelList.add(new HomeVerModel(R.drawable.img_johnson_johnson,"sputnik"));
+//    }
 
     @Override
     public void onDestroyView() {
