@@ -1,6 +1,7 @@
 package com.sanjit.sisu2;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuInflater;
@@ -26,6 +27,7 @@ import com.sanjit.sisu2.ui.login_register_user.Doctor_info;
 import com.sanjit.sisu2.ui.login_register_user.Login;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -39,6 +41,10 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
 
     //declarations
     private AppBarConfiguration mAppBarConfiguration;
+
+    boolean nightMode;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     private ActivityMainBinding binding;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
@@ -174,6 +180,28 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
+                return true;
+
+            case R.id.action_change_theme:
+                Toast.makeText(this, "Change Theme", Toast.LENGTH_SHORT).show();
+                sharedPreferences = getSharedPreferences("MODE", MODE_PRIVATE);
+                nightMode = sharedPreferences.getBoolean("night", false); // Light mode is the default mode
+
+                if (nightMode) {
+                    item.setChecked(true);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                }
+                        if (nightMode) {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                            editor = sharedPreferences.edit();
+                            editor.putBoolean("night", false);
+                        } else {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                            editor = sharedPreferences.edit();
+                            editor.putBoolean("night", true);
+                        }
+                        editor.apply();
+
                 return true;
 
             default:
