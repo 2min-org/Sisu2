@@ -1,24 +1,64 @@
 package com.sanjit.sisu2.ui.appointments;
 
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class appointmentsAdapter extends RecyclerView.Adapter {
+import com.sanjit.sisu2.R;
+
+import java.util.ArrayList;
+
+public class appointmentsAdapter extends RecyclerView.Adapter<appointmentsAdapter.appointmentsViewHolder>{
+
+    private final Context context;
+    private final ArrayList<appointment_model> appointment_arr;
+
+    appointmentsAdapter(Context context, ArrayList<appointment_model> appointment_arr){
+        this.context = context;
+        this.appointment_arr = appointment_arr;
+    }
+
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+    public appointmentsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        View inflater = LayoutInflater.from(context).inflate(R.layout.patient_card_view, parent, false);
+        appointmentsViewHolder holder = new appointmentsViewHolder(inflater);
+
+        return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull appointmentsViewHolder holder, int position) {
+
+        holder.name.setText(appointment_arr.get(position).getName());
+        holder.phone.setText(appointment_arr.get(position).getPhone());
+        holder.photo.setImageResource(R.drawable.facebook);
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return appointment_arr.size();
+    }
+
+    public class appointmentsViewHolder extends RecyclerView.ViewHolder {
+
+        TextView name, phone;
+        ImageView photo;
+
+        public appointmentsViewHolder(View itemView) {
+            super(itemView);
+            name = itemView.findViewById(R.id.patient_name);
+            phone = itemView.findViewById(R.id.patient_phone);
+            photo = itemView.findViewById(R.id.patient_image);
+
+        }
     }
 }

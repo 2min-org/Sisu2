@@ -198,7 +198,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    user = new User(fullname, email, birthday, telephone,gender,address,user_mode);
+                    user = new User(mAuth.getCurrentUser().getUid(),fullname, email, birthday, telephone,gender,address,user_mode);
 
                     db.collection("Users").document(mAuth.getCurrentUser().getUid()).set(user)
                        .addOnSuccessListener(new OnSuccessListener<Void>() {
