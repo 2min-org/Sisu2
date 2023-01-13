@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -47,6 +49,31 @@ public class appointments extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_appointments, container, false);
+        TextView doctor_name = view.findViewById(R.id.doctor_name);
+        TextView doctor_spec = view.findViewById(R.id.doctor_spec);
+        TextView doctor_email = view.findViewById(R.id.doctor_email);
+        TextView doctor_phone = view.findViewById(R.id.doctor_phone);
+        ImageView doctor_photo = view.findViewById(R.id.doctor_image);
+
+        db.collection("Users").document(mAuth.getCurrentUser().getUid()).get()
+            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists()){
+                    Map<String,Object> data = documentSnapshot.getData();
+                    doctor_name.setText(data.get("Fullname").toString());
+                    doctor_spec.setText(data.get("spec").toString());
+                    doctor_email.setText(data.get("Email").toString());
+                    doctor_phone.setText(data.get("Telephone").toString());
+                    doctor_photo.setImageResource(R.drawable.facebook);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         RecyclerView recyclerView = view.findViewById(R.id.appointments_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -114,11 +141,6 @@ public class appointments extends Fragment {
                     }
                 });
 
-
-
-        //now we have array of strings which contains user_id of all the patients who have booked appointments with the doctor
-        //now we will take the data of each patient from the database and insert them in the array list of appointment model
-        //iterate through the user_id array and take the data of each patient from the database and insert them in the array list of appointment model
 
 
 
