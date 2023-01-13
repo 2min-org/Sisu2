@@ -35,6 +35,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_listener {
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     private ActivityMainBinding binding;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth=FirebaseAuth.getInstance();
     private DatabaseReference databaseReference;
     private List<String> appointment_id ;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -66,21 +67,22 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
         NavigationView navigationView = binding.navView;
 
 
-        mAuth = FirebaseAuth.getInstance();
 
         db.collection("Users").document(mAuth.getCurrentUser().getUid()).get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if((documentSnapshot.getString("user_mode"))=="Doctor")
+                    {
                        try {
-                           String spec_doc = documentSnapshot.getString("spec");
+                           String spec_doc = documentSnapshot.getString("Specialization");
                            String dName = documentSnapshot.getString("Fullname");
                            String dEmail = documentSnapshot.getString("Email");
                            Log.v("TAG", "onSuccess: " + spec_doc + dName + dEmail);
                            if (spec_doc == null) {
 
                                // making a new collection with information of doctor in firebase
-                               Doctor_info doctor_info = new Doctor_info( dName, dEmail, "null", null);
+                               Doctor_info doctor_info = new Doctor_info( dName, dEmail, "null", appointment_id);
                                db.collection("Doctors").document(mAuth.getCurrentUser().getUid()).set(doctor_info)
                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                                            @Override
@@ -104,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
                            Toast.makeText(MainActivity.this, "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
                        }
                     }
+                }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -133,10 +136,39 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         String user_mode = documentSnapshot.getString("user_mode");
-                        if (!user_mode.equals("Doctor")){
-                            Menu menu = navigationView.getMenu();
-                            MenuItem nav_appointments = menu.findItem(R.id.nav_appointments);
-                            nav_appointments.setVisible(false);
+                        try {
+                            if (!user_mode.equals("Doctor")) {
+                                Menu menu = navigationView.getMenu();
+                                MenuItem nav_appointments = menu.findItem(R.id.nav_appointments);
+                                nav_appointments.setVisible(false);
+                            }
+                        }
+                        catch (Exception e){
+                            Toast.makeText(MainActivity.this, "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        db.collection("Users").document(mAuth.getCurrentUser().getUid()).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        String user_mode = documentSnapshot.getString("user_mode");
+                        try {
+                            if (!user_mode.equals("Patient")) {
+                                Menu menu = navigationView.getMenu();
+                                MenuItem nav_appointments = menu.findItem(R.id.nav_appointments);
+                                nav_appointments.setVisible(false);
+                            }
+                        }
+                        catch (Exception e){
+                            Toast.makeText(MainActivity.this, "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 })
@@ -213,7 +245,9 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
     @Override
     public void applyTexts(String spec_doc) {
         Toast.makeText(this, "Specialist Doctor: "+spec_doc, Toast.LENGTH_SHORT).show();
-        db.collection("Users").document(mAuth.getCurrentUser().getUid()).update("spec",spec_doc);
-        db.collection("Doctors").document(mAuth.getCurrentUser().getUid()).update("spec",spec_doc);
+        db.collection("Users").document(mAuth.getCurrentUser().getUid()).update("Specialization",spec_doc);
+        db.collection("Doctors").document(mAuth.getCurrentUser().getUid()).update("Specialization",spec_doc);
+        db.collection("Doctors").document(mAuth.getCurrentUser().getUid()).update("appointment_id",null);
+
     }
 }

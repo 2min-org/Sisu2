@@ -62,7 +62,7 @@ public class appointments extends Fragment {
                 if(documentSnapshot.exists()){
                     Map<String,Object> data = documentSnapshot.getData();
                     doctor_name.setText(data.get("Fullname").toString());
-                    doctor_spec.setText(data.get("spec").toString());
+                    doctor_spec.setText(data.get("Specialization").toString());
                     doctor_email.setText(data.get("Email").toString());
                     doctor_phone.setText(data.get("Telephone").toString());
                     doctor_photo.setImageResource(R.drawable.facebook);
@@ -89,49 +89,52 @@ public class appointments extends Fragment {
                         Map<String, Object> data = documentSnapshot.getData();
                         appointment_id = (ArrayList<String>) data.get("appointment_id");
 
+                        if(appointment_id != null)
+                            {
 
-                        for (String appointment : appointment_id) {
-                            String[] arr = appointment.split(" , ");
-                        }
-                        int count = 0;
-                        for (String appointment : appointment_id) {
+                                for (String appointment : appointment_id) {
+                                    String[] arr = appointment.split(" , ");
+                                }
+                                int count = 0;
+                                for (String appointment : appointment_id) {
 
-                            Log.d("2appointments", "fetching ids: " + appointment);
+                                    Log.d("2appointments", "fetching ids: " + appointment);
 
-                            int finalCount = count;
-                            db.collection("Users").document(appointment).get()
-                                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                        @Override
-                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                    int finalCount = count;
+                                    db.collection("Users").document(appointment).get()
+                                            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                @Override
+                                                public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                                            Map<String, Object> data = documentSnapshot.getData();
-                                            String name = (String) data.get("Fullname");
-                                            String phone = (String) data.get("Telephone");
+                                                    Map<String, Object> data = documentSnapshot.getData();
+                                                    String name = (String) data.get("Fullname");
+                                                    String phone = (String) data.get("Telephone");
 
-                                            appointment_arr.add(new appointment_model(name, phone, null));
-                                            Log.d("appointments", "onSuccess: " + name + " " + phone);
+                                                    appointment_arr.add(new appointment_model(name, phone, null));
+                                                    Log.d("appointments", "onSuccess: " + name + " " + phone);
 
-                                            //set adapter at the end of iteration
-                                            if(finalCount == appointment_id.size()-1){
-                                                appointmentsAdapter adapter = new appointmentsAdapter(getContext(), appointment_arr);
-                                                recyclerView.setAdapter(adapter);
-                                                Log.d("adapter", "after success: " + appointment_arr);
-                                            }
+                                                    //set adapter at the end of iteration
+                                                    if(finalCount == appointment_id.size()-1){
+                                                        appointmentsAdapter adapter = new appointmentsAdapter(getContext(), appointment_arr);
+                                                        recyclerView.setAdapter(adapter);
+                                                        Log.d("adapter", "after success: " + appointment_arr);
+                                                    }
 
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                            count++;
-                        }
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                    count++;
+                                }
 
 
 
-                        Log.d("appointment_id", "is this first? " + appointment_id);
+                                Log.d("appointment_id", "is this first? " + appointment_id);
+                            }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -140,11 +143,6 @@ public class appointments extends Fragment {
                         Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-
-
-
-
 
         // Inflate the layout for this fragment
         return view;
