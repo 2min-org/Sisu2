@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
                            if (spec_doc == null) {
 
                                // making a new collection with information of doctor in firebase
-                               Doctor_info doctor_info = new Doctor_info( dName, dEmail, "null", appointment_id);
+                               Doctor_info doctor_info = new Doctor_info( dName, dEmail, "null", appointment_id, mAuth.getCurrentUser().getUid());
                                db.collection("Doctors").document(mAuth.getCurrentUser().getUid()).set(doctor_info)
                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                                            @Override
@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
                 R.id.nav_personal_records,
                 R.id.nav_childcare_centres,
                 R.id.nav_appointments,
+                R.id.nav_book_doctor,
                 R.id.nav_about_us)
                 .setOpenableLayout(drawer)
                 .build();
