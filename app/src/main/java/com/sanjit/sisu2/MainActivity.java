@@ -201,7 +201,6 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
                             editor.putBoolean("night", true);
                         }
                         editor.apply();
-
                 return true;
 
             default:
