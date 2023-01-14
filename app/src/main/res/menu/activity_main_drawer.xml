@@ -31,6 +31,11 @@
             android:icon="@drawable/admin_request_selector"
             android:title="Appointment" />
         <item
+            android:id="@+id/nav_book_doctor"
+            android:icon="@drawable/ic_vaccine_name"
+            android:title="Make Appointment" />
+
+        <item
             android:id="@+id/nav_about_us"
             android:icon="@drawable/ic_baseline_tips_and_updates_24"
             android:title="@string/about_us" />

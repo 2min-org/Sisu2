@@ -10,11 +10,18 @@
         android:name="com.sanjit.sisu2.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
+
     <fragment
         android:id="@+id/nav_appointments"
         android:name="com.sanjit.sisu2.ui.appointments.appointments"
         android:label="Appointments"
         tools:layout="@layout/fragment_appointments" />
+
+    <fragment
+        android:id="@+id/nav_book_doctor"
+        android:name="com.sanjit.sisu2.ui.Patientappointment.book_doctor"
+        android:label="Make a Appointments"
+        tools:layout="@layout/fragment_book_doctor" />
 
     <fragment
         android:id="@+id/nav_personal_records"
