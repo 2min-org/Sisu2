@@ -1,5 +1,7 @@
 package com.sanjit.sisu2.ui.appointments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sanjit.sisu2.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -54,27 +57,33 @@ public class appointments extends Fragment {
         TextView doctor_phone = view.findViewById(R.id.doctor_phone);
         ImageView doctor_photo = view.findViewById(R.id.doctor_image);
 
+        //setting up values from shared preferences
+
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("User", Context.MODE_PRIVATE);
+        String Email = sharedPreferences.getString("Email", "null");
+        String FullName = sharedPreferences.getString("FullName", "null");
+        String User_id = sharedPreferences.getString("User_id", "null");
+        String ProfilePic = sharedPreferences.getString("ProfilePic", "null");
+        String User_mode = sharedPreferences.getString("User_mode", "null");
+        String Specialization = sharedPreferences.getString("Specialization", "null");
+        String Phone = sharedPreferences.getString("Phone", "null");
+
+        Log.v("Starting","Reached here");
+        Log.d("User_id",User_id);
+        Log.d("Email",Email);
+        Log.d("FullName",FullName);
+        Log.d("ProfilePic",ProfilePic);
+        Log.d("User_mode",User_mode);
+        Log.d("Specialization",Specialization);
+        //end of setting up values from shared preferences
+
         //here we are displaying the doctor details above the recycler view
 
-        db.collection("Users").document(mAuth.getCurrentUser().getUid()).get()
-            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if(documentSnapshot.exists()){
-                    Map<String,Object> data = documentSnapshot.getData();
-                    doctor_name.setText(Objects.requireNonNull(data.get("Fullname")).toString());
-                    doctor_spec.setText(Objects.requireNonNull(data.get("Specialization")).toString());
-                    doctor_email.setText(Objects.requireNonNull(data.get("Email")).toString());
-                    doctor_phone.setText(Objects.requireNonNull(data.get("Telephone")).toString());
-                    doctor_photo.setImageResource(R.drawable.facebook);
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
-            }
-        });
+                    doctor_name.setText(FullName);
+                    doctor_spec.setText(Specialization);
+                    doctor_email.setText(Email);
+                    doctor_phone.setText(Phone);
+                    Picasso.get().load(ProfilePic).into(doctor_photo);
 
         //here we are displaying the doctor details above the recycler view
 

@@ -268,6 +268,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                                 editor1.putString("ProfilePic", user.ProfilePic);
                                 editor1.putString("User_mode", user.user_mode);
                                 editor1.putString("Specialization", user.Specialization);
+                                editor1.putString("Phone", user.Telephone);
                                 editor1.apply();
 
                                 //end of shared preferences

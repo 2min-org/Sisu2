@@ -102,13 +102,7 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
 
         //end of setting up values from shared preferences
 
-        Log.v("Starting","Reached here");
-        Log.d("User_id",User_id);
-        Log.d("Email",Email);
-        Log.d("FullName",FullName);
-        Log.d("ProfilePic",ProfilePic);
-        Log.d("User_mode",User_mode);
-        Log.d("Specialization",Specialization);
+
 
         //checking if user is doctor or not
 

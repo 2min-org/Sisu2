@@ -224,6 +224,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                     editor.putString("ProfilePic", document.getString("ProfilePic"));
                                     editor.putString("User_mode", document.getString("user_mode"));
                                     editor.putString("Specialization", document.getString("Specialization"));
+                                    editor.putString("Phone", document.getString("Telephone"));
                                     editor.apply();
 
                                     //end of shared preferences
