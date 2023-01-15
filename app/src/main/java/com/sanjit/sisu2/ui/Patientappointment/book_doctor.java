@@ -121,7 +121,7 @@ public class book_doctor extends Fragment implements book_doctor_recyclerViewInt
                         if(appointment_id == null) {
                             db.collection("Doctors")
                                     .document((book_model_arr.get(position).getU_id()))
-                                    .update("appointment_id", mAuth.getCurrentUser().getUid())
+                                    .update("appointment_id", FieldValue.arrayUnion(mAuth.getCurrentUser().getUid()))
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
