@@ -20,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.StorageReference;
 import com.sanjit.sisu2.adapters.sec_doc;
 import com.sanjit.sisu2.databinding.ActivityMainBinding;
+import com.sanjit.sisu2.ui.MeroProfile;
 import com.sanjit.sisu2.ui.Setting;
 import com.sanjit.sisu2.ui.login_register_user.Doctor_info;
 import com.sanjit.sisu2.ui.login_register_user.Login;
@@ -173,7 +174,9 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, MeroProfile.class);
+                Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
             }
         });
 
@@ -251,6 +254,7 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
                         }
                         editor.apply();
                 return true;
+
 
             default:
                 return super.onOptionsItemSelected(item);
