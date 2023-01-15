@@ -61,10 +61,9 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
 
     //declarations
     private AppBarConfiguration mAppBarConfiguration;
-
+    SharedPreferences sharedPreferences;
     boolean nightMode;
     public String url;
-    SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     private ActivityMainBinding binding;
     private FirebaseAuth mAuth=FirebaseAuth.getInstance();
@@ -72,6 +71,9 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
     private StorageReference storageReference;
     private List<String> appointment_id ;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
+
     //declarations
 
 
@@ -90,13 +92,13 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
 
         //setting up values from shared preferences
 
-            SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
-            String Email = sharedPreferences.getString("Email", "null");
-            String FullName = sharedPreferences.getString("FullName", "null");
-            String User_id = sharedPreferences.getString("User_id", "null");
-            String ProfilePic = sharedPreferences.getString("ProfilePic", "null");
-            String User_mode = sharedPreferences.getString("User_mode", "null");
-            String Specialization = sharedPreferences.getString("Specialization", "null");
+        SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
+        String Email = sharedPreferences.getString("Email", "null");
+        String FullName = sharedPreferences.getString("FullName", "null");
+        String User_id = sharedPreferences.getString("User_id", "null");
+        String ProfilePic = sharedPreferences.getString("ProfilePic", "null");
+        String User_mode = sharedPreferences.getString("User_mode", "null");
+        String Specialization = sharedPreferences.getString("Specialization", "null");
 
         //end of setting up values from shared preferences
 
@@ -107,7 +109,6 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
         Log.d("ProfilePic",ProfilePic);
         Log.d("User_mode",User_mode);
         Log.d("Specialization",Specialization);
-
 
         //checking if user is doctor or not
 
@@ -165,54 +166,20 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
         NavigationUI.setupWithNavController(navigationView, navController);
 
         //we hide appointments for user who are not doctors
-        db.collection("Users").document(mAuth.getCurrentUser().getUid()).get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        String user_mode = documentSnapshot.getString("user_mode");
-                        try {
-                            if (!user_mode.equals("Doctor")) {
-                                Menu menu = navigationView.getMenu();
-                                MenuItem nav_appointments = menu.findItem(R.id.nav_appointments);
-                                nav_appointments.setVisible(false);
-                            }
-                        }
-                        catch (Exception e){
-                            Toast.makeText(MainActivity.this, "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MainActivity.this, "Error!", Toast.LENGTH_SHORT).show();
-                    }
-                });
+
+        if (!User_mode.equals("Doctor")) {
+            Menu menu = navigationView.getMenu();
+            MenuItem nav_appointments = menu.findItem(R.id.nav_appointments);
+            nav_appointments.setVisible(false);
+        }
 
         //we hide book appointments for user who are not patients
-        db.collection("Users").document(mAuth.getCurrentUser().getUid()).get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        String user_mode = documentSnapshot.getString("user_mode");
-                        try {
-                            if (!user_mode.equals("Patient")) {
-                                Menu menu = navigationView.getMenu();
-                                MenuItem nav_appointments = menu.findItem(R.id.nav_appointments);
-                                nav_appointments.setVisible(false);
-                            }
-                        }
-                        catch (Exception e){
-                            Toast.makeText(MainActivity.this, "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MainActivity.this, "Error!", Toast.LENGTH_SHORT).show();
-                    }
-                });
+
+        if (!User_mode.equals("Patient")) {
+            Menu menu = navigationView.getMenu();
+            MenuItem nav_appointments = menu.findItem(R.id.nav_book_doctor);
+            nav_appointments.setVisible(false);
+        }
 
     }
 
@@ -330,7 +297,7 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
 
         SharedPreferences User = getSharedPreferences("User", MODE_PRIVATE);
         SharedPreferences.Editor editor = User.edit();
-        editor.putString("specialization", spec_doc);
+        editor.putString("Specialization", spec_doc);
         editor.apply();
 
     }
