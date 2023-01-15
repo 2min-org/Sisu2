@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
@@ -34,8 +35,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.sanjit.sisu2.MainActivity;
 import com.sanjit.sisu2.R;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
@@ -49,10 +53,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
-    ProgressDialog progressDialog;
-
+    public ProgressDialog progressDialog;
     private User user;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public String url;
 //declarations
 
 //onCreate
@@ -198,27 +202,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    user = new User(mAuth.getCurrentUser().getUid(),fullname, email, birthday, telephone,gender,address,user_mode);
+                    user = new User(mAuth.getCurrentUser().getUid(),fullname, email, birthday, telephone,gender,address,user_mode,null,null);
+                    uploadPicture();
 
-                    db.collection("Users").document(mAuth.getCurrentUser().getUid()).set(user)
-                       .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(Register.this, "User has been registered successfully!", Toast.LENGTH_LONG).show();
-                            progressBar.setVisibility(View.GONE);
-                            uploadPicture();
-                            progressDialog.dismiss();
-
-                            startActivity(new Intent(Register.this, Login.class));
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(Register.this, "Failed to set data! Try again!", Toast.LENGTH_LONG).show();
-                            progressBar.setVisibility(View.GONE);
-                            progressDialog.dismiss();
-                        }
-                    });
                 } else {
                     if(task.getException() instanceof FirebaseAuthUserCollisionException)
                         Toast.makeText(Register.this, "You are already registered", Toast.LENGTH_SHORT).show();
@@ -249,7 +235,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
-    private void uploadPicture() {
+    private void uploadPicture(){
 
         final String randomKey= UUID.randomUUID().toString();
         StorageReference riversRef=storageReference.child("images/"+randomKey);
@@ -258,6 +244,14 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                url = uri.toString();
+                                user.set_ProfilePic(url);
+                                register_user();
+                            }
+                        });
                         Snackbar.make(findViewById(android.R.id.content),"Image Uploaded",Snackbar.LENGTH_LONG);
                     }
                 })
@@ -270,9 +264,33 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onProgress(@NonNull UploadTask.TaskSnapshot tasksnapshot) {
+                        double progress=(100.0*tasksnapshot.getBytesTransferred()/tasksnapshot.getTotalByteCount());
+                        progressBar.setProgress((int)progress);
 
                     }
                 });
+    }
+    public void register_user(){
+        db.collection("Users").document(mAuth.getCurrentUser().getUid()).set(user)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                        Toast.makeText(Register.this, "User has been registered successfully!", Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.GONE);
+                        Intent intent = new Intent(Register.this, MainActivity.class);
+                        progressDialog.dismiss();
+                        startActivity(intent);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Register.this, "Failed to set data! Try again!", Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.GONE);
+                        progressDialog.dismiss();
+                    }
+                });
+
     }
 
 }
