@@ -66,9 +66,16 @@ public class book_doctor extends Fragment implements book_doctor_recyclerViewInt
                                 String name = data.get("FullName").toString();
                                 String spec = data.get("Specialization").toString();
                                 String email = data.get("Email").toString();
+                                String photo;
+                                try{
+                                    photo = data.get("ProfilePic").toString();
+                                }catch (Exception e){
+                                    photo = "https://firebasestorage.googleapis.com/v0/b/sisu-2.appspot.com/o/Profile%20Pictures%2Fdefault.png?alt=media&token=8b8b8b8b-8b8b-8b8b-8b8b-8b8b8b8b8b8b";
+                                }
                                 Log.d("TAG", "onSuccess: " + name);
                                 String uid = data.get("UId").toString();
                                 Boolean isBooked = false;
+
                                 ArrayList<String> appointment_id = (ArrayList<String>) data.get("appointment_id");
                                 if(appointment_id != null){
                                     if(appointment_id.contains(mAuth.getUid())){
@@ -76,7 +83,7 @@ public class book_doctor extends Fragment implements book_doctor_recyclerViewInt
                                     }
                                 }
 
-                                book_model_arr.add(new book_doctor_model(name, spec, email, uid, isBooked));
+                                book_model_arr.add(new book_doctor_model(name, spec, email, uid, isBooked, photo));
                                 booking_id.add(documentSnapshot.getId());
                             }
                         }

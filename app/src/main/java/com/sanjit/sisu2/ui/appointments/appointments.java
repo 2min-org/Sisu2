@@ -61,13 +61,13 @@ public class appointments extends Fragment {
         //setting up values from shared preferences
 
         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("User", Context.MODE_PRIVATE);
-        String Email = sharedPreferences.getString("Email", "null");
-        String FullName = sharedPreferences.getString("FullName", "null");
-        String User_id = sharedPreferences.getString("User_id", "null");
-        String ProfilePic = sharedPreferences.getString("ProfilePic", "null");
-        String User_mode = sharedPreferences.getString("User_mode", "null");
-        String Specialization = sharedPreferences.getString("Specialization", "null");
-        String Phone = sharedPreferences.getString("Phone", "null");
+        String Email = sharedPreferences.getString("Email", "Not Specified");
+        String FullName = sharedPreferences.getString("FullName", "Not Specified");
+        String User_id = sharedPreferences.getString("User_id", "Not Specified");
+        String ProfilePic = sharedPreferences.getString("ProfilePic", "Not Specified");
+        String User_mode = sharedPreferences.getString("User_mode", "Not Specified");
+        String Specialization = sharedPreferences.getString("Specialization", "Not Specified");
+        String Phone = sharedPreferences.getString("Phone", "Not Specified");
 
         //end of setting up values from shared preferences
 
@@ -113,8 +113,9 @@ public class appointments extends Fragment {
                                                 assert data != null;
                                                 String name = (String) data.get("Fullname");
                                                 String phone = (String) data.get("Telephone");
+                                                String profile_pic = (String) data.get("ProfilePic");
 
-                                                appointment_model_arr.add(new appointment_model(name, phone, null));
+                                                appointment_model_arr.add(new appointment_model(name, phone, profile_pic));
                                                 Log.d("appointments", "onSuccess: " + name + " " + phone);
 
                                                 //set adapter at the end of iteration

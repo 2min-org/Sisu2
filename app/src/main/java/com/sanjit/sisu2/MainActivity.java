@@ -71,12 +71,12 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
         //setting up values from shared preferences
 
         SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
-        String Email = sharedPreferences.getString("Email", "null");
-        String FullName = sharedPreferences.getString("FullName", "null");
-        String User_id = sharedPreferences.getString("User_id", "null");
-        String ProfilePic = sharedPreferences.getString("ProfilePic", "null");
-        String User_mode = sharedPreferences.getString("User_mode", "null");
-        String Specialization = sharedPreferences.getString("Specialization", "null");
+        String Email = sharedPreferences.getString("Email", "Not Specified");
+        String FullName = sharedPreferences.getString("FullName", "Not Specified");
+        String User_id = sharedPreferences.getString("User_id", "Not Specified");
+        String ProfilePic = sharedPreferences.getString("ProfilePic", "Not Specified");
+        String User_mode = sharedPreferences.getString("User_mode", "Not Specified");
+        String Specialization = sharedPreferences.getString("Specialization", "Not Specified");
 
         //end of setting up values from shared preferences
 
@@ -91,11 +91,12 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
                 String spec_doc = Specialization;
                 String dName = FullName;
                 String dEmail = Email;
+                String dProfilePic = ProfilePic;
 
-                if (spec_doc.equals("null")) {
+                if (spec_doc.equals("Not Specified")) {
 
                     // making a new collection with information of doctor in firebase
-                    Doctor_info doctor_info = new Doctor_info( dName, dEmail, "null", appointment_id, User_id);
+                    Doctor_info doctor_info = new Doctor_info( dName, dEmail, "Not Specified", appointment_id, User_id,dProfilePic);
                     db.collection("Doctors").document(User_id).set(doctor_info)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -272,6 +273,5 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
         SharedPreferences.Editor editor = User.edit();
         editor.putString("Specialization", spec_doc);
         editor.apply();
-
     }
 }

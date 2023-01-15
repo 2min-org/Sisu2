@@ -22,6 +22,8 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sanjit.sisu2.R;
 import com.sanjit.sisu2.ui.Patientappointment.book_doctor_recyclerViewInterface;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -68,6 +70,7 @@ public class book_doctor_Adapter extends RecyclerView.Adapter<book_doctor_Adapte
             holder.book.setText("Book");
             holder.book.setEnabled(true);
         }
+        Picasso.get().load(book_doctor_arr.get(position).getPhoto()).into(holder.photo);
 
     }
 

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sanjit.sisu2.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -39,7 +40,7 @@ public class appointmentsAdapter extends RecyclerView.Adapter<appointmentsAdapte
 
         holder.name.setText(appointment_arr.get(position).getName());
         holder.phone.setText(appointment_arr.get(position).getPhone());
-        holder.photo.setImageResource(R.drawable.facebook);
+        Picasso.get().load(appointment_arr.get(position).getPhoto()).into(holder.photo);
 
     }
 

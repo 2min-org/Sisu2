@@ -11,7 +11,7 @@ public class book_doctor_model {
     private String specializations;
     private String u_id;
 
-    public book_doctor_model(String name, String phone, String specializations, String u_id, Boolean isBooked)  {
+    public book_doctor_model(String name, String phone, String specializations, String u_id, Boolean isBooked,String photo_url)  {
         this.name = name;
         this.phone = phone;
         this.photo_url = photo_url;
