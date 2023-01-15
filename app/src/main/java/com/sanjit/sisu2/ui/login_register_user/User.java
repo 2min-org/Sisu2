@@ -20,9 +20,7 @@ public class User {
         this.Specialization=Specialization;
     }
     public void set_ProfilePic(String setProfilePic) {
-        Log.d("set_ProfilePic",setProfilePic);
-        Log.d("set_ProfilePic",setProfilePic);
         this.ProfilePic = setProfilePic;
-        Log.d("ProfilePic",ProfilePic);
+
     }
 }

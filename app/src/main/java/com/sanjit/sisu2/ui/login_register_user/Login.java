@@ -30,6 +30,7 @@ import android.widget.Toast;
 //import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -211,6 +212,22 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                 if(document.exists()){
 
                                     String user_mode = document.getString("user_mode");
+
+                                    //Setting up shared preferences
+
+                                    SharedPreferences User = getSharedPreferences("User", MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = User.edit();
+
+                                    editor.putString("Email", email);
+                                    editor.putString("FullName", document.getString("Fullname"));
+                                    editor.putString("User_id", auth.getCurrentUser().getUid());
+                                    editor.putString("ProfilePic", document.getString("ProfilePic"));
+                                    editor.putString("User_mode", document.getString("user_mode"));
+                                    editor.putString("Specialization", document.getString("Specialization"));
+                                    editor.apply();
+
+                                    //end of shared preferences
+
                                     if(user_mode.equals("Doctor")){
 
                                         Intent i = new Intent(Login.this, MainActivity.class);

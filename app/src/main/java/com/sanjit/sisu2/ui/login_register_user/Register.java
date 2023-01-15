@@ -256,6 +256,23 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putString("imageURL", url);
                                 editor.apply();
+
+                                //Setting up shared preferences
+
+                                SharedPreferences User = getSharedPreferences("User", MODE_PRIVATE);
+                                SharedPreferences.Editor editor1 = User.edit();
+
+                                editor1.putString("Email", user.Email);
+                                editor1.putString("FullName", user.Fullname);
+                                editor1.putString("User_id", user.user_id);
+                                editor1.putString("ProfilePic", user.ProfilePic);
+                                editor1.putString("User_mode", user.user_mode);
+                                editor1.putString("Specialization", user.Specialization);
+                                editor1.apply();
+
+                                //end of shared preferences
+
+
                             }
                         });
                         Snackbar.make(findViewById(android.R.id.content),"Image Uploaded",Snackbar.LENGTH_LONG);

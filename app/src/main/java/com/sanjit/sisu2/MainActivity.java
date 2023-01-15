@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
         //binding is replacement of view for easier access to layout
         binding = ActivityMainBinding.inflate(getLayoutInflater());
 
@@ -87,57 +88,64 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
 
+        //setting up values from shared preferences
+
+            SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
+            String Email = sharedPreferences.getString("Email", "null");
+            String FullName = sharedPreferences.getString("FullName", "null");
+            String User_id = sharedPreferences.getString("User_id", "null");
+            String ProfilePic = sharedPreferences.getString("ProfilePic", "null");
+            String User_mode = sharedPreferences.getString("User_mode", "null");
+            String Specialization = sharedPreferences.getString("Specialization", "null");
+
+        //end of setting up values from shared preferences
+
+        Log.v("Starting","Reached here");
+        Log.d("User_id",User_id);
+        Log.d("Email",Email);
+        Log.d("FullName",FullName);
+        Log.d("ProfilePic",ProfilePic);
+        Log.d("User_mode",User_mode);
+        Log.d("Specialization",Specialization);
+
+
         //checking if user is doctor or not
 
-        db.collection("Users").document(mAuth.getCurrentUser().getUid()).get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+        if(User_mode.equals("Doctor")) {
 
-                    if(Objects.equals(documentSnapshot.getString("user_mode"), "Doctor"))
-                    {
-                        Toast.makeText(MainActivity.this, "Doctor", Toast.LENGTH_SHORT).show();
-                        //if user is doctor check if he has filled his Specialization or not
-                       try {
-                           String spec_doc = documentSnapshot.getString("Specialization");
-                           String dName = documentSnapshot.getString("Fullname");
-                           String dEmail = documentSnapshot.getString("Email");
-                           Log.v("TAG", "onSuccess: " + spec_doc + dName + dEmail);
-                           if (spec_doc == null) {
+            //if user is doctor check if he has filled his Specialization or not
+            try {
+                String spec_doc = Specialization;
+                String dName = FullName;
+                String dEmail = Email;
 
-                               // making a new collection with information of doctor in firebase
-                               Doctor_info doctor_info = new Doctor_info( dName, dEmail, "null", appointment_id, mAuth.getCurrentUser().getUid());
-                               db.collection("Doctors").document(mAuth.getCurrentUser().getUid()).set(doctor_info)
-                                       .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                           @Override
-                                           public void onSuccess(Void aVoid) {
-                                               Toast.makeText(MainActivity.this, "Doctor info added", Toast.LENGTH_SHORT).show();
-                                           }
-                                       }).addOnFailureListener(new OnFailureListener() {
-                                           @Override
-                                           public void onFailure(@NonNull Exception e) {
-                                               Toast.makeText(MainActivity.this, "Doctor info not added", Toast.LENGTH_SHORT).show();
-                                           }
-                               });
+                if (spec_doc.equals("null")) {
 
-                               //calling a dialog box to get specialization of doctor
-                               sec_doc sec_doc = new sec_doc();
-                               sec_doc.show(getSupportFragmentManager(), "sec_doc");
+                    // making a new collection with information of doctor in firebase
+                    Doctor_info doctor_info = new Doctor_info( dName, dEmail, "null", appointment_id, User_id);
+                    db.collection("Doctors").document(User_id).set(doctor_info)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(MainActivity.this, "Doctor info added", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(MainActivity.this, "Doctor info not added", Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
-                           }
-                       }
-                       catch (Exception e){
-                           Toast.makeText(MainActivity.this, "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
-                       }
-                    }
+                                   //calling a dialog box to get specialization of doctor
+                    sec_doc sec_doc = new sec_doc();
+                    sec_doc.show(getSupportFragmentManager(), "sec_doc");
+
                 }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MainActivity.this, "Error!", Toast.LENGTH_SHORT).show();
-                    }
-                });
+            }
+            catch (Exception e){
+                Toast.makeText(MainActivity.this, "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -319,6 +327,11 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
         db.collection("Users").document(mAuth.getCurrentUser().getUid()).update("Specialization",spec_doc);
         db.collection("Doctors").document(mAuth.getCurrentUser().getUid()).update("Specialization",spec_doc);
         db.collection("Doctors").document(mAuth.getCurrentUser().getUid()).update("appointment_id",null);
+
+        SharedPreferences User = getSharedPreferences("User", MODE_PRIVATE);
+        SharedPreferences.Editor editor = User.edit();
+        editor.putString("specialization", spec_doc);
+        editor.apply();
 
     }
 }
