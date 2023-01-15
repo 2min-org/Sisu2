@@ -93,14 +93,6 @@ public class Frag1 extends Fragment {
             }
         });
         viewPager3.setPageTransformer(compositePageTransformer);
-        viewPager3.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                sliderHandler.removeCallbacks(sliderRunnable);
-                sliderHandler.postDelayed(sliderRunnable,3000); //Slide duration 3 seconds
-            }
-        });
 
         return view;
     }
