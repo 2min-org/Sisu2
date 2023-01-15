@@ -24,10 +24,11 @@
         tools:layout="@layout/fragment_book_doctor" />
 
     <fragment
-        android:id="@+id/nav_personal_records"
-        android:name="com.sanjit.sisu2.ui.personalrecords.PersonalRecords"
-        android:label="Personal Records"
-        tools:layout="@layout/fragment_personal_records" />
+        android:id="@+id/nav_image_upload"
+        android:name="com.sanjit.sisu2.ui.Imageupload.imageUpload"
+        android:label="Upload"
+        tools:layout="@layout/fragment_image_upload" />
+
     <fragment
         android:id="@+id/nav_vaccine_information"
         android:name="com.sanjit.sisu2.ui.vaccineinformation.VaccineInformation"
