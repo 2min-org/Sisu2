@@ -102,6 +102,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Book"
+                        android:textColor="@color/black"
                         android:layout_gravity="end"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/doc_spec_bg"
