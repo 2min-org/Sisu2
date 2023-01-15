@@ -203,7 +203,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    user = new User(mAuth.getCurrentUser().getUid(),fullname, email, birthday, telephone,gender,address,user_mode,null,null);
+                    user = new User(mAuth.getCurrentUser().getUid(),fullname, email, birthday, telephone,gender
+                            ,address,user_mode,null,null,null);
                     uploadPicture();
 
                 } else {

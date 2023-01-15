@@ -1,46 +1,29 @@
 package com.sanjit.sisu2;
 
-import android.content.ClipData;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.transition.Transition;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.sanjit.sisu2.adapters.sec_doc;
 import com.sanjit.sisu2.databinding.ActivityMainBinding;
 import com.sanjit.sisu2.ui.Setting;
-import com.sanjit.sisu2.ui.agalleryf.agallery;
 import com.sanjit.sisu2.ui.login_register_user.Doctor_info;
 import com.sanjit.sisu2.ui.login_register_user.Login;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.MenuItemCompat;
 import androidx.navigation.NavController;
@@ -49,11 +32,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.net.URL;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
+
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -72,10 +52,7 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
     private List<String> appointment_id ;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-
-
     //declarations
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
                 R.id.nav_home,
                 R.id.nav_disease_information,
                 R.id.nav_vaccine_information,
-                R.id.nav_personal_records,
+                R.id.nav_image_upload,
                 R.id.nav_childcare_centres,
                 R.id.nav_appointments,
                 R.id.nav_book_doctor,
@@ -280,7 +257,6 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
     @Override
     public void applyTexts(String spec_doc) {
