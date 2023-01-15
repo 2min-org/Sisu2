@@ -1,6 +1,7 @@
 package com.sanjit.sisu2;
 
 import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -230,29 +231,35 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
             }
         });
 
-        //setting image of user in action bar from the url in firestore database
-        db.collection("Users").document(mAuth.getCurrentUser().getUid()).get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        try {
+        SharedPreferences imageURL = getSharedPreferences("ImageURL", MODE_PRIVATE);
+        String image = imageURL.getString("imageURL", "null");
+        if (!image.equals("null")){
+            Glide.with(getApplicationContext()).load(image).into(profile);
+        }
+        else {
+            //setting image of user in action bar from the url in firestore database
+            db.collection("Users").document(mAuth.getCurrentUser().getUid()).get()
+                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            try {
                                 String url = documentSnapshot.getString("ProfilePic");
                                 Glide.with(getApplicationContext()).load(url).into(profile);
+                                SharedPreferences.Editor editor = imageURL.edit();
+                                editor.putString("imageURL", url);
+                                editor.apply();
+                            } catch (Exception e) {
+                                Toast.makeText(MainActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
                         }
-                        catch (Exception e){
-                            Toast.makeText(MainActivity.this, "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(MainActivity.this, "Error!", Toast.LENGTH_SHORT).show();
                         }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MainActivity.this, "Error!", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-
-
+                    });
+        }
 
         return super.onCreateOptionsMenu(menu);
     }

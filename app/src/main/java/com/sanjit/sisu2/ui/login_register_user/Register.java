@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -250,6 +251,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                                 url = uri.toString();
                                 user.set_ProfilePic(url);
                                 register_user();
+
+                                SharedPreferences sharedPreferences = getSharedPreferences("ImageURL", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString("imageURL", url);
+                                editor.apply();
                             }
                         });
                         Snackbar.make(findViewById(android.R.id.content),"Image Uploaded",Snackbar.LENGTH_LONG);
