@@ -18,21 +18,21 @@ public class SplashScreenActivity extends AppCompatActivity {
         Handler handler = new Handler();
 
         SharedPreferences preferences = getSharedPreferences("PREFERENCES", MODE_PRIVATE);
-        String FirstTime = preferences.getString("FirstTimeInstall", "");
-        if (!FirstTime.equals("No")) {
+        String FirstTime = preferences.getString("FirstTimeInstall", "False");
+        if (!FirstTime.equals("False")) {
             handler.postDelayed(new Runnable() {
                 @Override
 
                 public void run() {
                     SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("FirstTimeInstall", "No");
+                    editor.putString("FirstTimeInstall", "False");
                     editor.apply();
                     Intent intent = new Intent(SplashScreenActivity.this, one_time_activity.class);
                     startActivity(intent);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     finish();
                 }
-            }, 3000);
+            }, 1000);
 
         }
         else {
@@ -44,7 +44,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     finish();
                 }
-            }, 3000);
+            }, 1000);
         }
     }
 }

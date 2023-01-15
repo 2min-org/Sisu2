@@ -29,6 +29,8 @@ import android.widget.Toast;
 //import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 //import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,6 +41,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sanjit.sisu2.MainActivity;
 import com.sanjit.sisu2.R;
@@ -196,16 +199,36 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(Login.this, "Welcome!" , Toast.LENGTH_LONG).show();
                     //reading user_mode field of user document in users collection
                     DocumentReference docref = db.collection("Users").document(auth.getCurrentUser().getUid());
-                    docref.get().addOnCompleteListener(new OnCompleteListener<com.google.firebase.firestore.DocumentSnapshot>() {
+
+                    docref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
-                        public void onComplete(@NonNull Task<com.google.firebase.firestore.DocumentSnapshot> task) {
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
                             if(task.isSuccessful()){
-                                com.google.firebase.firestore.DocumentSnapshot document = task.getResult();
+
+                                DocumentSnapshot document = task.getResult();
                                 if(document.exists()){
+
                                     String user_mode = document.getString("user_mode");
+
+                                    //Setting up shared preferences
+
+                                    SharedPreferences User = getSharedPreferences("User", MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = User.edit();
+
+                                    editor.putString("Email", email);
+                                    editor.putString("FullName", document.getString("Fullname"));
+                                    editor.putString("User_id", auth.getCurrentUser().getUid());
+                                    editor.putString("ProfilePic", document.getString("ProfilePic"));
+                                    editor.putString("User_mode", document.getString("user_mode"));
+                                    editor.putString("Specialization", document.getString("Specialization"));
+                                    editor.putString("Phone", document.getString("Telephone"));
+                                    editor.apply();
+
+                                    //end of shared preferences
+
                                     if(user_mode.equals("Doctor")){
 
                                         Intent i = new Intent(Login.this, MainActivity.class);
@@ -228,7 +251,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                 }
                             }
                         }
-                    });
+                    })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(Login.this, "Error!" , Toast.LENGTH_LONG).show();
+                                }
+                            });
 
                 }
                 else{

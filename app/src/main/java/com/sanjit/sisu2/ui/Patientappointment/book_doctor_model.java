@@ -4,18 +4,20 @@ package com.sanjit.sisu2.ui.Patientappointment;
 import android.widget.Button;
 
 public class book_doctor_model {
+    private Boolean isBooked;
     private String name;
     private String phone;
     private String photo_url;
     private String specializations;
     private String u_id;
 
-    public book_doctor_model(String name, String phone, String specializations, String u_id) {
+    public book_doctor_model(String name, String phone, String specializations, String u_id, Boolean isBooked)  {
         this.name = name;
         this.phone = phone;
         this.photo_url = photo_url;
         this.specializations = specializations;
         this.u_id = u_id;
+        this.isBooked = isBooked;
     }
 
     public String getName() {
@@ -40,6 +42,14 @@ public class book_doctor_model {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Boolean getBooked() {
+        return isBooked;
+    }
+
+    public void setBooked(Boolean booked) {
+        isBooked = booked;
     }
 
     public void setPhone(String phone) {
