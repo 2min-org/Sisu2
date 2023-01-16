@@ -89,18 +89,6 @@ public class one_time_activity extends AppCompatActivity {
 
         setUpindicator(0);
         mSLideViewPager.addOnPageChangeListener(viewListener);
-        //splash screen banauna
-      /*  h.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent i=new Intent(splashscreen.this,MainActivity.class);
-                startActivity();
-
-            }
-        },5000);*/
-
-        //ekchoti matra kholna
-
 
     }
 
