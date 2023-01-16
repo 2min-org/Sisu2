@@ -331,5 +331,6 @@
     <string name="didn_t_receive_the_code">Didn\'t receive the code?</string>
     <string name="resend_otp">Resend OTP</string>
     <string name="verify_otp">Verify OTP</string>
+    <string name="doctor_s_name">Doctor\'s Name</string>
 
 </resources>
