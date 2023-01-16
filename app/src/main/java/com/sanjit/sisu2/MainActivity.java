@@ -181,14 +181,16 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
             }
         });
 
-        SharedPreferences imageURL = getSharedPreferences("ImageURL", MODE_PRIVATE);
-        String image = imageURL.getString("imageURL", "null");
-        if (!image.equals("null")){
-            Glide.with(getApplicationContext()).load(image).into(profile);
+        SharedPreferences User = getSharedPreferences("User", MODE_PRIVATE);
+        SharedPreferences.Editor editor1 = User.edit();
+        String ProfilePic = User.getString("ProfilePic", "Not Specified");
+
+        if (!ProfilePic.equals("Not Specified")) {
+            Glide.with(getApplicationContext()).load(ProfilePic).into(profile);
         }
         else {
 
-            //setting image of user in action bar from the url in firestore database
+            //setting image of user in action bar from the url in fire store database
 
             db.collection("Users").document(mAuth.getCurrentUser().getUid()).get()
                     .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -197,8 +199,9 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
                             try {
                                 String url = documentSnapshot.getString("ProfilePic");
                                 Glide.with(getApplicationContext()).load(url).into(profile);
-                                SharedPreferences.Editor editor = imageURL.edit();
-                                editor.putString("imageURL", url);
+                                SharedPreferences User = getSharedPreferences("User", MODE_PRIVATE);
+                                SharedPreferences.Editor editor1 = User.edit();
+                                editor1.putString("ProfilePic", url);
                                 editor.apply();
                             } catch (Exception e) {
                                 Toast.makeText(MainActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
