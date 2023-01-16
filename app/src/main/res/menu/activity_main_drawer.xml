@@ -19,7 +19,7 @@
             android:title="@string/disease_information" />
         <item
             android:id="@+id/nav_vaccine_information"
-            android:icon="@drawable/ic_baseline_healing_24"
+            android:icon="@drawable/vaccine_logo"
             android:title="@string/vaccine_information" />
 
         <item
@@ -28,11 +28,11 @@
             android:title="@string/childcare_centres" />
         <item
             android:id="@+id/nav_appointments"
-            android:icon="@drawable/admin_request_selector"
+            android:icon="@drawable/ic_baseline_how_to_reg_24"
             android:title="Appointment" />
         <item
             android:id="@+id/nav_book_doctor"
-            android:icon="@drawable/ic_vaccine_name"
+            android:icon="@drawable/admin_request_selector"
             android:title="Make Appointment" />
 
         <item
