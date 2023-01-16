@@ -160,7 +160,7 @@
         app:layout_constraintBottom_toTopOf="@+id/registerUser"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address"
-        app:layout_constraintVertical_bias="0.558" />
+        app:layout_constraintVertical_bias="0.518" />
 
     <Spinner
         android:id="@+id/spinner"
