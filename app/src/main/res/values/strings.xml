@@ -321,5 +321,15 @@
     <string name="Changelanguage">Change Language</string>
     <string name="Appointments">menu_appointments</string>
     <string name="Save">Save</string>
+    <string name="otpverification">OTP Verification</string>
+    <string name="otpverificationtext">We will send you an one time password in this mobile number.</string>
+    <string name="entermobilenumber">Enter Mobile Number</string>
+    <string name="_977">+977-</string>
+    <string name="_1234567890">1234567890</string>
+    <string name="get_otp">Get OTP</string>
+    <string name="enter_the_otp_sent_to_your_mobile_number">Enter the otp sent to your mobile number</string>
+    <string name="didn_t_receive_the_code">Didn\'t receive the code?</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="verify_otp">Verify OTP</string>
 
 </resources>

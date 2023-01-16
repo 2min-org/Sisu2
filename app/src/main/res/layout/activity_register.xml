@@ -13,7 +13,7 @@
         android:layout_height="48dp"
         android:layout_margin="20dp"
         android:layout_marginTop="68dp"
-        android:autofillHints=""
+        android:autofillHints="#78909C"
         android:background="@drawable/rounded_edittext"
         android:ems="10"
         android:fontFamily="@font/poppins_light"

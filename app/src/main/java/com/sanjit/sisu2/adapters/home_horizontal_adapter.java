@@ -1,11 +1,13 @@
 package com.sanjit.sisu2.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sanjit.sisu2.R;
 import com.sanjit.sisu2.models.Home_hor_model;
+import com.sanjit.sisu2.ui.Polio;
 
 import java.util.List;
 
@@ -28,7 +31,7 @@ public class home_horizontal_adapter extends RecyclerView.Adapter<home_horizonta
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.home_horizontal_item,parent,false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.home_horizontal_item, parent, false));
     }
 
     @Override
@@ -42,7 +45,7 @@ public class home_horizontal_adapter extends RecyclerView.Adapter<home_horizonta
         return home_horizontal_modelList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView imageView;
         TextView name;
@@ -52,6 +55,15 @@ public class home_horizontal_adapter extends RecyclerView.Adapter<home_horizonta
 
             imageView = itemView.findViewById(R.id.hor_img);
             name = itemView.findViewById(R.id.hor_text);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition();
+            Intent intent = new Intent(context, Polio.class);
+            Toast.makeText(context, "Disease" + position, Toast.LENGTH_SHORT).show();
+            context.startActivity(intent);
         }
     }
 }
