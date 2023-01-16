@@ -90,9 +90,9 @@
 
                                 <ImageView
                                     android:id="@+id/VaccineHome"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/btn_1"
+                                    android:layout_width="51dp"
+                                    android:layout_height="43dp"
+                                    android:src="@drawable/vaccine_logo"
                                     app:layout_constraintBottom_toBottomOf="@+id/imageVacc"
                                     app:layout_constraintEnd_toEndOf="@+id/imageVacc"
                                     app:layout_constraintStart_toStartOf="@+id/imageVacc"
@@ -103,7 +103,8 @@
                                 android:id="@+id/textViewvac"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Vaccine"
+                                android:fontFamily="@font/nunito_sans"
+                                android:text="Vaccine Info"
                                 android:textAlignment="center"
                                 android:textColor="#34346E"
                                 android:textSize="18sp" />
@@ -134,21 +135,22 @@
 
                                 <ImageView
                                     android:id="@+id/Location"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/btn_1"
+                                    android:layout_width="37dp"
+                                    android:layout_height="43dp"
+                                    android:src="@drawable/ic_baseline_coronavirus_24"
                                     app:layout_constraintBottom_toBottomOf="@+id/imagelocc"
                                     app:layout_constraintEnd_toEndOf="@+id/imagelocc"
                                     app:layout_constraintStart_toStartOf="@+id/imagelocc"
                                     app:layout_constraintTop_toTopOf="@+id/imagelocc"
-                                    app:srcCompat="@drawable/btn_2" />
+                                    app:srcCompat="@drawable/ic_baseline_coronavirus_24" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                             <TextView
                                 android:id="@+id/textViewloc"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Locations"
+                                android:fontFamily="@font/nunito_sans"
+                                android:text="Disease Info"
                                 android:textAlignment="center"
                                 android:textColor="#34346E"
                                 android:textSize="18sp" />
@@ -179,21 +181,22 @@
 
                                 <ImageView
                                     android:id="@+id/imageRecords"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/btn_1"
+                                    android:layout_width="40dp"
+                                    android:layout_height="44dp"
+                                    android:src="@drawable/ic_baseline_how_to_reg_24"
                                     app:layout_constraintBottom_toBottomOf="@+id/imagerecc"
                                     app:layout_constraintEnd_toEndOf="@+id/imagerecc"
                                     app:layout_constraintStart_toStartOf="@+id/imagerecc"
                                     app:layout_constraintTop_toTopOf="@+id/imagerecc"
-                                    app:srcCompat="@drawable/btn_5" />
+                                    app:srcCompat="@drawable/ic_baseline_how_to_reg_24" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                             <TextView
                                 android:id="@+id/textViewrec"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Records"
+                                android:fontFamily="@font/nunito_sans"
+                                android:text="Appointments"
                                 android:textAlignment="center"
                                 android:textColor="#34346E"
                                 android:textSize="18sp" />
@@ -230,21 +233,23 @@
 
                                 <ImageView
                                     android:id="@+id/Mess"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/btn_1"
+                                    android:layout_width="39dp"
+                                    android:layout_height="38dp"
+                                    android:src="@drawable/btn_6"
                                     app:layout_constraintBottom_toBottomOf="@+id/imagemess"
                                     app:layout_constraintEnd_toEndOf="@+id/imagemess"
+                                    app:layout_constraintHorizontal_bias="0.512"
                                     app:layout_constraintStart_toStartOf="@+id/imagemess"
                                     app:layout_constraintTop_toTopOf="@+id/imagemess"
-                                    app:srcCompat="@drawable/btn_3" />
+                                    app:srcCompat="@drawable/btn_6" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                             <TextView
                                 android:id="@+id/textViewmes"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Message Us"
+                                android:fontFamily="@font/nunito_sans"
+                                android:text="Upload Files"
                                 android:textAlignment="center"
                                 android:textColor="#34346E"
                                 android:textSize="18sp" />
@@ -277,7 +282,7 @@
                                     android:id="@+id/imagesett"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/btn_1"
+                                    android:src="@drawable/btn_4"
                                     app:layout_constraintBottom_toBottomOf="@+id/imageset"
                                     app:layout_constraintEnd_toEndOf="@+id/imageset"
                                     app:layout_constraintStart_toStartOf="@+id/imageset"
@@ -289,6 +294,7 @@
                                 android:id="@+id/textViewset"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/nunito_sans"
                                 android:text="Settings"
                                 android:textAlignment="center"
                                 android:textColor="#34346E"
@@ -320,21 +326,22 @@
 
                                 <ImageView
                                     android:id="@+id/imageUpp"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/btn_1"
+                                    android:layout_width="35dp"
+                                    android:layout_height="39dp"
+                                    android:src="@drawable/about_us"
                                     app:layout_constraintBottom_toBottomOf="@+id/imageup"
                                     app:layout_constraintEnd_toEndOf="@+id/imageup"
                                     app:layout_constraintStart_toStartOf="@+id/imageup"
                                     app:layout_constraintTop_toTopOf="@+id/imageup"
-                                    app:srcCompat="@drawable/btn_6" />
+                                    app:srcCompat="@drawable/about_us" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                             <TextView
                                 android:id="@+id/textViewup"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Upload"
+                                android:fontFamily="@font/nunito_sans"
+                                android:text="About Us"
                                 android:textAlignment="center"
                                 android:textColor="#34346E"
                                 android:textSize="18sp" />

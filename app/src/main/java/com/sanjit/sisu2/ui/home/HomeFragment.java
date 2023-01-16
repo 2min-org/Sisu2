@@ -32,9 +32,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-   private ViewPager2 viewPager2;
-   private Handler sliderHandler = new Handler();
-   ImageView imageVacc;
+
+    private ViewPager2 viewPager2;
+    private Handler sliderHandler = new Handler();
+    ImageView imageVacc;
     RecyclerView home_hor_recycler,home_hor_recycler2,home_ver_recycler,home_ver_recycler2,home_ver_recycler3;
     List<Home_hor_model> home_horizontal_modelList;
     home_horizontal_adapter home_horizontal_adapter;

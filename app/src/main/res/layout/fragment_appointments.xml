@@ -33,7 +33,7 @@
                     android:layout_height="120dp"
                     android:layout_margin="10dp"
                     app:cardCornerRadius="60dp"
-                    app:cardElevation="8dp"
+                    app:cardElevation="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.054"
@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:fontFamily="@font/comic_neue"
+                    android:fontFamily="@font/nunito_sans"
                     android:text="Doctor's Name"
                     android:textSize="26sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -71,9 +71,9 @@
                     android:id="@+id/doctor_spec"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/comic_neue"
+                    android:fontFamily="@font/nunito_sans_light"
                     android:text="Doctor's Speciality"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.752"
@@ -85,9 +85,9 @@
                     android:id="@+id/doctor_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/comic_neue"
+                    android:fontFamily="@font/nunito_sans_light"
                     android:text="Doctor's Email"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.752"
@@ -99,7 +99,7 @@
                     android:id="@+id/doctor_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/comic_neue"
+                    android:fontFamily="@font/nunito_sans_light"
                     android:text="Doctor's Phone"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -109,23 +109,17 @@
                     app:layout_constraintTop_toBottomOf="@+id/doctor_email"
                     app:layout_constraintVertical_bias="0.059" />
 
-                <TextView
-                    android:id="@+id/patient_List"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/comic_neue"
-                    android:text="Patient List"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/cardView"
-                    app:layout_constraintTop_toBottomOf="@+id/doctor_phone"
-                    app:layout_constraintVertical_bias="0.84" />
 
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:fontFamily="@font/nunito_sans"
+            android:text="Patient List"
+            android:layout_margin="18dp"
+            />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/appointments_recycler_view"
             android:layout_width="match_parent"

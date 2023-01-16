@@ -90,11 +90,21 @@ public class appointments extends Fragment {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
 
                         //getting appointment id from firebase
-                        Map<String, Object> data = documentSnapshot.getData();
-                        ArrayList<String> appointment_id = (ArrayList<String>) data.get("appointment_id");
+                        if(!(documentSnapshot==null)){
+                            //log the document snapshot
+                            Log.d("DocumentSnapshot", documentSnapshot.toString());
+                            Map<String, Object> data = documentSnapshot.getData();
+
+                            //check if appointment_id field is empty
+                            if (data.get("appointment_id") != null) {
+                                appointment_id = (ArrayList<String>) data.get("appointment_id");
+                                Log.d("appointment_id", appointment_id.toString());
+                            }
+
                         //getting appointment id from firebase
                         if(appointment_id != null)
                         {
+                            Log.d("appointment_id not null", appointment_id.toString());
                             for (String appointment : appointment_id) {
                                 String[] arr = appointment.split(" , ");
                             }
@@ -141,6 +151,7 @@ public class appointments extends Fragment {
 
                             Log.d("appointment_id", "is this first? " + appointment_id);
                         }
+                    }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

@@ -27,6 +27,10 @@
             android:icon="@drawable/ic_baseline_local_hospital_24"
             android:title="@string/childcare_centres" />
         <item
+            android:id="@+id/nav_vaccine_schedule"
+            android:icon="@drawable/slot_selector"
+            android:title="Vaccine Schedule" />
+        <item
             android:id="@+id/nav_appointments"
             android:icon="@drawable/admin_request_selector"
             android:title="Appointment" />

@@ -7,13 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.Imageupload.imageUpload">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-        app:cardUseCompatPadding="true">
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -132,10 +125,12 @@
                     >
                     <ImageView
                         android:id="@+id/selectedImageView"
-                        android:layout_width="match_parent"
-                        android:layout_height="400dp"
+                        android:layout_width="wrap_content"
+                        android:maxHeight="500dp"
+                        android:layout_height="wrap_content"
                         android:visibility="invisible"
                         android:scaleType="centerCrop"
+
                     />
                 </androidx.cardview.widget.CardView>
 
@@ -185,5 +180,4 @@
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-    </androidx.cardview.widget.CardView>
 </FrameLayout>

@@ -20,7 +20,8 @@ public class appointmentsAdapter extends RecyclerView.Adapter<appointmentsAdapte
     private final Context context;
     private final ArrayList<appointment_model> appointment_arr;
 
-    appointmentsAdapter(Context context, ArrayList<appointment_model> appointment_arr){
+    appointmentsAdapter(Context context,
+                        ArrayList<appointment_model> appointment_arr){
         this.context = context;
         this.appointment_arr = appointment_arr;
     }
