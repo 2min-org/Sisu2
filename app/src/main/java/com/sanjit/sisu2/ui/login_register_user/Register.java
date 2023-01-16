@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
@@ -39,8 +38,6 @@ import com.google.firebase.storage.UploadTask;
 import com.sanjit.sisu2.MainActivity;
 import com.sanjit.sisu2.R;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
