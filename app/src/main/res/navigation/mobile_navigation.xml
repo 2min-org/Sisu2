@@ -30,6 +30,12 @@
         tools:layout="@layout/fragment_image_upload" />
 
     <fragment
+        android:id="@+id/nav_vaccine_schedule"
+        android:name="com.sanjit.sisu2.ui.VaccineSchedule.vaccine_schedule"
+        android:label="Schedule"
+        tools:layout="@layout/fragment_vaccine_schedule" />
+
+    <fragment
         android:id="@+id/nav_vaccine_information"
         android:name="com.sanjit.sisu2.ui.vaccineinformation.VaccineInformation"
         android:label="Vaccine Information"
