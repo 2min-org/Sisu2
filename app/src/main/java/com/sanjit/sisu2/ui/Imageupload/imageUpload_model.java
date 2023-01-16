@@ -1,19 +1,20 @@
 package com.sanjit.sisu2.ui.Imageupload;
 
+import java.util.ArrayList;
+
 public class imageUpload_model {
-    private String name;
-    private String url;
 
-    public imageUpload_model(String name, String url) {
-        this.name = name;
-        this.url = url;
+    private ArrayList<basic_model> basic_model_arr;
+
+    public imageUpload_model(ArrayList<basic_model> basic_model_arr) {
+        this.basic_model_arr = basic_model_arr;
     }
 
-    public String getName() {
-        return name;
+    public ArrayList<basic_model> getBasic_model_arr() {
+        return basic_model_arr;
     }
 
-    public String getUrl() {
-        return url;
+    public void setBasic_model_arr(ArrayList<basic_model> basic_model_arr) {
+        this.basic_model_arr = basic_model_arr;
     }
 }

@@ -1,33 +1,38 @@
 package com.sanjit.sisu2.ui.Imageupload;
 
 import static android.app.Activity.RESULT_OK;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ServerValue;
+import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
+
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.sanjit.sisu2.R;
 
+import com.sanjit.sisu2.R;
 import java.net.URL;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 import java.util.zip.Inflater;
 
@@ -45,6 +50,8 @@ public class imageUpload extends Fragment {
     Button ChooseImage;
     Button UploadImage;
     Button CancelImage;
+    EditText imageName;
+    EditText imageDescription;
     public imageUpload() {
         // Required empty public constructor
     }
@@ -64,6 +71,9 @@ public class imageUpload extends Fragment {
         View view = inflater.inflate(R.layout.fragment_image_upload, container, false);
 
         ChooseImage = view.findViewById(R.id.chooseImage);
+
+        imageName = view.findViewById(R.id.imageName);
+        imageDescription = view.findViewById(R.id.imageDescription);
 
         UploadImage = view.findViewById(R.id.uploadImage);
         UploadImage.setEnabled(false);
@@ -129,12 +139,29 @@ public class imageUpload extends Fragment {
     }
     public void uploadImageToFirebase(Uri imageUri) {
         //upload image to firebase storage
+
         storageReference = FirebaseStorage.getInstance().getReference();
         FirebaseAuth auth = FirebaseAuth.getInstance();
+
         String uid = auth.getCurrentUser().getUid();
         final String randomKey= UUID.randomUUID().toString();
+
+        String name;
+        String description;
         StorageReference riversRef = storageReference.child("images/"+randomKey);
 
+        if(imageName != null && imageName.getText().toString().trim().length() != 0){
+             name = imageName.getText().toString();
+        }
+        else {
+             name = "No Name";
+        }
+        if(imageDescription != null && imageDescription.getText().toString().trim().length() != 0){
+             description = imageDescription.getText().toString();
+        }
+        else {
+             description = "No Description";
+        }
 
         riversRef.putFile(imageUri)
         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -144,9 +171,14 @@ public class imageUpload extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
+
                         url = uri.toString();
-                        db.collection("Users").document(uid).update("uploadedImage", FieldValue.arrayUnion(url));
-                        Toast.makeText(getContext(), "Image Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                        basic_model basic_model = new basic_model(name,description,url,Timestamp.now() );
+
+                        db.collection("Users").document(uid).update("uploded_images", FieldValue.arrayUnion(randomKey));
+                        db.collection("Users").document(uid).collection("images").document(randomKey).set(basic_model);
+                        db.collection("Users").document(uid).collection("images").document(randomKey).update("time", FieldValue.serverTimestamp());
+                        Toast.makeText(getContext(), "Image Uploaded", Toast.LENGTH_SHORT).show();
                         UploadImage.setText("Upload");
                         ChooseImage.setEnabled(true);
                         UploadImage.setEnabled(true);
