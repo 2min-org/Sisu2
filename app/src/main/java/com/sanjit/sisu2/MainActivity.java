@@ -187,7 +187,9 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
             Glide.with(getApplicationContext()).load(image).into(profile);
         }
         else {
+
             //setting image of user in action bar from the url in firestore database
+
             db.collection("Users").document(mAuth.getCurrentUser().getUid()).get()
                     .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
