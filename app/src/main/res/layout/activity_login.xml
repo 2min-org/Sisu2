@@ -11,17 +11,18 @@
 
     <TextView
         android:id="@+id/CreateAccount"
-        android:layout_width="66dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="56dp"
-        android:fontFamily="@font/comic_neue_bold"
+        android:layout_width="90dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="40dp"
+        android:fontFamily="@font/nunito_sans"
         android:text="@string/register"
+        android:textAlignment="center"
         android:textColor="#2196F3"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/forgotpassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/forgotpassword" />
-
+        app:layout_constraintTop_toTopOf="@+id/forgotpassword"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -45,7 +46,7 @@
         android:layout_marginBottom="24dp"
         android:background="@drawable/rounded_edittext"
         android:ems="10"
-        android:fontFamily="@font/comic_neue_bold"
+        android:fontFamily="@font/nunito_sans"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:paddingLeft="20dp"
@@ -65,7 +66,7 @@
         android:layout_marginBottom="24dp"
         android:background="@drawable/rounded_edittext"
         android:ems="10"
-        android:fontFamily="@font/comic_neue_bold"
+        android:fontFamily="@font/nunito_sans"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:paddingLeft="20dp"
@@ -81,7 +82,7 @@
         android:layout_width="128dp"
         android:layout_height="48dp"
         android:background="#5E35B1"
-        android:fontFamily="@font/comic_neue_bold"
+        android:fontFamily="@font/nunito_sans_bold"
         android:text="@string/Login"
         android:textColor="#ffffff"
         android:textSize="18sp"
@@ -97,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:fontFamily="@font/bubblegum_sans"
+        android:fontFamily="@font/open_sans_bold"
         android:text="@string/sisu_capital"
         android:textColor="#FFFFFF"
         android:textSize="48sp"
@@ -107,18 +108,19 @@
 
     <TextView
         android:id="@+id/forgotpassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="240dp"
+        android:layout_width="158dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="228dp"
         android:layout_marginTop="36dp"
-        android:fontFamily="@font/comic_neue_bold"
+        android:fontFamily="@font/nunito_sans"
         android:text="@string/forgot_password"
+        android:textAlignment="center"
         android:textColor="#03A9F4"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login"
-        app:layout_constraintVertical_bias="0.154" />
+        app:layout_constraintVertical_bias="0.144" />
 
     <TextView
         android:id="@+id/Change_language"
@@ -126,13 +128,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="240dp"
         android:layout_marginTop="36dp"
-        android:fontFamily="@font/comic_neue_bold"
+        android:fontFamily="@font/nunito_sans"
         android:text="@string/Changelanguage"
         android:textColor="#03A9F4"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        app:layout_constraintVertical_bias="0.468" />
 
     <ProgressBar
         android:id="@+id/loginprogressBar"
@@ -142,10 +145,10 @@
         android:layout_marginBottom="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login"
-        app:layout_constraintVertical_bias="0.878" />
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
