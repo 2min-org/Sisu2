@@ -59,6 +59,7 @@ public class book_doctor_Adapter extends RecyclerView.Adapter<book_doctor_Adapte
         holder.name.setText(book_doctor_arr.get(position).getName());
         holder.phone.setText(book_doctor_arr.get(position).getPhone());
         holder.photo.setImageResource(R.drawable.facebook);
+
         if(book_doctor_arr.get(position).getBooked())
         {
             holder.book.setTextColor(Color.parseColor("#6fc276"));

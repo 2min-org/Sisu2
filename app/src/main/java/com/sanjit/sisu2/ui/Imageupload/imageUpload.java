@@ -1,11 +1,11 @@
 package com.sanjit.sisu2.ui.Imageupload;
 
 import static android.app.Activity.RESULT_OK;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,31 +13,34 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ServerValue;
-import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
-
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
 import com.sanjit.sisu2.R;
-import java.net.URL;
-import java.util.Date;
-import java.util.HashMap;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.zip.Inflater;
 
 
-public class imageUpload extends Fragment {
+public class imageUpload extends Fragment implements uploadimage_interface {
 
 
     private final int GALLERY_REQUEST_CODE = 105;
@@ -47,6 +50,8 @@ public class imageUpload extends Fragment {
     ImageView imageView;
     Uri imageUri;
     String url;
+    ArrayList<basic_model> basic_model_arr = new ArrayList<>();
+    RecyclerView recyclerView;
     Button ChooseImage;
     Button UploadImage;
     Button CancelImage;
@@ -82,6 +87,14 @@ public class imageUpload extends Fragment {
         CancelImage.setEnabled(false);
 
         imageView = view.findViewById(R.id.selectedImageView);
+
+        recyclerView = view.findViewById(R.id.uploadedImageList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        setDataModel();
+
+
+
         ChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,8 +127,40 @@ public class imageUpload extends Fragment {
                 ChooseImage.setEnabled(true);
             }
         });
+
+
         return view;
 
+    }
+
+    private void setDataModel() {
+        db.collection("Users")
+          .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+          .collection("images").orderBy("timestamp", Query.Direction.DESCENDING).get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (!queryDocumentSnapshots.isEmpty()) {
+                            for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                                Map<String, Object> data = documentSnapshot.getData();
+                                String name = (String) data.get("name");
+                                String description = (String) data.get("description");
+                                String url = (String) data.get("url");
+                                Timestamp timestamp = (Timestamp) data.get("timestamp");
+
+                                Log.d("TAG", "onSuccess: "+timestamp);
+
+                                basic_model model = new basic_model(name, description, url, timestamp);
+                                basic_model_arr.add(model);
+                            }
+                            //set adapter
+                            uploadimage_interface uploadimage_interface = imageUpload.this;
+                            imageUpload_adapter adapter = new imageUpload_adapter(getContext(), basic_model_arr, uploadimage_interface);
+                            recyclerView.setAdapter(adapter);
+
+                        }
+                    }
+                });
     }
 
     //resolve the result of the image picker
@@ -173,12 +218,18 @@ public class imageUpload extends Fragment {
                     public void onSuccess(Uri uri) {
 
                         url = uri.toString();
-                        basic_model basic_model = new basic_model(name,description,url,Timestamp.now() );
+                        Timestamp timestamp = Timestamp.now();
+                        Log.d("TAG", "onSuccess: "+timestamp);
+                        Log.d("TAG", "onSuccess: "+timestamp);
+                        Log.d("TAG", "onSuccess: "+timestamp);
 
-                        db.collection("Users").document(uid).update("uploded_images", FieldValue.arrayUnion(randomKey));
+                        basic_model basic_model = new basic_model(name,description,url,Timestamp.now());
+
+                        db.collection("Users").document(uid).update("uploaded_images", FieldValue.arrayUnion(randomKey));
                         db.collection("Users").document(uid).collection("images").document(randomKey).set(basic_model);
-                        db.collection("Users").document(uid).collection("images").document(randomKey).update("time", FieldValue.serverTimestamp());
+
                         Toast.makeText(getContext(), "Image Uploaded", Toast.LENGTH_SHORT).show();
+
                         UploadImage.setText("Upload");
                         ChooseImage.setEnabled(true);
                         UploadImage.setEnabled(true);
@@ -201,5 +252,12 @@ public class imageUpload extends Fragment {
                 // ...
             }
         });
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        basic_model model = basic_model_arr.get(position);
+        Toast.makeText(getContext(), model.getName(), Toast.LENGTH_SHORT).show();
+
     }
 }

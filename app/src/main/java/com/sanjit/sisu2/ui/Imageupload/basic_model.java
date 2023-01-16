@@ -41,4 +41,12 @@ public class basic_model {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
 }
