@@ -25,19 +25,19 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="217dp"
-                android:layout_height="188dp"
-                android:layout_gravity="center_horizontal"
-                android:backgroundTint="#2196F3"
-                app:layout_constraintBottom_toTopOf="@+id/textView2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.78"
-                android:layout_margin="20dp"
-                app:srcCompat="@drawable/bachha1"
-                tools:ignore="MissingConstraints" />
+        android:id="@+id/imageView4"
+        android:layout_width="217dp"
+        android:layout_height="188dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:backgroundTint="#2196F3"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/bachha1"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/loginemail"
@@ -88,9 +88,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/loginpassword"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/loginpassword"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.649" />
+        app:layout_constraintVertical_bias="0.698" />
 
     <TextView
         android:id="@+id/textView2"

@@ -1,4 +1,4 @@
-package com.sanjit.sisu2.ui;
+package com.sanjit.sisu2.ui.home;
 
 public class SliderItem {
     //Here ypu can use String variable to store url

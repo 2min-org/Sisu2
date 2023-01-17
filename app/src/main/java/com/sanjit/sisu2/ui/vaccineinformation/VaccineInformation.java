@@ -12,17 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.viewpager2.widget.CompositePageTransformer;
-import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.sanjit.sisu2.R;
-import com.sanjit.sisu2.adapters.SliderAdapter;
-import com.sanjit.sisu2.models.SliderItem;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public class VaccineInformation extends Fragment {
 
