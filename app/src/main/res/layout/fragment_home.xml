@@ -70,6 +70,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="16dp"
+                            android:id="@+id/vac_info"
                             android:orientation="vertical">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
@@ -114,6 +115,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:id="@+id/disease_info"
                             android:layout_margin="16dp"
                             android:orientation="vertical">
 
@@ -161,6 +163,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="16dp"
+                            android:id="@+id/appointments"
                             android:orientation="vertical">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
@@ -212,6 +215,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:id="@+id/upload_files"
                             android:layout_margin="16dp"
                             android:orientation="vertical">
 
@@ -260,6 +264,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="16dp"
+                            android:id="@+id/settings"
                             android:orientation="vertical">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
@@ -306,6 +311,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="16dp"
+                            android:id="@+id/about_us"
                             android:orientation="vertical">
 
                             <androidx.constraintlayout.widget.ConstraintLayout

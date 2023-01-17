@@ -1,16 +1,15 @@
 package com.sanjit.sisu2.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
@@ -18,15 +17,10 @@ import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.sanjit.sisu2.R;
-import com.sanjit.sisu2.adapters.HomeVerAdapter;
 import com.sanjit.sisu2.adapters.SliderAdapter;
 import com.sanjit.sisu2.adapters.home_horizontal_adapter;
-import com.sanjit.sisu2.models.HomeVerModel;
 import com.sanjit.sisu2.models.Home_hor_model;
 import com.sanjit.sisu2.models.SliderItem;
-import com.sanjit.sisu2.ui.childcarecentres.ChildcareCentres;
-import com.sanjit.sisu2.ui.diseaseinformation.DiseaseInformation;
-import com.sanjit.sisu2.ui.vaccineinformation.VaccineInformation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,13 +28,11 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private ViewPager2 viewPager2;
-    private Handler sliderHandler = new Handler();
-    ImageView imageVacc;
-    RecyclerView home_hor_recycler,home_hor_recycler2,home_ver_recycler,home_ver_recycler2,home_ver_recycler3;
+    private final Handler sliderHandler = new Handler();
+    RecyclerView home_hor_recycler,home_hor_recycler2;
     List<Home_hor_model> home_horizontal_modelList;
     home_horizontal_adapter home_horizontal_adapter;
-    List<HomeVerModel> homeVerModelList;
-    HomeVerAdapter homeVerAdapter;
+    LinearLayout vac_info,disease_info,appointments,upload_files,settings,about_us;
 
 
     public HomeFragment() {
@@ -57,7 +49,7 @@ public class HomeFragment extends Fragment {
 //        home_ver_recycler2 = root.findViewById(R.id.home_vertical_recycler2);
 //        home_ver_recycler3 = root.findViewById(R.id.home_vertical_recycler3);
 
-        home_horizontal_modelList = new ArrayList<Home_hor_model>();
+        home_horizontal_modelList = new ArrayList<>();
 //        homeVerModelList = new ArrayList<HomeVerModel>();
 
         setHome_horizontal_modelList(home_horizontal_modelList);
@@ -90,13 +82,7 @@ public class HomeFragment extends Fragment {
 
         viewPager2=root.findViewById(R.id.viewPagerImageSliderHome);
 
-        imageVacc=root.findViewById(R.id.imageVacc);
-        imageVacc.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent =new Intent(getActivity(), ChildcareCentres.class);
-                startActivity(intent);
-            }
-        });
+
 
         //Here,i'm preparing list of images from drawable
         // You can also prepare list of images from server or get it from API.
@@ -131,13 +117,10 @@ public class HomeFragment extends Fragment {
 
         CompositePageTransformer compositePageTransformer=new CompositePageTransformer();
         compositePageTransformer.addTransformer(new MarginPageTransformer(5));
-        compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
-            @Override
-            public void transformPage(@NonNull View page, float position) {
-                float r=1-Math.abs(position);
-                page.setScaleY(0.85f+r*0.15f);
-                page.setScaleX(0.85f + r * 0.15f);
-            }
+        compositePageTransformer.addTransformer((page, position) -> {
+            float r=1-Math.abs(position);
+            page.setScaleY(0.85f+r*0.15f);
+            page.setScaleX(0.85f + r * 0.15f);
         });
         viewPager2.setPageTransformer(compositePageTransformer);
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
@@ -148,6 +131,33 @@ public class HomeFragment extends Fragment {
                 sliderHandler.postDelayed(sliderRunnable,3000); //Slide duration 3 seconds
             }
         });
+
+        vac_info=root.findViewById(R.id.vac_info);
+        disease_info = root.findViewById(R.id.disease_info);
+        appointments = root.findViewById(R.id.appointments);
+        upload_files = root.findViewById(R.id.upload_files);
+        settings = root.findViewById(R.id.settings);
+        about_us = root.findViewById(R.id.about_us);
+
+        vac_info.setOnClickListener(v -> {
+            //start fragment for vaccine info
+            Toast.makeText(getActivity(), "Vaccine Info", Toast.LENGTH_SHORT).show();
+        });
+
+        disease_info.setOnClickListener(v -> Toast.makeText(getActivity(), "Disease Info", Toast.LENGTH_SHORT).show());
+
+        appointments.setOnClickListener(v -> Toast.makeText(getActivity(), "Appointments", Toast.LENGTH_SHORT).show());
+
+        upload_files.setOnClickListener(v -> Toast.makeText(getActivity(), "Upload Files", Toast.LENGTH_SHORT).show());
+
+        settings.setOnClickListener(v -> Toast.makeText(getActivity(), "Settings", Toast.LENGTH_SHORT).show());
+
+        about_us.setOnClickListener(v -> Toast.makeText(getActivity(), "About Us", Toast.LENGTH_SHORT).show());
+
+
+
+
+
         return root;
     }
 
@@ -185,7 +195,7 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
     }
 
-    private Runnable sliderRunnable = new Runnable() {
+    private final Runnable sliderRunnable = new Runnable() {
         @Override
         public void run() {
             viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
