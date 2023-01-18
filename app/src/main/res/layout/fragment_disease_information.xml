@@ -20,6 +20,7 @@
             android:hint="@string/Search"
             android:minHeight="48dp"
             android:padding="10dp"
+            android:fontFamily="@font/nunito_sans"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
