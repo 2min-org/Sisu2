@@ -191,7 +191,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             loginEmail.requestFocus();
             return;
         }
+
         progressBar.setVisibility(View.VISIBLE);
+        login.setEnabled(false);
+        login.setText("Logging in...");
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
@@ -227,6 +230,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                     editor.putString("Phone", document.getString("Telephone"));
                                     editor.apply();
 
+                                    login.setEnabled(true);
+                                    login.setText("Login");
                                     //end of shared preferences
 
                                     if(user_mode.equals("Doctor")){
@@ -256,12 +261,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Toast.makeText(Login.this, "Error!" , Toast.LENGTH_LONG).show();
+                                    login.setEnabled(true);
+                                    login.setText("Login");
                                 }
                             });
 
                 }
                 else{
                     Toast.makeText(Login.this, "Failed to login", Toast.LENGTH_SHORT).show();
+                    login.setEnabled(true);
+                    login.setText("Login");
                 }
             }
         });
