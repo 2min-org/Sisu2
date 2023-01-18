@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
         binding = ActivityMainBinding.inflate(getLayoutInflater());
 
         setContentView(binding.getRoot());
+
         setSupportActionBar(binding.appBarMain.toolbar);
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;

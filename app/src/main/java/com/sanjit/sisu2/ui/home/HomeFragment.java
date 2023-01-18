@@ -1,15 +1,19 @@
 package com.sanjit.sisu2.ui.home;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
@@ -20,6 +24,7 @@ import com.sanjit.sisu2.R;
 import com.sanjit.sisu2.adapters.home_horizontal_adapter;
 import com.sanjit.sisu2.models.Home_hor_model;
 import com.sanjit.sisu2.models.SliderItem;
+import com.sanjit.sisu2.ui.Setting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,17 +114,40 @@ public class HomeFragment extends Fragment {
         settings = root.findViewById(R.id.settings);
         about_us = root.findViewById(R.id.about_us);
 
-        vac_info.setOnClickListener(v -> Toast.makeText(getActivity(), "Vaccine Info", Toast.LENGTH_SHORT).show());
+        SharedPreferences User = getActivity().getSharedPreferences("User", MODE_PRIVATE);
+        String user_mode = User.getString("User_mode", "");
 
-        disease_info.setOnClickListener(v -> Toast.makeText(getActivity(), "Disease Info", Toast.LENGTH_SHORT).show());
+        if(user_mode.equals("Patient") )
+        {
+            appointments.setOnClickListener(v ->Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_book_doctor));
+        }
+        else if(user_mode.equals("Doctor"))
+        {
+            appointments.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_appointments));
+        }
 
-        appointments.setOnClickListener(v -> Toast.makeText(getActivity(), "Appointments", Toast.LENGTH_SHORT).show());
+        vac_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_vaccine_information);
+            }
+        });
 
-        upload_files.setOnClickListener(v -> Toast.makeText(getActivity(), "Upload Files", Toast.LENGTH_SHORT).show());
+        disease_info.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_disease_information));
 
-        settings.setOnClickListener(v -> Toast.makeText(getActivity(), "Settings", Toast.LENGTH_SHORT).show());
 
-        about_us.setOnClickListener(v -> Toast.makeText(getActivity(), "About Us", Toast.LENGTH_SHORT).show());
+
+        upload_files.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_image_upload));
+
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Setting.class);
+                startActivity(intent);
+            }
+        });
+
+        about_us.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_about_us));
 
         return root;
     }
