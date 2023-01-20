@@ -107,7 +107,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.CreateAccount:
-                startActivity(new Intent(this, Register.class));
+                startActivity(new Intent(this, SendOTPActivity.class));
                 break;
             case R.id.login:
                 userLogin();

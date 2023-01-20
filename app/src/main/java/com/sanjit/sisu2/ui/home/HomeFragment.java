@@ -10,9 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +27,7 @@ import com.sanjit.sisu2.R;
 import com.sanjit.sisu2.adapters.home_horizontal_adapter;
 import com.sanjit.sisu2.models.Home_hor_model;
 import com.sanjit.sisu2.models.SliderItem;
+import com.sanjit.sisu2.ui.vaccineinformation.VaccineInformation;
 import com.sanjit.sisu2.ui.Setting;
 
 import java.util.ArrayList;
