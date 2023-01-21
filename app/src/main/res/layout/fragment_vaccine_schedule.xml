@@ -10,6 +10,7 @@
         android:id="@+id/child_select_list"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:autofillHints="Child Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/calendar_card"
         app:layout_constraintHorizontal_bias="0.955"
@@ -33,7 +34,7 @@
         <CalendarView
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
-            android:layout_height="520dp" />
+            android:layout_height="wrap_content" />
 
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

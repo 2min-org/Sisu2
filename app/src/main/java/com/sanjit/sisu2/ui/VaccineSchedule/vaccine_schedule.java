@@ -17,7 +17,10 @@ import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.sanjit.sisu2.R;
+import com.sanjit.sisu2.ui.add_child.add_child;
 
 import java.util.ArrayList;
 
@@ -25,7 +28,8 @@ import java.util.ArrayList;
 public class vaccine_schedule extends Fragment {
 
     //declaring variables
-
+    FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     Spinner child_select_list;
     ArrayList<String> child_list = new ArrayList<>();
     CalendarView calendarView;
@@ -55,34 +59,38 @@ public class vaccine_schedule extends Fragment {
 
         if(user.equals("Patient")) child_select_list.setVisibility(View.VISIBLE);
         else child_select_list.setVisibility(View.GONE);
-
         child_selection();
-
-
-
 
         return view;
     }
 
     private void child_selection() {
-        child_list.add("Child 1");
-        child_list.add("Child 2");
-        child_list.add("Add Child");
 
-        ArrayAdapter<String> child_select_adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, child_list);
+        //setting up an active listener to get child data
+        db.collection("Users").document(firebaseAuth.getCurrentUser().getUid())
+           .collection("Child").addSnapshotListener((value, error) -> {
+            child_list.clear();
+            for (int i = 0; i < value.size(); i++) {
+                child_list.add(value.getDocuments().get(i).get("name").toString());
+            }
+            child_list.add("Add Child");
+            ArrayAdapter<String> child_select_adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, child_list);
+            child_select_list.setAdapter( child_select_adapter);
+        });
 
-        child_select_list.setAdapter( child_select_adapter);
         child_select_list.setSelection(0);
         child_select_list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position == child_list.size()-1){
                     addChild();
+                    child_select_list.setSelection(0);
                 }
             }
 
             private void addChild() {
-
+                Intent intent = new Intent(getActivity(), add_child.class);
+                startActivity(intent);
             }
 
             @Override

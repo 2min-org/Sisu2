@@ -20,57 +20,57 @@
         tools:targetApi="31">
         <activity
             android:name=".ui.Polio"
-            android:screenOrientation="portrait"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.login_register_user.VerifyOtpActivity"
-            android:screenOrientation="portrait"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.login_register_user.SendOTPActivity"
-            android:screenOrientation="portrait"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.MeroProfile"
-            android:screenOrientation="portrait"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.Share.Share"
-            android:screenOrientation="portrait"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.Setting"
-            android:screenOrientation="portrait"
             android:exported="false"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.intro.SplashScreenActivity"
-            android:screenOrientation="portrait"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -84,16 +84,16 @@
         </activity>
         <activity
             android:name=".ui.user.EditProfile"
-            android:screenOrientation="portrait"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.login_register_user.ForgotPassword"
-            android:screenOrientation="portrait"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <meta-data
                 android:name="android.app.lib_name"
@@ -101,14 +101,16 @@
         </activity>
         <activity
             android:name=".ui.user.profile"
-            android:screenOrientation="portrait"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.Sisu2"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.intro.one_time_activity"
+            android:theme="@style/Theme.Sisu2"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -125,9 +127,14 @@
         <activity
             android:name=".ui.login_register_user.Register"
             android:exported="false"
-            android:screenOrientation="portrait"
             android:parentActivityName=".ui.login_register_user.Login"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme" />
+        <activity
+            android:name=".ui.add_child.add_child"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sisu2" />
         <activity
             android:name=".ui.login_register_user.Login"
             android:exported="false"
