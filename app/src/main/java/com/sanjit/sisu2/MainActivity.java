@@ -26,8 +26,10 @@ import com.sanjit.sisu2.ui.login_register_user.Doctor_info;
 import com.sanjit.sisu2.ui.login_register_user.Login;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.view.GravityCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -38,18 +40,28 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_listener {
+public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_listener , NavigationView.OnNavigationItemSelectedListener {
 
     //declarations
     private AppBarConfiguration mAppBarConfiguration;
     SharedPreferences sharedPreferences;
+    NavController navController;
     boolean nightMode;
     public String url;
+    NavOptions navOptions = new NavOptions.Builder()
+            .setEnterAnim(androidx.navigation.ui.R.anim.nav_default_enter_anim)
+            .setExitAnim(androidx.navigation.ui.R.anim.nav_default_exit_anim)
+            .setPopEnterAnim(androidx.navigation.ui.R.anim.nav_default_pop_enter_anim)
+            .setPopExitAnim(androidx.navigation.ui.R.anim.nav_default_pop_exit_anim)
+            .setPopUpTo(R.id.nav_home,true)
+            .build();
+    public DrawerLayout drawer;
     SharedPreferences.Editor editor;
     private ActivityMainBinding binding;
     private FirebaseAuth mAuth=FirebaseAuth.getInstance();
     private DatabaseReference databaseReference;
     private StorageReference storageReference;
+    public NavigationView navigationView;
     private List<String> appointment_id ;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -66,8 +78,8 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
+        drawer = binding.drawerLayout;
+        navigationView = binding.navView;
 
         //setting up values from shared preferences
 
@@ -80,8 +92,6 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
         String Specialization = sharedPreferences.getString("Specialization", "Not Specified");
 
         //end of setting up values from shared preferences
-
-
 
         //checking if user is doctor or not
 
@@ -135,10 +145,10 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
                 R.id.nav_about_us)
                 .setOpenableLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
+        navigationView.setNavigationItemSelectedListener(this);
         //we hide appointments for user who are not doctors
 
         if (!User_mode.equals("Doctor")) {
@@ -156,6 +166,61 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
         }
 
     }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.nav_home:
+                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                //we use navOptions to make sure that when we click on home button it does not create a new instance of home fragment
+                Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
+                        .navigate(R.id.nav_home,null,navOptions);
+                break;
+            case R.id.nav_appointments:
+                navController.popBackStack(R.id.nav_home, false);
+                Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
+                        .navigate(R.id.nav_appointments,null,navOptions);
+                break;
+            case R.id.nav_book_doctor:
+                navController.popBackStack(R.id.nav_home, false);
+                Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
+                        .navigate(R.id.nav_book_doctor);
+                break;
+            case R.id.nav_image_upload:
+                navController.popBackStack(R.id.nav_home, false);
+                Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
+                        .navigate(R.id.nav_image_upload);
+                break;
+            case R.id.nav_vaccine_schedule:
+                navController.popBackStack(R.id.nav_home, false);
+                Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
+                        .navigate(R.id.nav_vaccine_schedule);
+                break;
+            case R.id.nav_vaccine_information:
+                navController.popBackStack(R.id.nav_home, false);
+                Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
+                        .navigate(R.id.nav_vaccine_information);
+                break;
+            case R.id.nav_disease_information:
+                navController.popBackStack(R.id.nav_home, false);
+                Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
+                        .navigate(R.id.nav_disease_information);
+                break;
+            case R.id.nav_childcare_centres:
+                navController.popBackStack(R.id.nav_home, false);
+                Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
+                        .navigate(R.id.nav_childcare_centres);
+                break;
+            case R.id.nav_about_us:
+                navController.popBackStack(R.id.nav_home, false);
+                Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
+                        .navigate(R.id.nav_about_us);
+                break;
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+        }
 
     private void openDialog() {
         sec_doc sec_doc = new sec_doc();

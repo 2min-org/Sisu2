@@ -14,8 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,9 +26,7 @@ import com.sanjit.sisu2.R;
 import com.sanjit.sisu2.adapters.home_horizontal_adapter;
 import com.sanjit.sisu2.models.Home_hor_model;
 import com.sanjit.sisu2.models.SliderItem;
-import com.sanjit.sisu2.ui.vaccineinformation.VaccineInformation;
 import com.sanjit.sisu2.ui.Setting;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +38,7 @@ public class HomeFragment extends Fragment {
     List<Home_hor_model> home_horizontal_modelList;
     home_horizontal_adapter home_horizontal_adapter;
     LinearLayout vac_info,disease_info,appointments,upload_files,settings,about_us;
-
+    View root;
 
     public HomeFragment() {
     }
@@ -50,6 +47,7 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
 
         home_hor_recycler = root.findViewById(R.id.home_horizontal_recycler);
         home_hor_recycler2 = root.findViewById(R.id.home_horizontal_recycler2);
@@ -139,8 +137,6 @@ public class HomeFragment extends Fragment {
 
         disease_info.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_disease_information));
 
-
-
         upload_files.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_image_upload));
 
         settings.setOnClickListener(new View.OnClickListener() {
@@ -172,12 +168,13 @@ public class HomeFragment extends Fragment {
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Tdap"));
     }
 
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
     }
 
-    private Runnable sliderRunnable = new Runnable() {
+    private final Runnable sliderRunnable = new Runnable() {
         @Override
         public void run() {
             viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);

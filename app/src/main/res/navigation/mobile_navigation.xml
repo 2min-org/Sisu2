@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_nav_home_to_nav_vaccine_schedule"
-            app:destination="@id/nav_vaccine_schedule" />
+            app:destination="@id/nav_vaccine_schedule"/>
         <action
             android:id="@+id/action_nav_home_to_nav_book_doctor"
             app:destination="@id/nav_book_doctor" />
@@ -34,6 +34,12 @@
         <action
             android:id="@+id/action_nav_home_to_nav_about_us"
             app:destination="@id/nav_about_us" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_book_doctor2"
+            app:destination="@id/nav_book_doctor" />
+        <action
+            android:id="@+id/action_nav_home_self"
+            app:destination="@id/nav_home" />
     </fragment>
     <fragment
         android:id="@+id/nav_appointments"

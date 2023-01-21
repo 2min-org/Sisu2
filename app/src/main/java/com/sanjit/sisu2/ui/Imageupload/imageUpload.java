@@ -33,6 +33,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.sanjit.sisu2.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -171,7 +172,10 @@ public class imageUpload extends Fragment implements uploadimage_interface {
 
                 imageUri = data.getData();
 
-                imageView.setImageURI(imageUri);
+                Picasso.get().load(imageUri)
+                        .resize(500, 500)
+                        .centerCrop()
+                        .into(imageView);
                 imageView.setVisibility(View.VISIBLE);
 
                 UploadImage.setEnabled(true);
