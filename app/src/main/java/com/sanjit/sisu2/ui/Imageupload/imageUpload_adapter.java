@@ -64,7 +64,7 @@ public class imageUpload_adapter extends RecyclerView.Adapter<imageUpload_adapte
         return basic_models_arr.size();
     }
 
-    public class imageViewHolder extends RecyclerView.ViewHolder {
+    public static class imageViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, description, date;
         ImageView photo;
@@ -75,14 +75,11 @@ public class imageUpload_adapter extends RecyclerView.Adapter<imageUpload_adapte
             date = itemView.findViewById(R.id.uploadedImageDate);
             photo = itemView.findViewById(R.id.uploadedImageView);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(uploadimage_interface != null){
-                        int position = getAbsoluteAdapterPosition();
-                        if(position != RecyclerView.NO_POSITION){
-                            uploadimage_interface.onItemClick(position);
-                        }
+            itemView.setOnClickListener(v -> {
+                if(uploadimage_interface != null){
+                    int position = getAbsoluteAdapterPosition();
+                    if(position != RecyclerView.NO_POSITION){
+                        uploadimage_interface.onItemClick(position);
                     }
                 }
             });

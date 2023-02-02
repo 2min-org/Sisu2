@@ -1,7 +1,7 @@
 package com.sanjit.sisu2.models;
 
 public class SliderItem {
-    private int image;
+    private final int image;
 
    public SliderItem(int image) {
         this.image = image;

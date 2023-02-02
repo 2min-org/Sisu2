@@ -8,8 +8,8 @@ public class book_doctor_model {
     private String name;
     private String phone;
     private String photo_url;
-    private String specializations;
-    private String u_id;
+    private final String specializations;
+    private final String u_id;
 
     public book_doctor_model(String name, String phone, String specializations, String u_id, Boolean isBooked,String photo_url)  {
         this.name = name;

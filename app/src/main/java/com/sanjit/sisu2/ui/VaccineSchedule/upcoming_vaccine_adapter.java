@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class upcoming_vaccine_adapter extends RecyclerView.Adapter<upcoming_vaccine_adapter.ViewHolder>{
 
     private final ArrayList<upcoming_vaccine_model> list_data;
-    private Context context;
+    private final Context context;
 
     upcoming_vaccine_adapter(ArrayList<upcoming_vaccine_model> list_data, Context context) {
         this.list_data = list_data;

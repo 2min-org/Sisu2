@@ -14,24 +14,19 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
+
 import com.sanjit.sisu2.R;
 import com.squareup.picasso.Picasso;
 
@@ -44,8 +39,6 @@ public class imageUpload extends Fragment implements uploadimage_interface {
 
 
     private final int GALLERY_REQUEST_CODE = 105;
-    private StorageReference storageReference;
-    private DatabaseReference databaseReference;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     ImageView imageView;
     Uri imageUri;
@@ -95,37 +88,28 @@ public class imageUpload extends Fragment implements uploadimage_interface {
 
 
 
-        ChooseImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //open image picker
-                Intent igallery = new Intent(Intent.ACTION_PICK);
-                igallery.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(igallery, GALLERY_REQUEST_CODE);
+        ChooseImage.setOnClickListener(v -> {
+            //open image picker
+            Intent igallery = new Intent(Intent.ACTION_PICK);
+            igallery.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(igallery, GALLERY_REQUEST_CODE);
 
-            }
         });
-        UploadImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //upload image
-                uploadImageToFirebase(imageUri);
-                UploadImage.setEnabled(false);
-                CancelImage.setEnabled(false);
-                ChooseImage.setEnabled(false);
+        UploadImage.setOnClickListener(v -> {
+            //upload image
+            uploadImageToFirebase(imageUri);
+            UploadImage.setEnabled(false);
+            CancelImage.setEnabled(false);
+            ChooseImage.setEnabled(false);
 
-                UploadImage.setText("Uploading...");
-            }
+            UploadImage.setText("Uploading...");
         });
-        CancelImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //cancel image
-                imageView.setImageDrawable(null);
-                UploadImage.setEnabled(false);
-                CancelImage.setEnabled(false);
-                ChooseImage.setEnabled(true);
-            }
+        CancelImage.setOnClickListener(v -> {
+            //cancel image
+            imageView.setImageDrawable(null);
+            UploadImage.setEnabled(false);
+            CancelImage.setEnabled(false);
+            ChooseImage.setEnabled(true);
         });
 
 
@@ -137,28 +121,25 @@ public class imageUpload extends Fragment implements uploadimage_interface {
         db.collection("Users")
           .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
           .collection("images").orderBy("timestamp", Query.Direction.DESCENDING).get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if (!queryDocumentSnapshots.isEmpty()) {
-                            for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                                Map<String, Object> data = documentSnapshot.getData();
-                                String name = (String) data.get("name");
-                                String description = (String) data.get("description");
-                                String url = (String) data.get("url");
-                                Timestamp timestamp = (Timestamp) data.get("timestamp");
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            Map<String, Object> data = documentSnapshot.getData();
+                            String name = (String) data.get("name");
+                            String description = (String) data.get("description");
+                            String url = (String) data.get("url");
+                            Timestamp timestamp = (Timestamp) data.get("timestamp");
 
-                                Log.d("TAG", "onSuccess: "+timestamp);
+                            Log.d("TAG", "onSuccess: "+timestamp);
 
-                                basic_model model = new basic_model(name, description, url, timestamp);
-                                basic_model_arr.add(model);
-                            }
-                            //set adapter
-                            uploadimage_interface uploadimage_interface = imageUpload.this;
-                            imageUpload_adapter adapter = new imageUpload_adapter(getContext(), basic_model_arr, uploadimage_interface);
-                            recyclerView.setAdapter(adapter);
-
+                            basic_model model = new basic_model(name, description, url, timestamp);
+                            basic_model_arr.add(model);
                         }
+                        //set adapter
+                        uploadimage_interface uploadimage_interface = imageUpload.this;
+                        imageUpload_adapter adapter = new imageUpload_adapter(getContext(), basic_model_arr, uploadimage_interface);
+                        recyclerView.setAdapter(adapter);
+
                     }
                 });
     }
@@ -188,7 +169,7 @@ public class imageUpload extends Fragment implements uploadimage_interface {
     public void uploadImageToFirebase(Uri imageUri) {
         //upload image to firebase storage
 
-        storageReference = FirebaseStorage.getInstance().getReference();
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
         String uid = auth.getCurrentUser().getUid();
@@ -212,48 +193,33 @@ public class imageUpload extends Fragment implements uploadimage_interface {
         }
 
         riversRef.putFile(imageUri)
-        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                riversRef.getDownloadUrl()
-                .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
+        .addOnSuccessListener(taskSnapshot -> riversRef.getDownloadUrl()
+        .addOnSuccessListener(uri -> {
 
-                        url = uri.toString();
-                        Timestamp timestamp = Timestamp.now();
-                        Log.d("TAG", "onSuccess: "+timestamp);
-                        Log.d("TAG", "onSuccess: "+timestamp);
-                        Log.d("TAG", "onSuccess: "+timestamp);
+            url = uri.toString();
+            Timestamp timestamp = Timestamp.now();
+            Log.d("TAG", "onSuccess: "+timestamp);
+            Log.d("TAG", "onSuccess: "+timestamp);
+            Log.d("TAG", "onSuccess: "+timestamp);
 
-                        basic_model basic_model = new basic_model(name,description,url,Timestamp.now());
+            basic_model basic_model = new basic_model(name,description,url,Timestamp.now());
 
-                        db.collection("Users").document(uid).update("uploaded_images", FieldValue.arrayUnion(randomKey));
-                        db.collection("Users").document(uid).collection("images").document(randomKey).set(basic_model);
+            db.collection("Users").document(uid).update("uploaded_images", FieldValue.arrayUnion(randomKey));
+            db.collection("Users").document(uid).collection("images").document(randomKey).set(basic_model);
 
-                        Toast.makeText(getContext(), "Image Uploaded", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Image Uploaded", Toast.LENGTH_SHORT).show();
 
-                        UploadImage.setText("Upload");
-                        ChooseImage.setEnabled(true);
-                        UploadImage.setEnabled(true);
-                        CancelImage.setEnabled(true);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                // Handle any errors
-                                Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
-                            }
-                });
-
-        }
-        })
-        .addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle unsuccessful uploads
-                // ...
-            }
+            UploadImage.setText("Upload");
+            ChooseImage.setEnabled(true);
+            UploadImage.setEnabled(true);
+            CancelImage.setEnabled(true);
+        }).addOnFailureListener(e -> {
+            // Handle any errors
+            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+        }))
+        .addOnFailureListener(exception -> {
+            // Handle unsuccessful uploads
+            // ...
         });
     }
 

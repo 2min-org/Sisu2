@@ -2,17 +2,17 @@ package com.sanjit.sisu2.models;
 
 public class Disease_data {
 
-    private String name;
-    private String description;
-    private String symptoms;
-    private String treatment;
-    private String prevention;
-    private String vaccine;
-    private String vaccine_description;
-    private String vaccine_precautions;
-    private String vaccine_side_effects;
-    private String vaccine_dosage;
-    private String vaccine_frequency;
+    private final String name;
+    private final String description;
+    private final String symptoms;
+    private final String treatment;
+    private final String prevention;
+    private final String vaccine;
+    private final String vaccine_description;
+    private final String vaccine_precautions;
+    private final String vaccine_side_effects;
+    private final String vaccine_dosage;
+    private final String vaccine_frequency;
 
     public Disease_data(String name, String description, String symptoms, String treatment, String prevention, String vaccine, String vaccine_description, String vaccine_precautions, String vaccine_side_effects, String vaccine_dosage, String vaccine_frequency) {
         this.name = name;

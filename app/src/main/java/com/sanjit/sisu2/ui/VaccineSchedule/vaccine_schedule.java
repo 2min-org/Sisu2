@@ -3,7 +3,6 @@ package com.sanjit.sisu2.ui.VaccineSchedule;
 import static android.content.Context.MODE_PRIVATE;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -40,8 +39,6 @@ public class vaccine_schedule extends Fragment {
     private final ArrayList<String> child_list = new ArrayList<>();
     private upcoming_vaccine_adapter upcoming_vaccine_adapter;
 
-
-
     //end of declaring variables
 
 
@@ -58,23 +55,43 @@ public class vaccine_schedule extends Fragment {
         child_select_list = view.findViewById(R.id.child_select_list);
         SharedPreferences User = requireActivity().getSharedPreferences("User", MODE_PRIVATE);
         String user =User.getString("user_mode", "Patient");
-
+        CalendarView calendarView = view.findViewById(R.id.calendarView);
         //end of declarations
 
-        if(user.equals("Patient")) child_select_list.setVisibility(View.VISIBLE);
-        else child_select_list.setVisibility(View.GONE);
-        child_selection();
+        if(user.equals("Patient"))
+        {
+            child_select_list.setVisibility(View.VISIBLE);
+            child_selection();
+        }
+        else
+        {
+            child_select_list.setVisibility(View.GONE);
+            calendarView.setShowWeekNumber(false);
+        }
 
-        //when a date is clicked on calendar
-
-        CalendarView calendarView = view.findViewById(R.id.calendarView);
-        calendarView.setShowWeekNumber(false);
         calendarView.setOnDateChangeListener((view1, year, month, dayOfMonth) -> {
-            show_selected_date_vaccine(year, month, dayOfMonth);
+            if (user.equals("Patient"))
+            {
+                show_selected_date_vaccine(year, month, dayOfMonth);
+                calendarView.setShowWeekNumber(false);
+            }
         });
 
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(active_child != null)
+        {
+            setAdapter();
+        }
+        else {
+            child_selection();
+        }
+    }
+
 
 
     private void child_selection() {
@@ -88,10 +105,15 @@ public class vaccine_schedule extends Fragment {
                                     assert data != null;
                                     Log.d("data", data.toString());
                                     ArrayList<String> child_name_list = (ArrayList<String>) data.get("Children_name");
-                                    assert child_name_list != null;
-                                    active_child = child_name_list.get(0);
-                                    Log.d("active_child", active_child);
-                                    active_listener();
+                                    if(child_name_list != null) {
+                                        active_child = child_name_list.get(0);
+                                        Log.d("active_child", active_child);
+                                        active_listener();
+                                    }
+                                    else {
+                                        Intent intent = new Intent(getActivity(), add_child.class);
+                                        startActivity(intent);
+                                    }
                                 }
                             }
                         });
@@ -128,7 +150,7 @@ public class vaccine_schedule extends Fragment {
                 .collection("Child");
         coll_ref.addSnapshotListener((value, error) -> {
             child_list.clear();
-
+            while(value == null);
             assert value != null;
             for (DocumentSnapshot documentSnapshot : value.getDocuments()) {
                 Map<String, Object> data = documentSnapshot.getData();
@@ -223,6 +245,7 @@ public class vaccine_schedule extends Fragment {
         recyclerView.setAdapter(upcoming_vaccine_adapter);
 
     }
+
 
 }
 

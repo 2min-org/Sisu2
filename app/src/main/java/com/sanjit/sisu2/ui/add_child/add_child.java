@@ -1,6 +1,5 @@
 package com.sanjit.sisu2.ui.add_child;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -11,25 +10,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.sanjit.sisu2.R;
 import com.sanjit.sisu2.models.custom_date;
 import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
+import java.util.Objects;
 import java.util.UUID;
 
 public class add_child extends AppCompatActivity {
@@ -40,11 +34,9 @@ public class add_child extends AppCompatActivity {
     String name;
     Button accept, cancel;
     ImageButton add_photo;
-    Calendar calendar = Calendar.getInstance();
     ImageView photo;
     private DatePickerDialog datePickerDialog;
     private final int GALLERY_REQUEST_CODE = 105;
-    private StorageReference storageReference;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     Uri imageUri;
     String url;
@@ -63,45 +55,36 @@ public class add_child extends AppCompatActivity {
         dateButton = findViewById(R.id.datePickerButton);
         dateButton.setText(getTodaysDate());
 
-        add_photo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                add_photo.setEnabled(false);
-                Intent igallery = new Intent(Intent.ACTION_PICK);
-                igallery.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(igallery, GALLERY_REQUEST_CODE);
-            }
+        add_photo.setOnClickListener(v -> {
+            add_photo.setEnabled(false);
+            Intent igallery = new Intent(Intent.ACTION_PICK);
+            igallery.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(igallery, GALLERY_REQUEST_CODE);
         });
 
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                photo.setImageDrawable(null);
-                name_text.setText("");
-                dateButton.setText(getTodaysDate());
-            }
+        cancel.setOnClickListener(v -> {
+            photo.setImageDrawable(null);
+            name_text.setText("");
+            dateButton.setText(getTodaysDate());
         });
 
-        accept.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //upload to firebase
-                name = name_text.getText().toString();
+        accept.setOnClickListener(v -> {
+            //upload to firebase
+            name = name_text.getText().toString();
 
-                if(imageUri!=null && !name.isEmpty()){
-                    uploadToFirebase();
-                } else if (imageUri==null){
-                    Toast.makeText(add_child.this, "Please add image", Toast.LENGTH_SHORT).show();
-                    add_photo.requestFocus();
+            if(imageUri!=null && !name.isEmpty()){
+                uploadToFirebase();
+            } else if (imageUri==null){
+                Toast.makeText(add_child.this, "Please add image", Toast.LENGTH_SHORT).show();
+                add_photo.requestFocus();
 
-                } else if (name.isEmpty()){
-                    Toast.makeText(add_child.this, "Please insert name", Toast.LENGTH_SHORT).show();
-                    name_text.requestFocus();
+            } else if (name.isEmpty()){
+                Toast.makeText(add_child.this, "Please insert name", Toast.LENGTH_SHORT).show();
+                name_text.requestFocus();
 
-                } else {
-                    Toast.makeText(add_child.this, "Please insert name and image", Toast.LENGTH_SHORT).show();
-                    name_text.requestFocus();
-                }
+            } else {
+                Toast.makeText(add_child.this, "Please insert name and image", Toast.LENGTH_SHORT).show();
+                name_text.requestFocus();
             }
         });
 
@@ -125,7 +108,7 @@ public class add_child extends AppCompatActivity {
     }
     private void uploadToFirebase() {
         //upload to firebase
-        storageReference = FirebaseStorage.getInstance().getReference();
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
         final String randomKey = UUID.randomUUID().toString();
 
         accept.setEnabled(false);
@@ -136,42 +119,33 @@ public class add_child extends AppCompatActivity {
 
         StorageReference riversRef = storageReference.child("images/" + randomKey);
         riversRef.putFile(imageUri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // Get a URL to the uploaded content
-                        riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                url = uri.toString();
-                                db.collection("Users")
-                                        .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                        .collection("Child")
-                                        .document(name)
-                                        .set(new Child(name, date_of_birth , url))
-                                        .addOnSuccessListener(aVoid -> {
-                                            photo.setImageDrawable(null);
-                                            name_text.setText("");
-                                            dateButton.setText(getTodaysDate());
-                                            accept.setEnabled(true);
-                                            accept.setText("Accept");
-                                            cancel.setEnabled(true);
-                                            add_photo.setEnabled(true);
-                                            Log.d("TAG", "Background task started");
-                                            add_vaccine_schedule add_vaccine_schedule = new add_vaccine_schedule(name);
-                                            add_vaccine_schedule.execute();
-                                        })
-                                        .addOnFailureListener(e -> Toast.makeText(add_child.this, "Error adding child", Toast.LENGTH_SHORT).show());
-                            }
-                        });
-                    }
+                .addOnSuccessListener(taskSnapshot -> {
+                    // Get a URL to the uploaded content
+                    riversRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                        url = uri.toString();
+                        db.collection("Users")
+                                .document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                                .collection("Child")
+                                .document(name)
+                                .set(new Child(name, date_of_birth , url))
+                                .addOnSuccessListener(aVoid -> {
+                                    photo.setImageDrawable(null);
+                                    name_text.setText("");
+                                    dateButton.setText(getTodaysDate());
+                                    accept.setEnabled(true);
+                                    accept.setText("Accept");
+                                    cancel.setEnabled(true);
+                                    add_photo.setEnabled(true);
+                                    Log.d("TAG", "Background task started");
+                                    add_vaccine_schedule add_vaccine_schedule = new add_vaccine_schedule(name);
+                                    add_vaccine_schedule.execute();
+                                })
+                                .addOnFailureListener(e -> Toast.makeText(add_child.this, "Error adding child", Toast.LENGTH_SHORT).show());
+                    });
                 })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        // Handle unsuccessful uploads
-                        // ...
-                    }
+                .addOnFailureListener(exception -> {
+                    // Handle unsuccessful uploads
+                    // ...
                 });
 
     }
@@ -190,16 +164,11 @@ public class add_child extends AppCompatActivity {
 
     private void initDatePicker()
     {
-        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener()
-        {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day)
-            {
-                month = month + 1;
-                String date = makeDateString(day, month, year);
-                date_of_birth = new custom_date(day,month, year);
-                dateButton.setText(date);
-            }
+        DatePickerDialog.OnDateSetListener dateSetListener = (datePicker, year, month, day) -> {
+            month = month + 1;
+            String date = makeDateString(day, month, year);
+            date_of_birth = new custom_date(day,month, year);
+            dateButton.setText(date);
         };
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);

@@ -3,8 +3,6 @@ package com.sanjit.sisu2.ui.add_child;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.sanjit.sisu2.models.custom_date;
@@ -49,27 +47,15 @@ public class add_vaccine_schedule extends AsyncTask<Void , Integer, String> {
                         dr.update("vaccine_schedule", update)
                                 .onSuccessTask(task1 -> {
                                     Log.d("update", "success");
+
                                     return null;
                                 })
-                                .addOnFailureListener(e -> {
-                                    Log.d("update", "failure");
-                                });
+                                .addOnFailureListener(e -> Log.d("update", "failure"));
 
                         //add the child to the list of children
                                 db.collection("Users").document(uid)
                                         .update("Children_name", FieldValue.arrayUnion(name))
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        Log.d("update", "success");
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(Exception e) {
-                                Log.d("update", "failure");
-
-                            }
-                                });
+                                .addOnSuccessListener(unused -> Log.d("update", "success")).addOnFailureListener(e -> Log.d("update", "failure"));
                     }
 
                 }

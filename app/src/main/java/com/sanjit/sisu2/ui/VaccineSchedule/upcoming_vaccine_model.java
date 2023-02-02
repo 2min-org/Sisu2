@@ -5,8 +5,8 @@ public class upcoming_vaccine_model {
     private String vaccine_day;
     private String vaccine_month_year;
     private String vaccine_type;
-    private String vaccine_month;
-    private String vaccine_year;
+    private final String vaccine_month;
+    private final String vaccine_year;
 
     public upcoming_vaccine_model(String vaccine_name, String vaccine_day, String vaccine_month_year, String vaccine_type) {
         this.vaccine_name = vaccine_name;

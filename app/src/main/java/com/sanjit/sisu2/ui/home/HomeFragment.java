@@ -10,11 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,7 +37,6 @@ public class HomeFragment extends Fragment {
     List<Home_hor_model> home_horizontal_modelList;
     home_horizontal_adapter home_horizontal_adapter;
     LinearLayout vac_info,disease_info,appointments,upload_files,settings,about_us;
-    View root;
 
     public HomeFragment() {
     }
@@ -91,12 +89,9 @@ public class HomeFragment extends Fragment {
 
         CompositePageTransformer Transformer=new CompositePageTransformer();
         Transformer.addTransformer(new MarginPageTransformer(60));
-        Transformer.addTransformer(new ViewPager2.PageTransformer() {
-            @Override
-            public void transformPage(@NonNull View page, float position) {
-                float r=1-Math.abs(position);
-                page.setScaleY(0.85f+r*0.14f);
-            }
+        Transformer.addTransformer((page, position) -> {
+            float r=1-Math.abs(position);
+            page.setScaleY(0.85f+r*0.14f);
         });
         viewPager2.setPageTransformer(Transformer);
 
@@ -128,23 +123,15 @@ public class HomeFragment extends Fragment {
             appointments.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_appointments));
         }
 
-        vac_info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_vaccine_information);
-            }
-        });
+        vac_info.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_vaccine_information));
 
         disease_info.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_disease_information));
 
         upload_files.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_image_upload));
 
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Setting.class);
-                startActivity(intent);
-            }
+        settings.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), Setting.class);
+            startActivity(intent);
         });
 
         about_us.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_about_us));

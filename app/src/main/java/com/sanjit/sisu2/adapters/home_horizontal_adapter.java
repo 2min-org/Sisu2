@@ -29,6 +29,7 @@ public class home_horizontal_adapter extends RecyclerView.Adapter<home_horizonta
         this.home_horizontal_modelList = home_horizontal_modelList;
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.home_horizontal_item, parent, false));
@@ -60,7 +61,7 @@ public class home_horizontal_adapter extends RecyclerView.Adapter<home_horizonta
 
         @Override
         public void onClick(View view) {
-            int position = getAdapterPosition();
+            int position = getAbsoluteAdapterPosition();
             Intent intent = new Intent(context, Polio.class);
             Toast.makeText(context, "Disease" + position, Toast.LENGTH_SHORT).show();
             context.startActivity(intent);

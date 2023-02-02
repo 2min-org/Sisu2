@@ -8,18 +8,14 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sanjit.sisu2.R;
 
 public class ForgotPassword extends AppCompatActivity {
 
     private EditText forgotemail;
-    private Button resetpassword;
     private ProgressBar progressBar;
 
     FirebaseAuth mAuth;
@@ -30,17 +26,12 @@ public class ForgotPassword extends AppCompatActivity {
         setContentView(R.layout.activity_forgot_password);
 
         forgotemail=(EditText)findViewById(R.id.forgotemail);
-        resetpassword=(Button)findViewById(R.id.resetpassword);
+        Button resetpassword = (Button) findViewById(R.id.resetpassword);
         progressBar=(ProgressBar)findViewById(R.id.progressBar2);
 
         mAuth= FirebaseAuth.getInstance();
 
-        resetpassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetPassword();
-            }
-        });
+        resetpassword.setOnClickListener(v -> resetPassword());
     }
 
     private void resetPassword(){
@@ -56,15 +47,12 @@ public class ForgotPassword extends AppCompatActivity {
             return;
         }
         progressBar.setVisibility(View.VISIBLE);
-        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(ForgotPassword.this,"Check your email to reset your password",Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(ForgotPassword.this,"Try again! Something wrong happened",Toast.LENGTH_LONG).show();
-                }
+        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(ForgotPassword.this,"Check your email to reset your password",Toast.LENGTH_LONG).show();
+            }else{
+                Toast.makeText(ForgotPassword.this,"Try again! Something wrong happened",Toast.LENGTH_LONG).show();
             }
         });
 

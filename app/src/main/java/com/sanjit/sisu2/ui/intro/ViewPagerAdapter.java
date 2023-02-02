@@ -17,7 +17,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     Context context;
 
-    int images[] = {
+    int[] images = {
 
             R.drawable.sishut,
             R.drawable.vaccine,
@@ -28,7 +28,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     };
 
-    int headings[] = {
+    int[] headings = {
 
 
             R.string.heading_one,
@@ -40,7 +40,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     };
 
-    int description[] = {
+    int[] description = {
 
             R.string.desc_one,
       R.string.desc_two,
@@ -71,7 +71,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
-        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.slider_layout,container,false);
 
         ImageView slidetitleimage = (ImageView) view.findViewById(R.id.titleImage);

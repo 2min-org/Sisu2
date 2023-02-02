@@ -14,12 +14,6 @@ import com.sanjit.sisu2.R;
 
 public class AboutUs extends Fragment {
 
-    private AboutUsViewModel mViewModel;
-
-    public static AboutUs newInstance() {
-        return new AboutUs();
-    }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -29,7 +23,7 @@ public class AboutUs extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(AboutUsViewModel.class);
+        AboutUsViewModel mViewModel = new ViewModelProvider(this).get(AboutUsViewModel.class);
         // TODO: Use the ViewModel
     }
 

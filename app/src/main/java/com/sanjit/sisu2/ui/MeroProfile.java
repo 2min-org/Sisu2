@@ -35,7 +35,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MeroProfile extends AppCompatActivity implements sec_doc.sec_doc_listener{
 
     ArrayList<appointment_model> appointment_model_arr = new ArrayList<>();
-    private FirebaseAuth mAuth=FirebaseAuth.getInstance();
+    private final FirebaseAuth mAuth=FirebaseAuth.getInstance();
     private DatabaseReference databaseReference;
     private StorageReference storageReference;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();

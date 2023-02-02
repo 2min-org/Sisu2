@@ -24,7 +24,7 @@ import java.util.List;
 public class Frag1 extends Fragment {
 
     private ViewPager2 viewPager3;
-    private Handler sliderHandler = new Handler();
+    private final Handler sliderHandler = new Handler();
 
     public static VaccineInformation newInstance() {
         return new VaccineInformation();
@@ -95,7 +95,7 @@ public class Frag1 extends Fragment {
 
         return view;
     }
-    private Runnable sliderRunnable = new Runnable() {
+    private final Runnable sliderRunnable = new Runnable() {
         @Override
         public void run() {
             viewPager3.setCurrentItem(viewPager3.getCurrentItem() + 1);

@@ -1,7 +1,5 @@
 package com.sanjit.sisu2.ui.login_register_user;
 
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
@@ -11,7 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,24 +17,16 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.sanjit.sisu2.MainActivity;
 import com.sanjit.sisu2.R;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
@@ -49,7 +38,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     private ImageView profilePic;
     public Uri imageUri;
     private StorageReference storageReference;
-    private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
     public ProgressDialog progressDialog;
     private User user;
@@ -84,12 +72,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         //declarations
 
         //onClickListeners
-        uploadPic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                choosePicture();
-            }
-        });
+        uploadPic.setOnClickListener(v -> choosePicture());
 
         banner.setOnClickListener(this);
         registerUser.setOnClickListener(this);
@@ -104,17 +87,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         adapter = ArrayAdapter.createFromResource(this,R.array.position,android.R.layout.simple_spinner_item );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         account_type.setAdapter(adapter);
-        account_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String user_mode = (String)parent.getItemAtPosition(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         //progress bar
 
@@ -140,7 +112,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
         //get values
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         String email = Email.getText().toString().trim();
         String password = Password.getText().toString().trim();
         String fullname = FullName.getText().toString().trim();
@@ -149,7 +120,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         String gender=Gender.getSelectedItem().toString();
         String address=Address.getText().toString().trim();
         String user_mode = account_type.getSelectedItem().toString().trim();
-        String doc_spec = null;
 
         //cases
         if (email.isEmpty()) {
@@ -196,24 +166,20 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         progressDialog.setMessage("Registering User...");
         progressDialog.show();
 
-        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    user = new User(mAuth.getCurrentUser().getUid(),fullname, email, birthday, telephone,gender
-                            ,address,user_mode,null,null,null);
-                    uploadPicture();
+        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                user = new User(Objects.requireNonNull(mAuth.getCurrentUser()).getUid(),fullname, email, birthday, telephone,gender
+                        ,address,user_mode,null,null,null);
+                uploadPicture();
 
-                } else {
-                    if(task.getException() instanceof FirebaseAuthUserCollisionException)
-                        Toast.makeText(Register.this, "You are already registered", Toast.LENGTH_SHORT).show();
+            } else {
+                if(task.getException() instanceof FirebaseAuthUserCollisionException)
+                    Toast.makeText(Register.this, "You are already registered", Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(Register.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();
-                    progressBar.setVisibility(View.GONE);
-                    progressDialog.dismiss();
-                }
+                Toast.makeText(Register.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(View.GONE);
+                progressDialog.dismiss();
             }
-
         });
 
     }
@@ -240,77 +206,57 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         StorageReference riversRef=storageReference.child("images/"+randomKey);
 
         riversRef.putFile(imageUri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                url = uri.toString();
-                                user.set_ProfilePic(url);
-                                register_user();
+                .addOnSuccessListener(taskSnapshot -> {
+                    riversRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                        url = uri.toString();
+                        user.set_ProfilePic(url);
+                        register_user();
 
-                                SharedPreferences sharedPreferences = getSharedPreferences("ImageURL", MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString("imageURL", url);
-                                editor.apply();
+                        SharedPreferences sharedPreferences = getSharedPreferences("ImageURL", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("imageURL", url);
+                        editor.apply();
 
-                                //Setting up shared preferences
+                        //Setting up shared preferences
 
-                                SharedPreferences User = getSharedPreferences("User", MODE_PRIVATE);
-                                SharedPreferences.Editor editor1 = User.edit();
+                        SharedPreferences User = getSharedPreferences("User", MODE_PRIVATE);
+                        SharedPreferences.Editor editor1 = User.edit();
 
-                                editor1.putString("Email", user.Email);
-                                editor1.putString("FullName", user.Fullname);
-                                editor1.putString("User_id", user.user_id);
-                                editor1.putString("ProfilePic", user.ProfilePic);
-                                editor1.putString("User_mode", user.user_mode);
-                                editor1.putString("Specialization", user.Specialization);
-                                editor1.putString("Phone", user.Telephone);
-                                editor1.apply();
+                        editor1.putString("Email", user.Email);
+                        editor1.putString("FullName", user.Fullname);
+                        editor1.putString("User_id", user.user_id);
+                        editor1.putString("ProfilePic", user.ProfilePic);
+                        editor1.putString("User_mode", user.user_mode);
+                        editor1.putString("Specialization", user.Specialization);
+                        editor1.putString("Phone", user.Telephone);
+                        editor1.apply();
 
-                                //end of shared preferences
+                        //end of shared preferences
 
 
-                            }
-                        });
-                        Snackbar.make(findViewById(android.R.id.content),"Image Uploaded",Snackbar.LENGTH_LONG);
-                    }
+                    });
+                    Snackbar.make(findViewById(android.R.id.content),"Image Uploaded",Snackbar.LENGTH_LONG).show();
                 })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Register.this,"Failed",Toast.LENGTH_LONG).show();
-                    }
-                })
-                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(@NonNull UploadTask.TaskSnapshot tasksnapshot) {
-                        double progress=(100.0*tasksnapshot.getBytesTransferred()/tasksnapshot.getTotalByteCount());
-                        progressBar.setProgress((int)progress);
+                .addOnFailureListener(e -> Toast.makeText(Register.this,"Failed",Toast.LENGTH_LONG).show())
+                .addOnProgressListener(tasksnapshot -> {
+                    double progress=(100.0*tasksnapshot.getBytesTransferred()/tasksnapshot.getTotalByteCount());
+                    progressBar.setProgress((int)progress);
 
-                    }
                 });
     }
     public void register_user(){
-        db.collection("Users").document(mAuth.getCurrentUser().getUid()).set(user)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
+        db.collection("Users").document(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).set(user)
+                .addOnSuccessListener(aVoid -> {
 
-                        Toast.makeText(Register.this, "User has been registered successfully!", Toast.LENGTH_LONG).show();
-                        progressBar.setVisibility(View.GONE);
-                        Intent intent = new Intent(Register.this, MainActivity.class);
-                        progressDialog.dismiss();
-                        startActivity(intent);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Register.this, "Failed to set data! Try again!", Toast.LENGTH_LONG).show();
-                        progressBar.setVisibility(View.GONE);
-                        progressDialog.dismiss();
-                    }
+                    Toast.makeText(Register.this, "User has been registered successfully!", Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.GONE);
+                    Intent intent = new Intent(Register.this, MainActivity.class);
+                    progressDialog.dismiss();
+                    startActivity(intent);
+                }).addOnFailureListener(e -> {
+                    Toast.makeText(Register.this, "Failed to set data! Try again!", Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.GONE);
+                    progressDialog.dismiss();
                 });
 
     }

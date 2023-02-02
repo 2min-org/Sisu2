@@ -24,12 +24,6 @@ public class DiseaseInformation extends Fragment {
     List<DIHorModel>diHorModelList;
     DIHorAdapter diHorAdapter;
 
-    private DiseaseInformationViewModel mViewModel;
-
-    public static DiseaseInformation newInstance() {
-        return new DiseaseInformation();
-    }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -58,7 +52,7 @@ public class DiseaseInformation extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(DiseaseInformationViewModel.class);
+        DiseaseInformationViewModel mViewModel = new ViewModelProvider(this).get(DiseaseInformationViewModel.class);
         // TODO: Use the ViewModel
     }
 

@@ -25,7 +25,7 @@ public class Frag2 extends Fragment {
 
     private VaccineInformationViewModel mViewModel;
     private ViewPager2 viewPager3;
-    private Handler sliderHandler = new Handler();
+    private final Handler sliderHandler = new Handler();
 
     public static VaccineInformation newInstance() {
         return new VaccineInformation();

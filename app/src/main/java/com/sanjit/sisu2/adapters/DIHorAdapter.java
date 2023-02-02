@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,7 +27,7 @@ public class DIHorAdapter extends RecyclerView.Adapter<DIHorAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.disease_horizontal_item,parent,false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.disease_horizontal_item, parent, false));
     }
 
     @Override
@@ -42,7 +41,7 @@ public class DIHorAdapter extends RecyclerView.Adapter<DIHorAdapter.ViewHolder> 
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
 
 

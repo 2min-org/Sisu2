@@ -36,48 +36,39 @@ public class one_time_activity extends AppCompatActivity {
         nextbtn = findViewById(R.id.nextbtn);
         skipbtn = findViewById(R.id.skipButton);
 
-        backbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        backbtn.setOnClickListener(v -> {
 
-                if (getitem(0) > 0){
+            if (getitem(0) > 0){
 
-                    mSLideViewPager.setCurrentItem(getitem(-1),true);
-
-                }
+                mSLideViewPager.setCurrentItem(getitem(-1),true);
 
             }
+
         });
 
-        nextbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        nextbtn.setOnClickListener(v -> {
 
-                if (getitem(0) < 3)
-                    mSLideViewPager.setCurrentItem(getitem(1),true);
-                else {
+            if (getitem(0) < 3)
+                mSLideViewPager.setCurrentItem(getitem(1),true);
+            else {
 
-                    Intent i = new Intent(one_time_activity.this, Login.class);
-                    startActivity(i);
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    finish();
-
-                }
-
-            }
-        });
-
-        skipbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                Intent i = new Intent(one_time_activity.this,Login.class);
+                Intent i = new Intent(one_time_activity.this, Login.class);
                 startActivity(i);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 finish();
 
             }
+
+        });
+
+        skipbtn.setOnClickListener(v -> {
+
+
+            Intent i = new Intent(one_time_activity.this,Login.class);
+            startActivity(i);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            finish();
+
         });
 
         mSLideViewPager = (ViewPager) findViewById(R.id.slideViewPager);
