@@ -128,8 +128,8 @@ public class vaccine_schedule extends Fragment {
 
                 }
                 else{
-                    setAdapter();
                     active_child = child_list.get(position);
+                    setAdapter();
                 }
             }
 
@@ -190,6 +190,8 @@ public class vaccine_schedule extends Fragment {
         recyclerView.setAdapter(upcoming_vaccine_adapter);
 
         //async task to get data from firebase regarding vaccine dates
+        Log.d("active_child", active_child);
+
         db.collection("Users").document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid())
                 .collection("Child").document(active_child).get().addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
@@ -211,8 +213,7 @@ public class vaccine_schedule extends Fragment {
                                 upcoming_vaccine_model_async.add(new upcoming_vaccine_model(key, day, month_year, dose));
 
                             }
-                            Log.d("onPostExecute", "onPostExecute:");
-                            Log.d("onPostExecute", upcoming_vaccine_model_async.toString());
+
                             upcoming_vaccine_adapter = new upcoming_vaccine_adapter( upcoming_vaccine_model_async, getActivity());
                             recyclerView.setAdapter(upcoming_vaccine_adapter);
                         }

@@ -41,6 +41,9 @@ public class upcoming_vaccine_adapter extends RecyclerView.Adapter<upcoming_vacc
         holder.date_month_year.setText(listData.getVaccine_month_year());
         holder.vaccine_name.setText(listData.getVaccine_name());
         holder.vaccine_type.setText(listData.getVaccine_type());
+        Log.d("TAG", "onBindViewHolder: " + listData.getVaccine_day());
+        Log.d("TAG", "onBindViewHolder: " + listData.getVaccine_day());
+
 
     }
 
