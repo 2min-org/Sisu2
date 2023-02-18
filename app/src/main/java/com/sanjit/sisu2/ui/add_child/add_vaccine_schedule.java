@@ -170,56 +170,6 @@ public class add_vaccine_schedule extends AsyncTask<Void , Integer, String> {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         return map;
     }
 }
