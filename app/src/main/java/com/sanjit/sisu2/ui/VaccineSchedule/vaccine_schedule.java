@@ -207,10 +207,10 @@ public class vaccine_schedule extends Fragment {
                                 Map<String, Object> value = (Map<String, Object>) entry.getValue();
 
                                 String day = Objects.requireNonNull(value.get("day")).toString();
-                                String month_year = Objects.requireNonNull(value.get("month"))+" "+ Objects.requireNonNull(value.get("year"));
+                                String month_year = nunber_to_month(Objects.requireNonNull(value.get("month")))+" "+ Objects.requireNonNull(value.get("year"));
                                 String dose = "1st dose";
 
-                                upcoming_vaccine_model_async.add(new upcoming_vaccine_model(key, day, month_year, dose));
+                                upcoming_vaccine_model_async.add(new upcoming_vaccine_model(key, day, month_year , dose));
 
                             }
 
@@ -221,6 +221,49 @@ public class vaccine_schedule extends Fragment {
         });
         selected_date_vaccine = upcoming_vaccine_model_async;
 
+    }
+
+    private String nunber_to_month(Object month) {
+        String month_string = "";
+        switch (Objects.requireNonNull(month).toString()){
+            case "0":
+                month_string = "January";
+                break;
+            case "1":
+                month_string = "February";
+                break;
+            case "2":
+                month_string = "March";
+                break;
+            case "3":
+                month_string = "April";
+                break;
+            case "4":
+                month_string = "May";
+                break;
+            case "5":
+                month_string = "June";
+                break;
+            case "6":
+                month_string = "July";
+                break;
+            case "7":
+                month_string = "August";
+                break;
+            case "8":
+                month_string = "September";
+                break;
+            case "9":
+                month_string = "October";
+                break;
+            case "10":
+                month_string = "November";
+                break;
+            case "11":
+                month_string = "December";
+                break;
+        }
+        return month_string;
     }
 
     private void show_selected_date_vaccine(int year, int month, int dayOfMonth) {

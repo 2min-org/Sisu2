@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -97,55 +98,65 @@ public class book_doctor extends Fragment implements book_doctor_recyclerViewInt
 
     @Override
     public void onBookClick(int position, Button book) {
-        Toast.makeText(getContext(), "Booked", Toast.LENGTH_SHORT).show();
-        db.collection("Doctors").document((book_model_arr.get(position).getU_id())).get()
-                .addOnSuccessListener(documentSnapshot -> {
+        //open a date picker dialog to select the date of booking
+        //then on the date selected, open a time picker dialog to select the time of booking
+        //then on the time selected, open a dialog to confirm the booking
+        //if no more than 3 appointments are booked on that day, then book the appointment
+        //else show a toast that the doctor is busy on that day
 
-                    Map<String, Object> data = documentSnapshot.getData();
-                    assert data != null;
-                    ArrayList<String> appointment_id = (ArrayList<String>) data.get("appointment_id");
 
-                    Log.d("TAG", "Available appointments: "+appointment_id);
 
-                    //if the array doesn't contain the appointment id then add it
-                    //else show toast that appointment is already booked
 
-                    if(appointment_id == null) {
-                        db.collection("Doctors")
-                                .document((book_model_arr.get(position).getU_id()))
-                                .update("appointment_id", FieldValue.arrayUnion(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()))
-                                .addOnSuccessListener(aVoid -> {
-                                    Toast.makeText(getContext(), "Appointment Booked", Toast.LENGTH_SHORT).show();
-                                    book.setText("Booked");
-                                    book.setEnabled(false);
-                                })
-                                .addOnFailureListener(e -> {
-
-                                });
-                    }
-                    else{
-                        if(appointment_id.contains(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()))
-                        {
-                            Toast.makeText(getContext(), "Appointment already booked", Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                            db.collection("Doctors")
-                                    .document((book_model_arr.get(position).getU_id()))
-                                    .update("appointment_id", FieldValue.arrayUnion(mAuth.getCurrentUser().getUid()))
-                                    .addOnSuccessListener(aVoid -> {
-                                        Log.d("TAG", "Appointment booked");
-                                        book.setTextColor(Color.parseColor("#FFFFFF"));
-                                        book.setText("Booked");
-                                        book.setEnabled(false);
-
-                                    })
-                                    .addOnFailureListener(e -> {
-
-                                    });
-                        }
-                    }
-                })
-                .addOnFailureListener(e -> Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show());
-
-        }
+    }
+//        Toast.makeText(getContext(), "Booked", Toast.LENGTH_SHORT).show();
+//        db.collection("Doctors").document((book_model_arr.get(position).getU_id())).collection("Appointments")
+//                .addOnSuccessListener(documentSnapshot -> {
+//
+//                    Map<String, Object> data = documentSnapshot.getData();
+//                    assert data != null;
+//                    ArrayList<String> appointment_id = (ArrayList<String>) data.get("appointment_id");
+//
+//                    Log.d("TAG", "Available appointments: "+appointment_id);
+//
+//                    //if the array doesn't contain the appointment id then add it
+//                    //else show toast that appointment is already booked
+//
+//                    if(appointment_id == null) {
+//                        db.collection("Doctors")
+//                                .document((book_model_arr.get(position).getU_id()))
+//                                .update("appointment_id", FieldValue.arrayUnion(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()))
+//                                .addOnSuccessListener(aVoid -> {
+//                                    Toast.makeText(getContext(), "Appointment Booked", Toast.LENGTH_SHORT).show();
+//                                    book.setText("Booked");
+//                                    book.setEnabled(false);
+//                                })
+//                                .addOnFailureListener(e -> {
+//
+//                                });
+//                    }
+//                    else{
+//                        if(appointment_id.contains(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()))
+//                        {
+//                            Toast.makeText(getContext(), "Appointment already booked", Toast.LENGTH_SHORT).show();
+//                        }
+//                        else{
+//                            db.collection("Doctors")
+//                                    .document((book_model_arr.get(position).getU_id()))
+//                                    .update("appointment_id", FieldValue.arrayUnion(mAuth.getCurrentUser().getUid()))
+//                                    .addOnSuccessListener(aVoid -> {
+//                                        Log.d("TAG", "Appointment booked");
+//                                        book.setTextColor(Color.parseColor("#FFFFFF"));
+//                                        book.setText("Booked");
+//                                        book.setEnabled(false);
+//
+//                                    })
+//                                    .addOnFailureListener(e -> {
+//
+//                                    });
+//                        }
+//                    }
+//                })
+//                .addOnFailureListener(e -> Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show());
+//
+//        }
 }
