@@ -69,13 +69,156 @@ public class add_vaccine_schedule extends AsyncTask<Void , Integer, String> {
         Map<String , custom_date> map = new HashMap<>();
         //this is the map of vaccine name and date to be inoculated on basis of dob in custom_date
         Calendar calendar = Calendar.getInstance();
-        calendar.set(custom_date.getYear(),custom_date.getMonth(),custom_date.getDay());
+
 
         //BCG
+        calendar.set(custom_date.getYear(),custom_date.getMonth(),custom_date.getDay());
         calendar.add(Calendar.WEEK_OF_YEAR, 4);
+
         map.put("BCG", new custom_date(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
 
-        // TODO: 1/21/2023  add the rest of the vaccines
+        //Hepatitis B
+        calendar.set(custom_date.getYear(),custom_date.getMonth(),custom_date.getDay());
+        //1stdose
+        calendar.add(Calendar.WEEK_OF_YEAR, 0);
+        //2nd dose
+        calendar.add(Calendar.WEEK_OF_YEAR, 4);
+        map.put("HepB", new custom_date(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
+
+        //Rotavirus
+        calendar.set(custom_date.getYear(),custom_date.getMonth(),custom_date.getDay());
+        //1stdose
+        calendar.add(Calendar.WEEK_OF_YEAR, 9);
+        //2nd dose
+        calendar.add(Calendar.WEEK_OF_YEAR, 16);
+        //3rd dose
+        calendar.add(Calendar.WEEK_OF_YEAR, 24);
+        map.put("RV", new custom_date(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
+
+        //Tetanus
+        calendar.set(custom_date.getYear(),custom_date.getMonth(),custom_date.getDay());
+        //1st dose
+        calendar.add(Calendar.WEEK_OF_YEAR, 8);
+        //2nd dose
+        calendar.add(Calendar.WEEK_OF_YEAR, 16);
+        //3rd dose
+        calendar.add(Calendar.WEEK_OF_YEAR, 24);
+        //4th dose
+        calendar.add(Calendar.WEEK_OF_YEAR, 216);
+        map.put("Tetanus", new custom_date(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
+
+        //PCV
+        calendar.set(custom_date.getYear(),custom_date.getMonth(),custom_date.getDay());
+        //1st
+        calendar.add(Calendar.WEEK_OF_YEAR, 8);
+        //2nd
+        calendar.add(Calendar.WEEK_OF_YEAR, 16);
+        //3rd
+        calendar.add(Calendar.WEEK_OF_YEAR, 24);
+        //4th
+        calendar.add(Calendar.WEEK_OF_YEAR, 48);
+        map.put("PCV-Pneumococcal Disease", new custom_date(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
+
+        //Polio
+        calendar.set(custom_date.getYear(),custom_date.getMonth(),custom_date.getDay());
+        //1st
+        calendar.add(Calendar.WEEK_OF_YEAR, 8);
+        //2nd
+        calendar.add(Calendar.WEEK_OF_YEAR, 16);
+        //3rd
+        calendar.add(Calendar.WEEK_OF_YEAR, 24);
+        //4th
+        calendar.add(Calendar.WEEK_OF_YEAR, 216);
+        map.put("IPV-Polio", new custom_date(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
+
+        //Covid
+        calendar.set(custom_date.getYear(),custom_date.getMonth(),custom_date.getDay());
+        calendar.add(Calendar.WEEK_OF_YEAR, 28);
+        map.put("COVID-19", new custom_date(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
+
+        //Flu
+        calendar.set(custom_date.getYear(),custom_date.getMonth(),custom_date.getDay());
+        calendar.add(Calendar.WEEK_OF_YEAR, 28);
+        map.put("Influenza", new custom_date(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
+
+        //MMR
+        calendar.set(custom_date.getYear(),custom_date.getMonth(),custom_date.getDay());
+        //1st
+        calendar.add(Calendar.WEEK_OF_YEAR, 48);
+        //2nd
+        calendar.add(Calendar.WEEK_OF_YEAR, 217);
+        map.put("MMR-Mumps,Measles & Rubella", new custom_date(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
+
+        //Chickenpox
+        calendar.set(custom_date.getYear(),custom_date.getMonth(),custom_date.getDay());
+        //1st
+        calendar.add(Calendar.WEEK_OF_YEAR, 48);
+        //2nd
+        calendar.add(Calendar.WEEK_OF_YEAR, 217);
+        map.put("Chickenpox", new custom_date(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
+
+        //Hepaptitis A
+        calendar.set(custom_date.getYear(),custom_date.getMonth(),custom_date.getDay());
+        //1st
+        calendar.add(Calendar.WEEK_OF_YEAR, 48);
+        //2nd
+        calendar.add(Calendar.WEEK_OF_YEAR, 72);
+        map.put("HepA", new custom_date(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         return map;
     }
