@@ -178,9 +178,6 @@ public class vaccine_schedule extends Fragment {
         upcoming_vaccine_modelArrayList.add(new upcoming_vaccine_model("DPT", "12", "12 12","1st dose" ));
         upcoming_vaccine_modelArrayList.add(new upcoming_vaccine_model("DPT", "12", "12 12","1st dose" ));
         upcoming_vaccine_modelArrayList.add(new upcoming_vaccine_model("DPT", "12", "12 12","1st dose" ));
-        upcoming_vaccine_modelArrayList.add(new upcoming_vaccine_model("DPT", "12", "12 12","1st dose" ));
-        upcoming_vaccine_modelArrayList.add(new upcoming_vaccine_model("DPT", "12", "12 12","1st dose" ));
-        upcoming_vaccine_modelArrayList.add(new upcoming_vaccine_model("DPT", "12", "12 12","1st dose" ));
 
         //dummy data
 
@@ -207,10 +204,11 @@ public class vaccine_schedule extends Fragment {
                                 Map<String, Object> value = (Map<String, Object>) entry.getValue();
 
                                 String day = Objects.requireNonNull(value.get("day")).toString();
-                                String month_year = nunber_to_month(Objects.requireNonNull(value.get("month")))+" "+ Objects.requireNonNull(value.get("year"));
+                                String month_year = Objects.requireNonNull(value.get("month"))+" "+ Objects.requireNonNull(value.get("year"));
+                                String month_years = number_to_month(Objects.requireNonNull(value.get("month")))+" "+ Objects.requireNonNull(value.get("year"));
                                 String dose = "1st dose";
 
-                                upcoming_vaccine_model_async.add(new upcoming_vaccine_model(key, day, month_year , dose));
+                                upcoming_vaccine_model_async.add(new upcoming_vaccine_model(key, day, month_years , dose));
 
                             }
 
@@ -223,7 +221,7 @@ public class vaccine_schedule extends Fragment {
 
     }
 
-    private String nunber_to_month(Object month) {
+    private String number_to_month(Object month) {
         String month_string = "";
         switch (Objects.requireNonNull(month).toString()){
             case "0":
@@ -268,7 +266,7 @@ public class vaccine_schedule extends Fragment {
 
     private void show_selected_date_vaccine(int year, int month, int dayOfMonth) {
 
-        String date = dayOfMonth+" "+month+" "+year;
+        String date = dayOfMonth+" "+number_to_month(month)+" "+year;
         Log.d("date", date);
         ArrayList<upcoming_vaccine_model> vaccine_to_be_shown = new ArrayList<>();
         //loop through the selected_date_vaccine arraylist and check if the date matches
