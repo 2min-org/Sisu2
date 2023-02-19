@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -27,6 +29,12 @@ public class VerifyOtpActivity extends AppCompatActivity {
     Button buttonVerify;
     String codeBySystem;
 
+    //true after every 60 seconds
+    private boolean resendEnable = false;
+
+    //resend time in seconds
+    private int resendTime = 60;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +43,8 @@ public class VerifyOtpActivity extends AppCompatActivity {
 
         TextView textMobile = findViewById(R.id.textMobile);
         buttonVerify = findViewById(R.id.btnverifyotp);
+
+        TextView resendlabelBtn = findViewById(R.id.textResendOTP);
 
         textMobile.setText(String.format(
                 "+977-%s", getIntent().getStringExtra("mobile")
@@ -51,6 +61,8 @@ public class VerifyOtpActivity extends AppCompatActivity {
         final ProgressBar progressBar = findViewById(R.id.progressBar_Verify_otp);
 
         setupOTPInputs();
+
+        startCounter();
 
         //any space of otp shouldnot be empty
         buttonVerify.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +84,6 @@ public class VerifyOtpActivity extends AppCompatActivity {
 
                     if(codeBySystem!=null){
                         progressBar.setVisibility(View.VISIBLE);
-                        buttonVerify.setVisibility(View.INVISIBLE);
 
                         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(
                                 codeBySystem, code
@@ -80,63 +91,61 @@ public class VerifyOtpActivity extends AppCompatActivity {
                         FirebaseAuth.getInstance().signInWithCredential(credential)
                                 .addOnCompleteListener(task -> {
                                     if(task.isSuccessful()){
-                                        Toast.makeText(VerifyOtpActivity.this, "User has been registered successfully!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(VerifyOtpActivity.this, "OTP Verified.", Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(getApplicationContext(), Register.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
+                                        finish();
                                     }else{
                                         Toast.makeText(VerifyOtpActivity.this, "The verification code entered was invalid", Toast.LENGTH_SHORT).show();
                                         progressBar.setVisibility(View.GONE);
-                                        buttonVerify.setVisibility(View.INVISIBLE);
                                     }
                                 });
                     }else{
                         Toast.makeText(VerifyOtpActivity.this, "Please check Internet Connection.", Toast.LENGTH_SHORT).show();
                     }
-
-                    Intent intent = new Intent(getApplicationContext(), Register.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    Toast.makeText(VerifyOtpActivity.this, "OTP Verified.", Toast.LENGTH_SHORT).show();
-                    startActivity(intent);
                 }else{
                     Toast.makeText(VerifyOtpActivity.this, "Please fill all the spaces.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        TextView resendlabel = findViewById(R.id.textResendOTP);
 
-        resendlabel.setOnClickListener(new View.OnClickListener() {
+
+        resendlabelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                        "+977" + getIntent().getStringExtra("mobile"), 60,
-                        java.util.concurrent.TimeUnit.SECONDS,
-                        VerifyOtpActivity.this,
-                        new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-                            @Override
-                            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-
-                            }
-
-                            @Override
-                            public void onVerificationFailed(@NonNull FirebaseException e) {
-
-                                Toast.makeText(VerifyOtpActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-
-                            @Override
-                            public void onCodeSent(@NonNull String newverificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) { // need new verification code
-
-                                codeBySystem = newverificationId;
-                                Toast.makeText(VerifyOtpActivity.this, "OTP Sent.", Toast.LENGTH_SHORT).show();
-
-                            }
-                        }
-                );
+               if(resendlabelBtn.isEnabled()){
+                   //handle your resend code here.
+                   //start count down timer
+                   startCounter();
+               }
             }
         });
     }
 
+
+    private void startCounter(){
+
+        resendEnable = false;
+        buttonVerify.setTextColor(Color.parseColor("#FF0000"));
+
+        new CountDownTimer(60000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                buttonVerify.setText("Resend OTP ("+(+millisUntilFinished/6000)+")");
+                buttonVerify.setEnabled(false);
+                resendEnable = false;
+            }
+
+            @Override
+            public void onFinish() {
+                buttonVerify.setText("Resend OTP");
+                buttonVerify.setEnabled(true);
+                resendEnable = true;
+                buttonVerify.setTextColor(getResources().getColor(R.color.active));
+            }
+        }.start();
+    }
 
     //for otp input to move to next input as soon as user enters one digit of otp
     private void setupOTPInputs(){

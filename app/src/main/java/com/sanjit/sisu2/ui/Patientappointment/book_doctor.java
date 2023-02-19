@@ -1,8 +1,19 @@
 package com.sanjit.sisu2.ui.Patientappointment;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,13 +31,14 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.sanjit.sisu2.R;
+import com.sanjit.sisu2.ui.login_register_user.Login;
 
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Objects;
 
 
-public class book_doctor extends Fragment implements book_doctor_recyclerViewInterface{
+public class book_doctor extends Fragment implements book_doctor_recyclerViewInterface {
 
     private RecyclerView recyclerView;
     ArrayList<book_doctor_model> book_model_arr = new ArrayList<>();
@@ -34,10 +46,18 @@ public class book_doctor extends Fragment implements book_doctor_recyclerViewInt
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     public ArrayList<String> booking_id = new ArrayList<>();
 
+    private static final String CHANNEL_ID = "SISU";
+
+    private static final int REQUEST_CODE = 100;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        Drawable drawable= ResourcesCompat.getDrawable(getResources(),R.drawable.bachha1,null);
+        BitmapDrawable bitmapDrawable= (BitmapDrawable) drawable;
+        Bitmap largeIcon= bitmapDrawable.getBitmap();
 
         View view = inflater.inflate(R.layout.fragment_book_doctor, container, false);
         recyclerView = view.findViewById(R.id.doctor_recycler_view);
@@ -104,8 +124,30 @@ public class book_doctor extends Fragment implements book_doctor_recyclerViewInt
         //if no more than 3 appointments are booked on that day, then book the appointment
         //else show a toast that the doctor is busy on that day
 
+        NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        Intent intent = new Intent(getContext(), Login.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
+        PendingIntent contentIntent = PendingIntent.getActivity(getContext(), REQUEST_CODE, intent, PendingIntent.FLAG_IMMUTABLE);
 
+        Notification thank= null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            thank = new Notification.Builder(getContext(), CHANNEL_ID)
+                    .setContentTitle("Doctor booked")
+                    .setContentText("Your appointment has been booked today for 10:00 AM")
+                    .setChannelId(CHANNEL_ID)
+                    .setAutoCancel(false)
+                    .setContentIntent(contentIntent)
+                    .setSmallIcon(R.drawable.bachha1)
+                    .build();
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "SISU", NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription("SISU");
+            notificationManager.createNotificationChannel(channel);
+        }
+        notificationManager.notify(1,thank);
 
     }
 //        Toast.makeText(getContext(), "Booked", Toast.LENGTH_SHORT).show();
