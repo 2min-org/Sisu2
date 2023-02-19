@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -27,10 +28,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:layout_marginTop="36dp"
+        android:tag="rajottam"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp"
         app:contentPadding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
@@ -66,11 +70,13 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         app:cardCornerRadius="20dp"
+        android:tag="rojan"
         app:cardElevation="10dp"
         app:contentPadding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cd1">
+        app:layout_constraintTop_toBottomOf="@+id/cd1"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:id="@+id/abs2"
@@ -100,6 +106,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cd3"
+        android:tag="sandesh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -139,6 +146,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cd4"
+        android:tag="sanjit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
