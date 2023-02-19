@@ -1,10 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.aboutus.AboutUs">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.aboutus.AboutUs"
+    android:orientation="vertical"
+    android:gravity="center">
+    <androidx.cardview.widget.CardView
+        android:onClick="expand"
+        android:id="@+id/cd1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        android:layout_margin="20dp"
+        app:cardElevation="10dp"
+        app:contentPadding="20dp">
+        <LinearLayout
+            android:id="@+id/abs1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:animateLayoutChanges="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rojan Dai"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:textColor="#93acff"/>
+            <TextView
+                android:id="@+id/rojanaubus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="@string/dior"
+                android:textSize="18sp"/>
+
+
+                
 
 
 
-</FrameLayout>
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+</LinearLayout>
