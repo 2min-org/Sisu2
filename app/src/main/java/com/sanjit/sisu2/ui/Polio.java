@@ -70,6 +70,8 @@ public class Polio extends AppCompatActivity {
                     // send OTP method for getting OTP from Firebase.
                     String phone = "+91" + edtPhone.getText().toString();
                     sendVerificationCode(phone);
+
+
                 }
             }
         });
