@@ -334,6 +334,20 @@
     <string name="doctor_s_name">Doctor\'s Name</string>
     <string name="schedule_for">Schedule for :</string>
     <string name="uploading">Uploading.....</string>
+    <string name="birth_0_years">Birth (0 years)</string>
+    <string name="_2_month">2 Month</string>
+    <string name="_4_months">4 Months</string>
+    <string name="_6_months">6 Months</string>
+    <string name="_12_months">12 Months</string>
+    <string name="_15_months">15 months</string>
+    <string name="_9_months" />
+    <string name="_18_months" />
+    <string name="_4_6_years" />
+    <string name="birth" />
+    <string name="_18_month">18 Months</string>
+    <string name="_4_6_year">4-6 Years</string>
+    <string name="birthh">Birth</string>
+    <string name="_2_months">2 Months</string>
     <string name="dior">Hello My friend Sanjit Godar</string>
 
 

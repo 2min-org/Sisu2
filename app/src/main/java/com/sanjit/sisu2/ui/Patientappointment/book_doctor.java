@@ -124,6 +124,7 @@ public class book_doctor extends Fragment implements book_doctor_recyclerViewInt
         //if no more than 3 appointments are booked on that day, then book the appointment
         //else show a toast that the doctor is busy on that day
 
+        //notification
         NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
         Intent intent = new Intent(getContext(), Login.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

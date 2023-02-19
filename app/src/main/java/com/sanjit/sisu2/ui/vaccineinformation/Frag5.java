@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Frag1 extends Fragment {
+public class Frag5 extends Fragment {
 
     private ViewPager2 viewPager3;
     private final Handler sliderHandler = new Handler();
@@ -39,7 +39,7 @@ public class Frag1 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Frag1() {
+    public Frag5() {
         // Required empty public constructor
     }
 
@@ -53,7 +53,12 @@ public class Frag1 extends Fragment {
         viewPager3=view.findViewById(R.id.viewPagerImageSliderDisease);
 
         List<SliderItem> sliderItems=new ArrayList<>();
-        sliderItems.add(new SliderItem(R.drawable.hepatitisbvacc));
+        sliderItems.add(new SliderItem(R.drawable.hepa));
+        sliderItems.add(new SliderItem(R.drawable.iv));
+        sliderItems.add(new SliderItem(R.drawable.pnemovacc));
+        sliderItems.add(new SliderItem(R.drawable.cpv));
+
+
 
         viewPager3.setAdapter(new SliderAdapter(sliderItems,viewPager3));
 

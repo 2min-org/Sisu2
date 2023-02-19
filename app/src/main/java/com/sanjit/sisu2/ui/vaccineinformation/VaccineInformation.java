@@ -18,7 +18,7 @@ import com.sanjit.sisu2.R;
 
 public class VaccineInformation extends Fragment {
 
-    Button btn1, btn2, btn3;
+    Button btn1, btn2, btn3,btn4,btn5,btn6,btn7;
 
     private VaccineInformationViewModel mViewModel;
     private ViewPager2 viewPager2;
@@ -36,6 +36,10 @@ public class VaccineInformation extends Fragment {
         btn1 = view.findViewById(R.id.btnFrag1);
         btn2 = view.findViewById(R.id.btnFrag2);
         btn3 = view.findViewById(R.id.btnFrag3);
+        btn4 = view.findViewById(R.id.btnFrag4);
+        btn5 = view.findViewById(R.id.btnFrag5);
+        btn6 = view.findViewById(R.id.btnFrag6);
+        btn7 = view.findViewById(R.id.btnFrag7);
 
         loadFragment(new Frag1(),0);
 
@@ -60,6 +64,34 @@ public class VaccineInformation extends Fragment {
             }
         });
 
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new Frag4(),1);
+            }
+        });
+
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new Frag5(),1);
+            }
+        });
+
+        btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new Frag6(),1);
+            }
+        });
+
+        btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new Frag7(),1);
+            }
+        });
+
         return view;
     }
 
@@ -75,9 +107,9 @@ public class VaccineInformation extends Fragment {
         FragmentTransaction ft=fm.beginTransaction();
 
         if(flag==0)
-            ft.add(R.id.container,fragment);
+            ft.add(R.id.fragment_container,fragment);
         else
-            ft.replace(R.id.container,fragment);
+            ft.replace(R.id.fragment_container,fragment);
 
         ft.commit();
 

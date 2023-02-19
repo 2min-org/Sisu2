@@ -52,11 +52,13 @@ public class Frag3 extends Fragment {
 
         //Your set of instruction here..
         List<SliderItem> sliderItems = new ArrayList<>();
-        sliderItems.add(new SliderItem(R.drawable.pv));
-        sliderItems.add(new SliderItem(R.drawable.cpv));
-        sliderItems.add(new SliderItem(R.drawable.mgl));
+        sliderItems.add(new SliderItem(R.drawable.rotavirusvacc));
+        sliderItems.add(new SliderItem(R.drawable.diptheriavacc));
+        sliderItems.add(new SliderItem(R.drawable.tetanusvacc));
+        sliderItems.add(new SliderItem(R.drawable.pertusisvacc));
         sliderItems.add(new SliderItem(R.drawable.iv));
-        sliderItems.add(new SliderItem(R.drawable.mv));
+        sliderItems.add(new SliderItem(R.drawable.pnemovacc));
+        sliderItems.add(new SliderItem(R.drawable.pv));
 
         viewPager4.setAdapter(new SliderAdapter(sliderItems, viewPager4));
 
