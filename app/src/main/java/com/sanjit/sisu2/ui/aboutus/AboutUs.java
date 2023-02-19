@@ -21,6 +21,7 @@ import com.sanjit.sisu2.R;
 public class AboutUs extends Fragment implements View.OnClickListener{
     TextView detailsText;
     LinearLayout layout;
+
     View view;
 
 
