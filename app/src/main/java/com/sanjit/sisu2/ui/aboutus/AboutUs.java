@@ -7,6 +7,7 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,23 +19,23 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.sanjit.sisu2.R;
 
-public class AboutUs extends Fragment implements View.OnClickListener{
+public class AboutUs extends Fragment implements View.OnClickListener {
     TextView detailsText;
     LinearLayout layout;
+    ImageView imageViewrojan;
 
     View view;
-
+    CardView cardView;
 
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
          view=inflater.inflate(R.layout.fragment_about_us, container, false);
-        detailsText=view.findViewById(R.id.rojanaubus);
+        imageViewrojan=view.findViewById(R.id.rojanabus);
         layout=view.findViewById(R.id.abs1);
         layout.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
-
-        CardView cardView=view.findViewById(R.id.cd1);
+        cardView=view.findViewById(R.id.cd1);
         cardView.setOnClickListener(this);
         return view;
 
@@ -48,9 +49,9 @@ public class AboutUs extends Fragment implements View.OnClickListener{
     }
 
     public void expand(View view) {
-        int v=(detailsText.getVisibility()==View.GONE)? View.VISIBLE:View.GONE;
+        int v=(imageViewrojan.getVisibility()==View.GONE)? View.VISIBLE:View.GONE;
         TransitionManager.beginDelayedTransition(layout,new AutoTransition());
-        detailsText.setVisibility(v);
+        imageViewrojan.setVisibility(v);
     }
 
     @Override

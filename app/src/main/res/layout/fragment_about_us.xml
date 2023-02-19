@@ -24,20 +24,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rojan Dai"
+                android:text="Rojan Shrestha"
                 android:textSize="32sp"
                 android:textStyle="bold"
                 android:textColor="#93acff"/>
-            <TextView
-                android:id="@+id/rojanaubus"
+            <ImageView
+                android:id="@+id/rojanabus"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="@string/dior"
-                android:textSize="18sp"/>
+                android:layout_height="300dp"
+                android:src="@drawable/rojanabus"
+                android:visibility="gone"/>
 
 
-                
+
+
 
 
 
