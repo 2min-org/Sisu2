@@ -7,6 +7,7 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,23 +19,35 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.sanjit.sisu2.R;
 
-public class AboutUs extends Fragment implements View.OnClickListener{
+public class AboutUs extends Fragment implements View.OnClickListener {
     TextView detailsText;
-    LinearLayout layout;
+   //Rajottam
+   LinearLayout layoutRajottam;
+    ImageView imageViewRajottam;
+    //Rojan
+    ImageView imageViewRojan;
+    LinearLayout layoutRojan;
 
     View view;
-
+    CardView cardView;
 
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
          view=inflater.inflate(R.layout.fragment_about_us, container, false);
-        detailsText=view.findViewById(R.id.rojanaubus);
-        layout=view.findViewById(R.id.abs1);
-        layout.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+         //Rajottam
+        imageViewRajottam=view.findViewById(R.id.rajottamabus);
+        layoutRajottam=view.findViewById(R.id.abs1);
+        layoutRajottam.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        cardView=view.findViewById(R.id.cd1);
+        cardView.setOnClickListener(this);
 
-        CardView cardView=view.findViewById(R.id.cd1);
+        //Rojan
+        imageViewRojan=view.findViewById(R.id.rojanabus);
+        layoutRojan=view.findViewById(R.id.abs2);
+        layoutRojan.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        cardView=view.findViewById(R.id.cd2);
         cardView.setOnClickListener(this);
         return view;
 
@@ -48,9 +61,14 @@ public class AboutUs extends Fragment implements View.OnClickListener{
     }
 
     public void expand(View view) {
-        int v=(detailsText.getVisibility()==View.GONE)? View.VISIBLE:View.GONE;
-        TransitionManager.beginDelayedTransition(layout,new AutoTransition());
-        detailsText.setVisibility(v);
+        int ra=(imageViewRajottam.getVisibility()==View.GONE)? View.VISIBLE:View.GONE;
+        TransitionManager.beginDelayedTransition(layoutRajottam,new AutoTransition());
+        imageViewRajottam.setVisibility(ra);
+
+        int ro=(imageViewRojan.getVisibility()==View.GONE)? View.VISIBLE:View.GONE;
+        TransitionManager.beginDelayedTransition(layoutRojan,new AutoTransition());
+        imageViewRojan.setVisibility(ro);
+
     }
 
     @Override
