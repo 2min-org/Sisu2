@@ -8,7 +8,6 @@
     android:orientation="vertical"
     android:gravity="center">
     <androidx.cardview.widget.CardView
-        android:onClick="expand"
         android:id="@+id/cd1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

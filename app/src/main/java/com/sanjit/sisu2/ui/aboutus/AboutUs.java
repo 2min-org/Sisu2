@@ -18,11 +18,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.sanjit.sisu2.R;
 
-public class AboutUs extends Fragment {
+public class AboutUs extends Fragment implements View.OnClickListener{
     TextView detailsText;
     LinearLayout layout;
     View view;
-    CardView cardView;
+
 
 
     @Override
@@ -32,9 +32,9 @@ public class AboutUs extends Fragment {
         detailsText=view.findViewById(R.id.rojanaubus);
         layout=view.findViewById(R.id.abs1);
         layout.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
-        cardView=view.findViewById(R.id.cd1);
-        cardView.hasOnClickListeners();
-        cardView.setOnClickListener();
+
+        CardView cardView=view.findViewById(R.id.cd1);
+        cardView.setOnClickListener(this);
         return view;
 
     }
@@ -50,5 +50,10 @@ public class AboutUs extends Fragment {
         int v=(detailsText.getVisibility()==View.GONE)? View.VISIBLE:View.GONE;
         TransitionManager.beginDelayedTransition(layout,new AutoTransition());
         detailsText.setVisibility(v);
+    }
+
+    @Override
+    public void onClick(View v) {
+        expand(v);
     }
 }

@@ -69,12 +69,11 @@ public class add_vaccine_schedule extends AsyncTask<Void , Integer, String> {
         Map<String , custom_date> map = new HashMap<>();
         //this is the map of vaccine name and date to be inoculated on basis of dob in custom_date
         Calendar calendar = Calendar.getInstance();
-
+        calendar.set(custom_date.getYear(),custom_date.getMonth(),custom_date.getDay());
 
         //BCG
         calendar.set(custom_date.getYear(),custom_date.getMonth(),custom_date.getDay());
         calendar.add(Calendar.WEEK_OF_YEAR, 4);
-
         map.put("BCG", new custom_date(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
 
         //Hepatitis B
