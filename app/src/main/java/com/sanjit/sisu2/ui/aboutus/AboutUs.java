@@ -27,6 +27,13 @@ public class AboutUs extends Fragment implements View.OnClickListener {
     //Rojan
     ImageView imageViewRojan;
     LinearLayout layoutRojan;
+    //Sandesh
+    ImageView imageViewSandesh;
+    LinearLayout layoutSandesh;
+
+    //Sanjit
+    ImageView imageViewSanjit;
+    LinearLayout layoutSanjit;
 
     View view;
     CardView cardView;
@@ -49,7 +56,25 @@ public class AboutUs extends Fragment implements View.OnClickListener {
         layoutRojan.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
         cardView=view.findViewById(R.id.cd2);
         cardView.setOnClickListener(this);
+
+
+        //Sandesh
+        imageViewSandesh=view.findViewById(R.id.sandeshabus);
+        layoutSandesh=view.findViewById(R.id.abs3);
+        layoutSandesh.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        cardView=view.findViewById(R.id.cd3);
+        cardView.setOnClickListener(this);
+
+        //Sanjit
+        imageViewSanjit=view.findViewById(R.id.sanjitabus);
+        layoutSanjit=view.findViewById(R.id.abs4);
+        layoutSanjit.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        cardView=view.findViewById(R.id.cd4);
+        cardView.setOnClickListener(this);
+
+
         return view;
+
 
     }
 
@@ -68,6 +93,17 @@ public class AboutUs extends Fragment implements View.OnClickListener {
         int ro=(imageViewRojan.getVisibility()==View.GONE)? View.VISIBLE:View.GONE;
         TransitionManager.beginDelayedTransition(layoutRojan,new AutoTransition());
         imageViewRojan.setVisibility(ro);
+
+        int sko=(imageViewSandesh.getVisibility()==View.GONE)? View.VISIBLE:View.GONE;
+        TransitionManager.beginDelayedTransition(layoutSandesh,new AutoTransition());
+        imageViewSandesh.setVisibility(sko);
+
+        int ska=(imageViewSanjit.getVisibility()==View.GONE)? View.VISIBLE:View.GONE;
+        TransitionManager.beginDelayedTransition(layoutSanjit,new AutoTransition());
+        imageViewSanjit.setVisibility(ska);
+
+
+
 
     }
 
