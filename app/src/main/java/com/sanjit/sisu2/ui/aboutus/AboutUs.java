@@ -21,8 +21,12 @@ import com.sanjit.sisu2.R;
 
 public class AboutUs extends Fragment implements View.OnClickListener {
     TextView detailsText;
-    LinearLayout layout;
-    ImageView imageViewrojan;
+   //Rajottam
+   LinearLayout layoutRajottam;
+    ImageView imageViewRajottam;
+    //Rojan
+    ImageView imageViewRojan;
+    LinearLayout layoutRojan;
 
     View view;
     CardView cardView;
@@ -32,10 +36,18 @@ public class AboutUs extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
          view=inflater.inflate(R.layout.fragment_about_us, container, false);
-        imageViewrojan=view.findViewById(R.id.rojanabus);
-        layout=view.findViewById(R.id.abs1);
-        layout.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+         //Rajottam
+        imageViewRajottam=view.findViewById(R.id.rajottamabus);
+        layoutRajottam=view.findViewById(R.id.abs1);
+        layoutRajottam.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
         cardView=view.findViewById(R.id.cd1);
+        cardView.setOnClickListener(this);
+
+        //Rojan
+        imageViewRojan=view.findViewById(R.id.rojanabus);
+        layoutRojan=view.findViewById(R.id.abs2);
+        layoutRojan.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        cardView=view.findViewById(R.id.cd2);
         cardView.setOnClickListener(this);
         return view;
 
@@ -49,9 +61,14 @@ public class AboutUs extends Fragment implements View.OnClickListener {
     }
 
     public void expand(View view) {
-        int v=(imageViewrojan.getVisibility()==View.GONE)? View.VISIBLE:View.GONE;
-        TransitionManager.beginDelayedTransition(layout,new AutoTransition());
-        imageViewrojan.setVisibility(v);
+        int ra=(imageViewRajottam.getVisibility()==View.GONE)? View.VISIBLE:View.GONE;
+        TransitionManager.beginDelayedTransition(layoutRajottam,new AutoTransition());
+        imageViewRajottam.setVisibility(ra);
+
+        int ro=(imageViewRojan.getVisibility()==View.GONE)? View.VISIBLE:View.GONE;
+        TransitionManager.beginDelayedTransition(layoutRojan,new AutoTransition());
+        imageViewRojan.setVisibility(ro);
+
     }
 
     @Override
