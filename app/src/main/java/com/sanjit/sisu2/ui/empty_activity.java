@@ -37,7 +37,7 @@ public class empty_activity extends AppCompatActivity {
         diseaseImageMap.put("Diphtheria", R.drawable.dipthdis);
         diseaseImageMap.put("Measles", R.drawable.measlesdis);
         diseaseImageMap.put("Hepatitis B", R.drawable.hepatitisb);
-        diseaseImageMap.put("Hepatitis A", R.drawable.hepa);
+        diseaseImageMap.put("Hepatitis A", R.drawable.hepatitisadis);
         diseaseImageMap.put("Hib", R.drawable.influenza);
         diseaseImageMap.put("Rotavirus", R.drawable.rotavirus);
         diseaseImageMap.put("Pneumococcal", R.drawable.pnemo);
