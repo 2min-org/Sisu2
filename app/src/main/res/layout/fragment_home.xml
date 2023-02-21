@@ -447,7 +447,7 @@
                         android:text="Caring a child is one of the most satisfying thing that a human being does."
                         android:textAlignment="center"
                         android:textColor="#ffffff"
-                        android:textSize="20sp"
+                        android:textSize="19dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView9"
                         app:layout_constraintStart_toStartOf="parent"
