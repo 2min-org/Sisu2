@@ -6,7 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,25 +36,32 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MeroProfile extends AppCompatActivity {
+public class MeroProfile extends AppCompatActivity implements View.OnClickListener{
 
     ArrayList<appointment_model> appointment_model_arr = new ArrayList<>();
     private final FirebaseAuth mAuth=FirebaseAuth.getInstance();
     private DatabaseReference databaseReference;
     private StorageReference storageReference;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    TextView namep,phonep,addressp,dobp,genderp,myTextView;
+    EditText emailp;
+    ImageView editClick, saveClick;
+    boolean isEdit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mero_profile);
 
-        TextView namep = findViewById(R.id.aayoname);
-        TextView emailp = findViewById(R.id.aayomail);
-        TextView phonep =findViewById(R.id.aayotelephone);
-        TextView addressp = findViewById(R.id.aayoaddress);
-        TextView dobp = findViewById(R.id.aayobirthday);
-        TextView genderp = findViewById(R.id.aayogender);
+
+        namep = findViewById(R.id.aayoname);
+        emailp = findViewById(R.id.aayomail);
+        phonep =findViewById(R.id.aayotelephone);
+        addressp = findViewById(R.id.aayoaddress);
+        dobp = findViewById(R.id.aayobirthday);
+        genderp = findViewById(R.id.aayogender);
+        saveClick = findViewById(R.id.done_click);
+        editClick = findViewById(R.id.edit_click);
 
         CircleImageView profile = findViewById(R.id.aayophoto);
 
@@ -62,6 +73,14 @@ public class MeroProfile extends AppCompatActivity {
         String DOB = sharedPreferences.getString("DOB", "Not Specified");
         String Gender = sharedPreferences.getString("Gender", "Not Specified");
 
+        namep.setOnClickListener(this);
+        emailp.setOnClickListener(this);
+        phonep.setOnClickListener(this);
+        addressp.setOnClickListener(this);
+        dobp.setOnClickListener(this);
+        genderp.setOnClickListener(this);
+        saveClick.setOnClickListener(this);
+        editClick.setOnClickListener(this);
 
         namep.setText(FullName);
         emailp.setText(Email);
@@ -128,6 +147,79 @@ public class MeroProfile extends AppCompatActivity {
                         Toast.makeText(MeroProfile.this, "Error!", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.edit_click:
+                edit_profile(v);
+                break;
+            case R.id.done_click:
+                save_profile();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void save_profile() {
+        Toast.makeText(this, "Save Profile", Toast.LENGTH_SHORT).show();
+
+        editClick.setVisibility(View.VISIBLE);
+        saveClick.setVisibility(View.GONE);
+    }
+
+    private void edit_profile(View v) {
+
+        Toast.makeText(this, "Edit Profile", Toast.LENGTH_SHORT).show();
+
+        editClick.setVisibility(View.GONE);
+        saveClick.setVisibility(View.VISIBLE);
+
+        setTextViewEditable(namep,true);
+        setTextViewEditable(emailp,true);
+        setTextViewEditable(phonep,true);
+        setTextViewEditable(addressp,true);
+        setTextViewEditable(dobp,true);
+        setTextViewEditable(genderp,true);
+
+    }
+
+    private void change() {
+        Toast.makeText(this, "Change", Toast.LENGTH_SHORT).show();
+        myTextView.setFocusable(true);
+        myTextView.setFocusableInTouchMode(true);
+
+        //set a text watcher to monitor the text changes
+
+        myTextView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                //this method is called to notify you that, within s, the count characters beginning at start are about to be replaced by new text with length after.
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //this method is called to notify you that, within s, the count characters beginning at start have just replaced old text that had length before.
+                myTextView.setText(s);
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                //this method is called to notify you that, somewhere within s, the text has been changed.
+
+            }
+        });
+    }
+    private void setTextViewEditable(TextView textView, boolean editable) {
+
+        textView.setFocusableInTouchMode(editable);
+        textView.setFocusable(editable);
+        textView.setCursorVisible(editable);
+        if (editable) {
+            textView.requestFocus();
+        } else {
+            textView.clearFocus();
+        }
     }
 
 }
