@@ -16,8 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sanjit.sisu2.R;
 import com.sanjit.sisu2.models.Home_hor_model;
+import com.sanjit.sisu2.models.SliderItem;
 import com.sanjit.sisu2.ui.Polio;
 import com.sanjit.sisu2.ui.empty_activity;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -39,8 +41,13 @@ public class home_horizontal_adapter extends RecyclerView.Adapter<home_horizonta
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.imageView.setImageResource(home_horizontal_modelList.get(position).getImage());
         holder.name.setText(home_horizontal_modelList.get(position).getName());
+        holder.imageView.setImageResource(home_horizontal_modelList.get(position).getImage());
+        Picasso.get().load(home_horizontal_modelList.get(position).getImage())
+                .centerCrop()
+                .resize(650, 500)
+                .placeholder(R.drawable.ic_logo)
+                .into(holder.imageView);
     }
 
     @Override
@@ -59,9 +66,11 @@ public class home_horizontal_adapter extends RecyclerView.Adapter<home_horizonta
             imageView = itemView.findViewById(R.id.hor_img);
             name = itemView.findViewById(R.id.hor_text);
             itemView.setOnClickListener(this);
+
         }
 
-        @Override
+
+            @Override
         public void onClick(View view) {
             int position = getAbsoluteAdapterPosition();
             Intent intent = new Intent(context, empty_activity.class);
@@ -71,8 +80,8 @@ public class home_horizontal_adapter extends RecyclerView.Adapter<home_horizonta
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("disease", home_horizontal_modelList.get(position).getName());
             editor.apply();
-
             context.startActivity(intent);
+
         }
     }
 }

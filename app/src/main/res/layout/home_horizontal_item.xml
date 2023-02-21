@@ -14,17 +14,24 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:orientation="vertical"
-        android:padding="5dp"
+
         android:background="@color/active"
         >
-        <ImageView
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            app:cardCornerRadius="20dp"
+            >
+            <ImageView
             android:id="@+id/hor_img"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
+            android:layout_height="match_parent"
             android:src="@drawable/ic_vaccine_name"
             android:layout_gravity="center"
             android:contentDescription="@string/todo" />
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/hor_text"

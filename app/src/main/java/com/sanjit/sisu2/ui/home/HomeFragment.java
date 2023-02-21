@@ -194,21 +194,21 @@ public class HomeFragment extends Fragment {
     }
 
     public void setHome_horizontal_modelList(List<Home_hor_model> home_horizontal_modelList) {
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Polio"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Diphtheria"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Measles"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hepatitis B"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hepatitis A"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hib"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Rotavirus"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Pneumococcal"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Influenza"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Meningococcal"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.polio_home,"Polio"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.dpt,"Diphtheria"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.measels,"Measles"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.hepatb,"Hepatitis B"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.hepata,"Hepatitis A"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.hib,"Hib"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.rotavirus_home,"Rotavirus"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.pneumococcal,"Pneumococcal"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.influenza_home,"Influenza"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.meningococcal,"Meningococcal"));
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Tetanus"));
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Typhoid"));
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Pertussis"));
     }
-
+    //Sandesh vaccine ko nam hala
     public void setHome_horizontal_modelList_vaccine(List<Home_hor_model> home_horizontal_modelList_vaccine) {
 
         List<Home_hor_model>home_horizontal_modelList = home_horizontal_modelList_vaccine;

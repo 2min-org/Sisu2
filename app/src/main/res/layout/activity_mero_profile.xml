@@ -10,11 +10,11 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="407dp"
-        android:layout_height="849dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="4dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <LinearLayout
@@ -31,8 +31,10 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -58,8 +60,8 @@
 
                         <ImageView
                             android:id="@+id/edit_click"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="45dp"
+                            android:layout_height="50dp"
                             android:tag="edit_click"
 
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -198,8 +200,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:editable="false"
-                                android:fontFamily="@font/nunito_sans"
                                 android:inputType="numberDecimal"
+                                android:fontFamily="@font/nunito_sans"
                                 android:textAlignment="viewEnd"
                                 android:textColor="#5B5B5B"
                                 android:textSize="16sp" />
@@ -267,11 +269,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:editable="false"
                                 android:fontFamily="@font/nunito_sans"
                                 android:inputType="text"
                                 android:textAlignment="viewEnd"
                                 android:textColor="#5B5B5B"
+                                android:editable="false"
                                 android:textSize="16sp" />
                         </LinearLayout>
 
@@ -303,11 +305,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:editable="false"
                                 android:fontFamily="@font/nunito_sans"
                                 android:inputType="text"
                                 android:textAlignment="viewEnd"
                                 android:textColor="#5B5B5B"
+                                android:editable="false"
+
                                 android:textSize="16sp" />
                         </LinearLayout>
 
@@ -339,9 +342,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:textAlignment="viewEnd"
                                 android:editable="false"
                                 android:inputType="date"
-                                android:textAlignment="viewEnd"
                                 android:textColor="#5B5B5B"
                                 android:textSize="16sp" />
                         </LinearLayout>
