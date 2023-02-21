@@ -112,7 +112,7 @@
                         app:layout_constraintStart_toStartOf="@+id/aayophoto"
                         app:layout_constraintTop_toBottomOf="@+id/aayophoto" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/aayomail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -120,6 +120,7 @@
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:editable="false"
+                        android:inputType="textEmailAddress"
                         app:layout_constraintEnd_toEndOf="@+id/aayoname"
                         app:layout_constraintHorizontal_bias="0.508"
                         app:layout_constraintStart_toStartOf="@+id/aayoname"
