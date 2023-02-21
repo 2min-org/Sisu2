@@ -146,7 +146,7 @@ public class HomeFragment extends Fragment {
 
     public void setHome_horizontal_modelList(List<Home_hor_model> home_horizontal_modelList) {
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Polio"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"DPT"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Diphtheria"));
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Measles"));
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hepatitis B"));
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hepatitis A"));
@@ -154,26 +154,28 @@ public class HomeFragment extends Fragment {
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Rotavirus"));
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Pneumococcal"));
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Influenza"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"HPV"));
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Meningococcal"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Tdap"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Tetanus"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Typhoid"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Pertussis"));
     }
-    //Sandesh vaccine ko nam hala
+
     public void setHome_horizontal_modelList_vaccine(List<Home_hor_model> home_horizontal_modelList_vaccine) {
 
         List<Home_hor_model>home_horizontal_modelList = home_horizontal_modelList_vaccine;
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Polio Vaccine"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"DPT Vaccine"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Measles"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hepatitis B"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hepatitis A"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hib"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Rotavirus"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Pneumococcal"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Influenza"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"HPV"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Meningococcal"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Tdap"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Diphtheria Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Measles Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hepatitis B Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hepatitis A Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hib Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Rotavirus Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Pneumococcal Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Influenza Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Meningococcal Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Tetanus Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Typhoid Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Pertussis Vaccine"));
     }
 
 

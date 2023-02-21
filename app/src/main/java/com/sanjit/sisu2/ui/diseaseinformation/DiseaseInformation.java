@@ -38,7 +38,7 @@ public class DiseaseInformation extends Fragment {
         diHorModelList.add(new DIHorModel(R.drawable.hepatitisb,"Hepatitis B"));
         diHorModelList.add(new DIHorModel(R.drawable.measlesdis,"Measles"));
         diHorModelList.add(new DIHorModel(R.drawable.coviddis,"Covid-19"));
-        diHorModelList.add(new DIHorModel(R.drawable.diptheriavacc,"Diphtheria"));
+        diHorModelList.add(new DIHorModel(R.drawable.dipthdis,"Diphtheria"));
         diHorModelList.add(new DIHorModel(R.drawable.tetanusdis,"Tetanus"));
         diHorModelList.add(new DIHorModel(R.drawable.meningdis,"Meningococcal"));
         diHorModelList.add(new DIHorModel(R.drawable.pertusisdis,"Pertussis"));

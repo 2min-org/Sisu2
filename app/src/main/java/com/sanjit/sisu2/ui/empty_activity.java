@@ -33,20 +33,33 @@ public class empty_activity extends AppCompatActivity {
 
         //create a map of disease name and image
         Map<String, Integer> diseaseImageMap = new HashMap<>();
-        diseaseImageMap.put("Polio", R.drawable.ic_logo);
-        diseaseImageMap.put("DPT", R.drawable.ic_logo);
-        diseaseImageMap.put("Measles", R.drawable.ic_logo);
-        diseaseImageMap.put("Hepatitis B", R.drawable.ic_logo);
-        diseaseImageMap.put("Hepatitis A", R.drawable.ic_logo);
-        diseaseImageMap.put("Hib", R.drawable.ic_logo);
-        diseaseImageMap.put("Rotavirus", R.drawable.ic_logo);
-        diseaseImageMap.put("Pneumococcal", R.drawable.ic_logo);
-        diseaseImageMap.put("Influenza", R.drawable.ic_logo);
-        diseaseImageMap.put("HPV", R.drawable.ic_logo);
-        diseaseImageMap.put("Meningococcal", R.drawable.ic_logo);
-        diseaseImageMap.put("Tetanus", R.drawable.ic_logo);
+        diseaseImageMap.put("Polio", R.drawable.polio);
+        diseaseImageMap.put("Diphtheria", R.drawable.dipthdis);
+        diseaseImageMap.put("Measles", R.drawable.measlesdis);
+        diseaseImageMap.put("Hepatitis B", R.drawable.hepatitisb);
+        diseaseImageMap.put("Hepatitis A", R.drawable.hepa);
+        diseaseImageMap.put("Hib", R.drawable.influenza);
+        diseaseImageMap.put("Rotavirus", R.drawable.rotavirus);
+        diseaseImageMap.put("Pneumococcal", R.drawable.pnemo);
+        diseaseImageMap.put("Influenza", R.drawable.influenza);
+        diseaseImageMap.put("Meningococcal", R.drawable.meningdis);
+        diseaseImageMap.put("Tetanus", R.drawable.tetanusdis);
         diseaseImageMap.put("Typhoid", R.drawable.ic_logo);
-        diseaseImageMap.put("Tdap", R.drawable.ic_logo);
+        diseaseImageMap.put("Pertussis", R.drawable.pertusisdis);
+
+        diseaseImageMap.put("Polio Vaccine", R.drawable.pv);
+        diseaseImageMap.put("Diphtheria Vaccine", R.drawable.diptheriavacc);
+        diseaseImageMap.put("Measles Vaccine", R.drawable.mmrvacc);
+        diseaseImageMap.put("Hepatitis B Vaccine", R.drawable.hepatitisbvacc);
+        diseaseImageMap.put("Hepatitis A Vaccine", R.drawable.hepavacc);
+        diseaseImageMap.put("Hib Vaccine", R.drawable.iv);
+        diseaseImageMap.put("Rotavirus Vaccine", R.drawable.rotavirusvacc);
+        diseaseImageMap.put("Pneumococcal Vaccine", R.drawable.pnemovacc);
+        diseaseImageMap.put("Influenza Vaccine", R.drawable.iv);
+        diseaseImageMap.put("Meningococcal Vaccine", R.drawable.meningdis);
+        diseaseImageMap.put("Tetanus Vaccine", R.drawable.tetanusvacc);
+        diseaseImageMap.put("Typhoid Vaccine", R.drawable.ic_logo);
+        diseaseImageMap.put("Pertussis Vaccine", R.drawable.pertusisvacc);
 
 
         //search disease name in map and set the disease image
