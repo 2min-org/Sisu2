@@ -212,19 +212,19 @@ public class HomeFragment extends Fragment {
     public void setHome_horizontal_modelList_vaccine(List<Home_hor_model> home_horizontal_modelList_vaccine) {
 
         List<Home_hor_model>home_horizontal_modelList = home_horizontal_modelList_vaccine;
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Polio Vaccine"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Diphtheria Vaccine"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Measles Vaccine"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hepatitis B Vaccine"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hepatitis A Vaccine"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hib Vaccine"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Rotavirus Vaccine"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Pneumococcal Vaccine"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Influenza Vaccine"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Meningococcal Vaccine"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Tetanus Vaccine"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Typhoid Vaccine"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Pertussis Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.poliologo,"Polio Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.dtaplogo,"Diphtheria Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.measleslogo,"Measles Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.hepblogo,"Hepatitis B Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.hepalogo,"Hepatitis A Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.hiblogo,"Hib Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.rotaviruslogo,"Rotavirus Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.pneumococcallogo,"Pneumococcal Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.influenxalogo,"Influenza Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.meningococcallogo,"Meningococcal Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.dtaplogo,"Tetanus Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.typhoidlogo,"Typhoid Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.dtaplogo,"Pertussis Vaccine"));
     }
 
 
