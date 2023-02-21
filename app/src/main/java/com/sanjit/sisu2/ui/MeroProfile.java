@@ -32,7 +32,7 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MeroProfile extends AppCompatActivity implements sec_doc.sec_doc_listener{
+public class MeroProfile extends AppCompatActivity {
 
     ArrayList<appointment_model> appointment_model_arr = new ArrayList<>();
     private final FirebaseAuth mAuth=FirebaseAuth.getInstance();
@@ -111,8 +111,15 @@ public class MeroProfile extends AppCompatActivity implements sec_doc.sec_doc_li
                         String profile_pic = (String) data.get("ProfilePic");
                         String email = (String) data.get("Email");
                         String address = (String) data.get("Address");
-                        String dob = (String) data.get("DOB");
+                        String dob = (String) data.get("Birthday");
                         String gender=(String) data.get("Gender");
+
+                        namep.setText(name);
+                        emailp.setText(email);
+                        phonep.setText(phone);
+                        addressp.setText(address);
+                        dobp.setText(dob);
+                        genderp.setText(gender);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -123,8 +130,4 @@ public class MeroProfile extends AppCompatActivity implements sec_doc.sec_doc_li
                 });
     }
 
-    @Override
-    public void applyTexts(String spec_doc) {
-
-    }
 }
