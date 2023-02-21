@@ -1,14 +1,18 @@
 package com.sanjit.sisu2.ui;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,9 +20,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,11 +34,13 @@ import com.sanjit.sisu2.MainActivity;
 import com.sanjit.sisu2.R;
 import com.sanjit.sisu2.adapters.sec_doc;
 import com.sanjit.sisu2.ui.appointments.appointment_model;
+import com.sanjit.sisu2.ui.login_register_user.Login;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -43,8 +52,8 @@ public class MeroProfile extends AppCompatActivity implements View.OnClickListen
     private DatabaseReference databaseReference;
     private StorageReference storageReference;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-    TextView namep,phonep,addressp,dobp,genderp,myTextView;
-    EditText emailp;
+    TextView namep,emailp,phonep,addressp,dobp,genderp,myTextView;
+
     ImageView editClick, saveClick;
     boolean isEdit = false;
 
@@ -168,6 +177,91 @@ public class MeroProfile extends AppCompatActivity implements View.OnClickListen
 
         editClick.setVisibility(View.VISIBLE);
         saveClick.setVisibility(View.GONE);
+
+        setTextViewEditable(namep,false);
+        setTextViewEditable(emailp,false);
+        setTextViewEditable(phonep,false);
+        setTextViewEditable(addressp,false);
+        setTextViewEditable(dobp,false);
+        setTextViewEditable(genderp,false);
+
+        //create a map to store the data
+        Map<String, Object> data = new HashMap<>();
+        data.put("Fullname", namep.getText().toString());
+        data.put("Telephone", phonep.getText().toString());
+        data.put("Address", addressp.getText().toString());
+        data.put("Birthday", dobp.getText().toString());
+        data.put("Gender", genderp.getText().toString());
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(emailp.getText().toString()).matches()) {
+            // Invalid email address format
+            Log.d(TAG, "Invalid email address format.");
+            return;
+        }
+
+        //update the data in firestore
+
+        db.collection("Users").document(mAuth.getCurrentUser().getUid()).update(data)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(MeroProfile.this, "Profile Updated!", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MeroProfile.this, "Error!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        //update the data in shared preferences
+        SharedPreferences sharedPreferences = getSharedPreferences("User", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("FullName", namep.getText().toString());
+        editor.putString("Phone", phonep.getText().toString());
+        editor.putString("Address", addressp.getText().toString());
+
+        //update email in firebase authentication
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
+        user.updateEmail(emailp.getText().toString())
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Map<String, Object> data = new HashMap<>();
+                            data.put("Email", emailp.getText().toString());
+                            db.collection("Users").document(mAuth.getCurrentUser().getUid()).update(data)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Toast.makeText(MeroProfile.this, "Email Updated!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(MeroProfile.this, "Error!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "onFailure: " + e.getMessage());
+                        Toast.makeText(MeroProfile.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        //if email update fails, then logout the user and redirect to login page
+                        Toast.makeText(MeroProfile.this, "To update email require recent login", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MeroProfile.this, "So please log in and try again to update email", Toast.LENGTH_SHORT).show();
+
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(new Intent(getApplicationContext(), Login.class));
+                        finish();
+
+                    }
+                });
     }
 
     private void edit_profile(View v) {
@@ -184,37 +278,42 @@ public class MeroProfile extends AppCompatActivity implements View.OnClickListen
         setTextViewEditable(dobp,true);
         setTextViewEditable(genderp,true);
 
-    }
+        switch (v.getId()){
+            case R.id.aayoname:
+                namep.requestFocus();
+                myTextView = namep;
+                break;
+            case R.id.aayomail:
+                emailp.requestFocus();
+                myTextView = emailp;
+                break;
+            case R.id.aayotelephone:
+                phonep.requestFocus();
+                myTextView = phonep;
+                break;
+            case R.id.aayoaddress:
+                addressp.requestFocus();
+                myTextView = addressp;
+                break;
+            case R.id.aayobirthday:
+                dobp.requestFocus();
+                myTextView = dobp;
+                break;
+            case R.id.aayogender:
+                genderp.requestFocus();
+                myTextView = genderp;
+                break;
+            default:
+                break;
+        }
 
-    private void change() {
-        Toast.makeText(this, "Change", Toast.LENGTH_SHORT).show();
-        myTextView.setFocusable(true);
-        myTextView.setFocusableInTouchMode(true);
-
-        //set a text watcher to monitor the text changes
-
-        myTextView.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                //this method is called to notify you that, within s, the count characters beginning at start are about to be replaced by new text with length after.
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //this method is called to notify you that, within s, the count characters beginning at start have just replaced old text that had length before.
-                myTextView.setText(s);
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-                //this method is called to notify you that, somewhere within s, the text has been changed.
-
-            }
-        });
     }
     private void setTextViewEditable(TextView textView, boolean editable) {
 
         textView.setFocusableInTouchMode(editable);
         textView.setFocusable(editable);
         textView.setCursorVisible(editable);
+
         if (editable) {
             textView.requestFocus();
         } else {

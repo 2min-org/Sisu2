@@ -195,6 +195,7 @@
                                 android:id="@+id/aayotelephone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:inputType="numberDecimal"
                                 android:editable="false"
                                 android:layout_weight="1"
                                 android:textAlignment="viewEnd"
@@ -262,6 +263,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:inputType="text"
                                 android:textAlignment="viewEnd"
                                 android:textColor="#5B5B5B"
                                 android:editable="false"
@@ -298,6 +300,7 @@
                                 android:textAlignment="viewEnd"
                                 android:textColor="#5B5B5B"
                                 android:editable="false"
+                                android:inputType="text"
                                 android:textSize="16sp" />
                         </LinearLayout>
 
@@ -330,6 +333,7 @@
                                 android:layout_weight="1"
                                 android:textAlignment="viewEnd"
                                 android:editable="false"
+                                android:inputType="date"
                                 android:textColor="#5B5B5B"
                                 android:textSize="16sp" />
                         </LinearLayout>
