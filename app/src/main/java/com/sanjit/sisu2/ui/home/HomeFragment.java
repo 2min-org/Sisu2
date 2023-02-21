@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
     private ViewPager2 viewPager2;
     private final Handler sliderHandler = new Handler();
     RecyclerView home_hor_recycler,home_hor_recycler2;
-    List<Home_hor_model> home_horizontal_modelList;
+
     home_horizontal_adapter home_horizontal_adapter;
     LinearLayout vac_info,disease_info,appointments,upload_files,settings,about_us;
 
@@ -46,16 +46,20 @@ public class HomeFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-
+        List<Home_hor_model> home_horizontal_modelList,home_horizontal_modelList_vaccine;
         home_hor_recycler = root.findViewById(R.id.home_horizontal_recycler);
         home_hor_recycler2 = root.findViewById(R.id.home_horizontal_recycler2);
         home_horizontal_modelList = new ArrayList<>();
+        home_horizontal_modelList_vaccine = new ArrayList<>();
 
         setHome_horizontal_modelList(home_horizontal_modelList);
+        setHome_horizontal_modelList_vaccine(home_horizontal_modelList_vaccine);
 
         home_horizontal_adapter = new home_horizontal_adapter(getActivity(),home_horizontal_modelList);
 
         home_hor_recycler.setAdapter(home_horizontal_adapter);
+
+        home_horizontal_adapter = new home_horizontal_adapter(getActivity(),home_horizontal_modelList_vaccine);
         home_hor_recycler2.setAdapter(home_horizontal_adapter);
 
         home_hor_recycler.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
@@ -67,10 +71,11 @@ public class HomeFragment extends Fragment {
         home_hor_recycler2.setHasFixedSize(true);
         home_hor_recycler2.setNestedScrollingEnabled(true);
 
-        viewPager2=root.findViewById(R.id.viewPagerImageSliderHome);
+
 
         //Here,i'm preparing list of images from drawable
         // You can also prepare list of images from server or get it from API.
+        viewPager2=root.findViewById(R.id.viewPagerImageSliderHome);
         List<SliderItem> sliderItems=new ArrayList<>();
         sliderItems.add(new SliderItem(R.drawable.shr5));
         sliderItems.add(new SliderItem(R.drawable.shr2));
@@ -140,9 +145,25 @@ public class HomeFragment extends Fragment {
     }
 
     public void setHome_horizontal_modelList(List<Home_hor_model> home_horizontal_modelList) {
-        this.home_horizontal_modelList = home_horizontal_modelList;
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Polio"));
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"DPT"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Measles"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hepatitis B"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hepatitis A"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hib"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Rotavirus"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Pneumococcal"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Influenza"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"HPV"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Meningococcal"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Tdap"));
+    }
+    //Sandesh vaccine ko nam hala
+    public void setHome_horizontal_modelList_vaccine(List<Home_hor_model> home_horizontal_modelList_vaccine) {
+
+        List<Home_hor_model>home_horizontal_modelList = home_horizontal_modelList_vaccine;
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Polio Vaccine"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"DPT Vaccine"));
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Measles"));
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hepatitis B"));
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Hepatitis A"));
