@@ -21,60 +21,61 @@
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".ui.Polio"
+            android:name=".ui.empty_activity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:exported="false">
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.login_register_user.VerifyOtpActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:exported="false">
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.login_register_user.SendOTPActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:exported="false">
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.MeroProfile"
-            android:screenOrientation="portrait"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.Share.Share"
-            android:screenOrientation="portrait"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.Setting"
-            android:screenOrientation="portrait"
             android:exported="false"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.intro.SplashScreenActivity"
-            android:screenOrientation="portrait"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -88,16 +89,16 @@
         </activity>
         <activity
             android:name=".ui.user.EditProfile"
-            android:screenOrientation="portrait"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".ui.login_register_user.ForgotPassword"
-            android:screenOrientation="portrait"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <meta-data
                 android:name="android.app.lib_name"
@@ -105,8 +106,9 @@
         </activity>
         <activity
             android:name=".ui.user.profile"
-            android:screenOrientation="portrait"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

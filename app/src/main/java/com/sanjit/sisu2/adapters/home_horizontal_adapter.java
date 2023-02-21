@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.sanjit.sisu2.R;
 import com.sanjit.sisu2.models.Home_hor_model;
 import com.sanjit.sisu2.ui.Polio;
+import com.sanjit.sisu2.ui.empty_activity;
 
 import java.util.List;
 
@@ -62,7 +63,7 @@ public class home_horizontal_adapter extends RecyclerView.Adapter<home_horizonta
         @Override
         public void onClick(View view) {
             int position = getAbsoluteAdapterPosition();
-            Intent intent = new Intent(context, Polio.class);
+            Intent intent = new Intent(context, empty_activity.class);
             Toast.makeText(context, "Disease" + position, Toast.LENGTH_SHORT).show();
             context.startActivity(intent);
         }
