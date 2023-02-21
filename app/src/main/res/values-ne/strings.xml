@@ -94,4 +94,74 @@
     <string name="_4_6_year">४-६ वर्ष</string>
     <string name="birthh">जन्म</string>
     <string name="_2_months">२ महिना</string>
+
+    <string name="desc_one">Know all the information you need to take care of your babies!</string>
+    <string name="desc_two">Keep track of vaccine taken by your child!</string>
+    <string name="desc_three">Know about the diseases that your child may contract!</string>
+    <string name="desc_four">Find the nearest childcare facility easily!</string>
+    <string name="todo">TODO</string>
+    <string name="vaccine_name">Vaccine Name</string>
+    <string name="product_name">Product Name</string>
+    <string name="sisu_the_childcare_app">Sisu The Childcare App</string>
+    <string name="sisucarenepal_gmail_com">sisucarenepal@gmail.com</string>
+    <string name="personal_records">Personal Records</string>
+    <string name="disease_information">Disease Information</string>
+    <string name="vaccine_information">Vaccine Information</string>
+    <string name="childcare_centres">Childcare Centres</string>
+    <string name="about_us">About Us</string>
+    <string name="search_about_diseases">search_about_diseases</string>
+    <string name="Logout">Logout</string>
+
+    <string name="heading_one">Sisu The Health Care App</string>
+    <string name="heading_two">Record Tracker</string>
+    <string name="heading_three">Be Aware</string>
+    <string name="heading_four">Childcare Facility Locater</string>
+
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="Sisu">Sisu</string>
+    <string name="No_Member">Not a member? Sign up</string>
+    <string name="Sign_up">Sign up</string>
+    <string name="User_name">Username</string>
+    <string name="register_cpassword">Confirm Password</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="text_login">Log in</string>
+    <string name="digits_email">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890@.</string>
+    <string name="hint_email">Email</string>
+    <string name="digits_password">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^*-=_+:;,.?</string>
+    <string name="hint_password">Password</string>
+    <string name="text_register">Create an Account</string>
+    <string name="digits_name">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="text_button_register">Create Account</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_admin_schedule">Admin Schedule</string>
+    <string name="title_admin_request">Admin Request</string>
+    <string name="title_schedule">Schedule</string>
+    <string name="title_profile">Profile</string>
+    <string name="text_button_logout">Log out</string>
+    <string name="text_select">Select a date</string>
+    <string name="hint_enter">Enter a value</string>
+    <string name="text_button_create">Create Slot</string>
+    <string name="text_select_1">Select your birthdate</string>
+    <string name="digits_contact">0123456789</string>
+    <string name="hint_enter_1">Enter your contact no.</string>
+    <string name="text_upload">Upload your valid ID</string>
+    <string name="text_upload_1">Upload the selfie</string>
+    <string name="text_button_create_1">Submit Request</string>
+    <string name="text_button_reject">Reject</string>
+    <string name="text_button_accept">Accept</string>
+    <string name="text_button_remove">Remove from list</string>
+
 </resources>

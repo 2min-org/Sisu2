@@ -184,7 +184,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void showChangeLanguageDialog() {
-            final String [] listItems = {"English","नेपाली"};
+            final String [] listItems = {"English","नेपाली","Hindi"};
             AlertDialog.Builder mBuilder = new AlertDialog.Builder(Login.this);
             mBuilder.setTitle("Choose Language...");
             mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
@@ -196,6 +196,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         recreate();
                     } else if (i == 1) {
                         //Hindi
+                        setLocale("ne");
+                        recreate();
+                    } else if (i == 2) {
+                        //Nepali
                         setLocale("hi");
                         recreate();
                     }
