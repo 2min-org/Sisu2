@@ -118,7 +118,7 @@
         android:background="@drawable/rounded_edittext"
         android:ems="10"
         android:fontFamily="@font/nunito_sans"
-        android:hint="Phone Number"
+        android:hint="@string/phone_number"
         android:inputType="number"
         android:paddingStart="20dp"
         android:textColor="#000000"

@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/nunito_sans"
-            android:text="Development Team"
+            android:text="@string/development_team"
             android:textSize="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.298"
@@ -50,7 +50,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rajottam Pradhan"
+                android:text="@string/rajottam_pradhan"
                 android:textColor="#93acff"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -90,7 +90,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rojan Shrestha"
+                android:text="@string/rojan_shrestha"
                 android:textColor="#93acff"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -130,7 +130,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sandesh Koirala"
+                android:text="@string/sandesh_koirala"
                 android:textColor="#93acff"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -172,7 +172,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sanjit Khanal"
+                android:text="@string/sanjit_khanal"
                 android:textColor="#93acff"
                 android:textSize="26sp"
                 android:textStyle="bold" />

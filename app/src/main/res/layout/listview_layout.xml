@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:elegantTextHeight="true"
     android:padding="8dp"
-    android:hint="Child Name"
+    android:hint="@string/child_name1"
     android:textAlignment="center"
     android:textSize="20sp"
 >

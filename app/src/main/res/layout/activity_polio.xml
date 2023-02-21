@@ -16,7 +16,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:hint="Enter your phone"
+        android:hint="@string/enter_your_phone"
         android:importantForAutofill="no"
         android:inputType="phone" />
 
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/idEdtPhoneNumber"
         android:layout_margin="10dp"
-        android:text="Get OTP"
+        android:text="@string/get_otp1"
         android:textAllCaps="false" />
 
     <!--Edittext for getting otp from user-->
@@ -40,7 +40,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:hint="Enter OTP"
+        android:hint="@string/enter_otp"
         android:importantForAutofill="no"
         android:inputType="phone" />
 
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/idEdtOtp"
         android:layout_margin="10dp"
-        android:text="Verify OTP"
+        android:text="@string/verify_otp1"
         android:textAllCaps="false" />
 
 </RelativeLayout>

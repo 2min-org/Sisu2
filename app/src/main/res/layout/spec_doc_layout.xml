@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Enter your specalization"
+        android:hint="@string/enter_your_specalization"
         android:textSize="20sp"
         android:layout_margin="20dp"
         android:textColor="@color/white"

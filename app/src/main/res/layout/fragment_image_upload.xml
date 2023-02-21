@@ -43,7 +43,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:text="Upload Image"
+                    android:text="@string/upload_image"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -62,7 +62,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Image Name"
+                        android:text="@string/image_name"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -73,7 +73,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:hint="Enter Image Name"
+                        android:hint="@string/enter_image_name"
                         android:inputType="text"
                         android:padding="10dp"
                         android:textColor="@color/white"
@@ -98,7 +98,7 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:inputType="text"
-                        android:text="Image Description"
+                        android:text="@string/image_description"
                         android:textColorHint="@color/white"
                         android:textColor="@color/white"
                         android:textSize="16sp"
@@ -109,7 +109,7 @@
                         android:id="@+id/imageDescription"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:hint="Description..."
+                        android:hint="@string/description"
                         android:layout_weight="1.7"/>
                 </LinearLayout>
 
@@ -157,7 +157,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_gravity="center"
                         android:background="@drawable/doc_spec_bg"
-                        android:text="Upload"
+                        android:text="@string/upload1"
                         android:id="@+id/uploadImage"
                         android:layout_marginBottom="30dp"
                         android:layout_margin="10dp"
@@ -169,7 +169,7 @@
                         android:layout_gravity="center"
                         android:id="@+id/cancelImage"
                         android:background="@drawable/doc_spec_bg"
-                        android:text="Cancel"
+                        android:text="@string/cancel1"
                         android:layout_marginBottom="30dp"
                         android:layout_margin="10dp"
                     />

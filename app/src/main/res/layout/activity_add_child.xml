@@ -90,7 +90,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="1"
-                                android:text="Child Name :"
+                                android:text="@string/child_name"
                                 android:textSize="16sp" />
 
                             <EditText
@@ -100,7 +100,7 @@
                                 android:layout_gravity="bottom"
                                 android:layout_weight="2"
                                 android:background="@drawable/doc_spec_bg"
-                                android:hint="Enter your child's name"
+                                android:hint="@string/enter_your_child_s_name"
                                 android:textColor="@color/black"
                                 android:inputType="textPersonName"
                                 android:paddingStart="18dp"
@@ -120,14 +120,14 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="1"
-                                android:text="Child BOD :"
+                                android:text="@string/child_bod"
                                 android:textSize="16sp" />
 
                             <Button
                                 android:id="@+id/datePickerButton"
                                 android:layout_width="250dp"
                                 android:layout_height="wrap_content"
-                                android:text="JAN / 01 / 2020"
+                                android:text="@string/jan_01_2020"
                                 android:paddingStart="10dp"
                                 android:textAlignment="viewEnd"
                                 android:textSize="20sp"
@@ -157,7 +157,7 @@
                                 android:layout_height="50dp"
                                 android:layout_margin="5dp"
                                 android:background="@drawable/doc_spec_bg"
-                                android:text="Cancel"
+                                android:text="@string/cancel"
                                  />
 
                             <Button
@@ -166,7 +166,7 @@
                                 android:layout_height="50dp"
                                 android:layout_margin="5dp"
                                 android:background="@drawable/doc_spec_bg"
-                                android:text="Accept"
+                                android:text="@string/accept"
                                  />
                         </LinearLayout>
                     </LinearLayout>
