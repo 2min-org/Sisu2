@@ -62,7 +62,7 @@ public class Frag4 extends Fragment {
         sliderItems.add(new SliderItem(R.drawable.pnemovacc));
         sliderItems.add(new SliderItem(R.drawable.pv));
 
-        viewPager3.setAdapter(new SliderAdapter(sliderItems,viewPager3));
+        viewPager3.setAdapter(new adapter(sliderItems,viewPager3));
 
         viewPager3.setClipToPadding(false);
         viewPager3.setClipChildren(false);

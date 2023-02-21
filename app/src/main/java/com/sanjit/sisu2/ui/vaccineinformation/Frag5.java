@@ -60,7 +60,7 @@ public class Frag5 extends Fragment {
 
 
 
-        viewPager3.setAdapter(new SliderAdapter(sliderItems,viewPager3));
+        viewPager3.setAdapter(new adapter(sliderItems,viewPager3));
 
         viewPager3.setClipToPadding(false);
         viewPager3.setClipChildren(false);

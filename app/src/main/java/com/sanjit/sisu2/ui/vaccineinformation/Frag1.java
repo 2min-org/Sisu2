@@ -55,7 +55,7 @@ public class Frag1 extends Fragment {
         List<SliderItem> sliderItems=new ArrayList<>();
         sliderItems.add(new SliderItem(R.drawable.hepatitisbvacc));
 
-        viewPager3.setAdapter(new SliderAdapter(sliderItems,viewPager3));
+        viewPager3.setAdapter(new adapter(sliderItems,viewPager3));
 
         viewPager3.setClipToPadding(false);
         viewPager3.setClipChildren(false);

@@ -2,6 +2,7 @@ package com.sanjit.sisu2.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +66,12 @@ public class home_horizontal_adapter extends RecyclerView.Adapter<home_horizonta
             int position = getAbsoluteAdapterPosition();
             Intent intent = new Intent(context, empty_activity.class);
             Toast.makeText(context, "Disease" + position, Toast.LENGTH_SHORT).show();
+
+            SharedPreferences sharedPreferences = context.getSharedPreferences("disease", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("disease", home_horizontal_modelList.get(position).getName());
+            editor.apply();
+
             context.startActivity(intent);
         }
     }
