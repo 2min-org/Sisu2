@@ -32,10 +32,18 @@ public class DiseaseInformation extends Fragment {
 
         diHorModelList= new ArrayList<>();
         diHorModelList.add(new DIHorModel(R.drawable.polio,"Polio"));
-        diHorModelList.add(new DIHorModel(R.drawable.commoncold,"Polio"));
-        diHorModelList.add(new DIHorModel(R.drawable.chickenpox,"Polio"));
-        diHorModelList.add(new DIHorModel(R.drawable.influenza,"Polio"));
-        diHorModelList.add(new DIHorModel(R.drawable.hepatitisb,"Polio"));
+        diHorModelList.add(new DIHorModel(R.drawable.commoncold,"Common cold"));
+        diHorModelList.add(new DIHorModel(R.drawable.chickenpox,"Chicken pox"));
+        diHorModelList.add(new DIHorModel(R.drawable.influenza,"Influenza"));
+        diHorModelList.add(new DIHorModel(R.drawable.hepatitisb,"Hepatitis B"));
+        diHorModelList.add(new DIHorModel(R.drawable.measlesdis,"Measles"));
+        diHorModelList.add(new DIHorModel(R.drawable.coviddis,"Covid-19"));
+        diHorModelList.add(new DIHorModel(R.drawable.diptheriavacc,"Diphtheria"));
+        diHorModelList.add(new DIHorModel(R.drawable.tetanusdis,"Tetanus"));
+        diHorModelList.add(new DIHorModel(R.drawable.meningdis,"Meningococcal"));
+        diHorModelList.add(new DIHorModel(R.drawable.pertusisdis,"Pertussis"));
+
+
 
         diHorAdapter=new DIHorAdapter(getActivity(),diHorModelList);
 
