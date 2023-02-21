@@ -2,8 +2,16 @@ package com.sanjit.sisu2.ui.home;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -13,6 +21,8 @@ import android.widget.LinearLayout;
 
 
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +36,8 @@ import com.sanjit.sisu2.adapters.home_horizontal_adapter;
 import com.sanjit.sisu2.models.Home_hor_model;
 import com.sanjit.sisu2.models.SliderItem;
 import com.sanjit.sisu2.ui.Setting;
+import com.sanjit.sisu2.ui.login_register_user.Login;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +50,10 @@ public class HomeFragment extends Fragment {
     home_horizontal_adapter home_horizontal_adapter;
     LinearLayout vac_info,disease_info,appointments,upload_files,settings,about_us;
 
+    private static final String CHANNEL_ID = "SISU";
+
+    private static final int REQUEST_CODE = 100;
+
     public HomeFragment() {
     }
 
@@ -45,6 +61,39 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+        Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.bachha1, null);
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+        Bitmap largeIcon = bitmapDrawable.getBitmap();
+
+        NotificationManager notificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+
+        Intent intent = new Intent(getContext(), Login.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        PendingIntent contentIntent = PendingIntent.getActivity(getContext(), REQUEST_CODE, intent, PendingIntent.FLAG_IMMUTABLE);
+
+        NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle()
+                .bigText("Welcome to our app. Enjoy our app and give us feedback.")
+                .setBigContentTitle("Welcome to our app.")
+                .setSummaryText("Enjoy our app and give us feedback.");
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), CHANNEL_ID)
+                .setSmallIcon(R.drawable.bachha1)
+                .setLargeIcon(largeIcon)
+                .setContentTitle("Welcome to our app.")
+                .setContentText("Enjoy our app and give us feedback.")
+                .setAutoCancel(false)
+                .setContentIntent(contentIntent)
+                .setStyle(bigTextStyle);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "SISU", NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        notificationManager.notify(1, builder.build());
+
 
         List<Home_hor_model> home_horizontal_modelList,home_horizontal_modelList_vaccine;
         home_hor_recycler = root.findViewById(R.id.home_horizontal_recycler);
@@ -135,8 +184,8 @@ public class HomeFragment extends Fragment {
         upload_files.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_image_upload));
 
         settings.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), Setting.class);
-            startActivity(intent);
+            Intent intent1 = new Intent(getActivity(), Setting.class);
+            startActivity(intent1);
         });
 
         about_us.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_nav_home_to_nav_about_us));

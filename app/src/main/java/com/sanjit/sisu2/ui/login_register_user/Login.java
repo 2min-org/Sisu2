@@ -84,52 +84,52 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         setContentView(R.layout.activity_login);
 
-        Drawable drawable= ResourcesCompat.getDrawable(getResources(),R.drawable.bachha1,null);
-        BitmapDrawable bitmapDrawable= (BitmapDrawable) drawable;
-        Bitmap largeIcon= bitmapDrawable.getBitmap();
-
-        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        Intent intent = new Intent(getApplicationContext(), Login.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-        PendingIntent contentIntent = PendingIntent.getActivity(this, REQUEST_CODE, intent,PendingIntent.FLAG_IMMUTABLE);
-
-        //BigText Style Notification
-        Notification.BigPictureStyle bigPictureStyle = new Notification.BigPictureStyle()
-                .bigPicture(((BitmapDrawable) drawable).getBitmap())
-                .bigLargeIcon(largeIcon)
-                .setBigContentTitle("Thank you for using SISU.")
-                .setSummaryText("We are working hard to make it better");
-
-        //Inbox Style Notification
-        Notification.InboxStyle inboxStyle = new Notification.InboxStyle()
-                .addLine("Thank you for using SISU.")
-                .addLine("We are working hard to make it better")
-                .addLine("A: Thank you for using SISU.")
-                .addLine("A: We are working hard to make it better")
-                .addLine("B: Thank you for using SISU.")
-                .addLine("B: We are working hard to make it better")
-                .setBigContentTitle("I: Thank you for using SISU.")
-                .setSummaryText("I:We are working hard to make it better");
-
-        Notification thank= null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            thank = new Notification.Builder(this)
-                    .setLargeIcon(largeIcon)
-                    .setContentTitle("Thank you for using SISU.")
-                    .setContentText("We are working hard to make it better")
-                    .setChannelId(CHANNEL_ID)
-                    .setAutoCancel(false)
-                    .setContentIntent(contentIntent)
-                    .setStyle(bigPictureStyle)
-                    .setSmallIcon(R.drawable.bachha1)
-                    .build();
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            notificationManager.createNotificationChannel(new NotificationChannel(CHANNEL_ID,"SISU",NotificationManager.IMPORTANCE_DEFAULT));
-        }
-        notificationManager.notify(1,thank);
+//        Drawable drawable= ResourcesCompat.getDrawable(getResources(),R.drawable.bachha1,null);
+//        BitmapDrawable bitmapDrawable= (BitmapDrawable) drawable;
+//        Bitmap largeIcon= bitmapDrawable.getBitmap();
+//
+//        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//        Intent intent = new Intent(getApplicationContext(), Login.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//
+//        PendingIntent contentIntent = PendingIntent.getActivity(this, REQUEST_CODE, intent,PendingIntent.FLAG_IMMUTABLE);
+//
+//        //BigText Style Notification
+//        Notification.BigPictureStyle bigPictureStyle = new Notification.BigPictureStyle()
+//                .bigPicture(((BitmapDrawable) drawable).getBitmap())
+//                .bigLargeIcon(largeIcon)
+//                .setBigContentTitle("Welcome to our app.")
+//                .setSummaryText("Enjoy our app and give us feedback.");
+//
+//        //Inbox Style Notification
+//        Notification.InboxStyle inboxStyle = new Notification.InboxStyle()
+//                .addLine("Thank you for using SISU.")
+//                .addLine("We are working hard to make it better")
+//                .addLine("A: Thank you for using SISU.")
+//                .addLine("A: We are working hard to make it better")
+//                .addLine("B: Thank you for using SISU.")
+//                .addLine("B: We are working hard to make it better")
+//                .setBigContentTitle("I: Thank you for using SISU.")
+//                .setSummaryText("I:We are working hard to make it better");
+//
+//        Notification thank= null;
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            thank = new Notification.Builder(this)
+//                    .setLargeIcon(largeIcon)
+//                    .setContentTitle("Thank you for using SISU.")
+//                    .setContentText("We are working hard to make it better")
+//                    .setChannelId(CHANNEL_ID)
+//                    .setAutoCancel(false)
+//                    .setContentIntent(contentIntent)
+//                    .setStyle(bigPictureStyle)
+//                    .setSmallIcon(R.drawable.bachha1)
+//                    .build();
+//        }
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            notificationManager.createNotificationChannel(new NotificationChannel(CHANNEL_ID,"SISU",NotificationManager.IMPORTANCE_DEFAULT));
+//        }
+//        notificationManager.notify(1,thank);
 
         changeLanguage =findViewById(R.id.Change_language);
         changeLanguage.setOnClickListener(this);
