@@ -131,7 +131,6 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
                 R.id.nav_disease_information,
                 R.id.nav_vaccine_information,
                 R.id.nav_image_upload,
-                R.id.nav_childcare_centres,
                 R.id.nav_appointments,
                 R.id.nav_book_doctor,
                 R.id.nav_about_us)
@@ -207,11 +206,6 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
                         navController.popBackStack(R.id.nav_home, false);
                         Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
                                 .navigate(R.id.nav_disease_information);
-                        break;
-                    case R.id.nav_childcare_centres:
-                        navController.popBackStack(R.id.nav_home, false);
-                        Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
-                                .navigate(R.id.nav_childcare_centres);
                         break;
                     case R.id.nav_about_us:
                         navController.popBackStack(R.id.nav_home, false);
