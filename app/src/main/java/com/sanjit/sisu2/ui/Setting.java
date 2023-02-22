@@ -76,7 +76,7 @@ public class Setting extends AppCompatActivity {
     }
 
     private void showChangeLanguageDialog() {
-        final String [] listItems = {"English","नेपाली","Hindi",};
+        final String [] listItems = {"English","नेपाली","Hindi","मैथिली"};
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(Setting.this);
         mBuilder.setTitle("Choose Language...");
         mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
@@ -93,6 +93,10 @@ public class Setting extends AppCompatActivity {
                 } else if (i==2) {
                     //Hindi
                     setLocale("hi");
+                    recreate();
+                }else if(i==3){
+                    //Maithili
+                    setLocale("mai");
                     recreate();
                 }
                 //dismiss alert dialog when language selected

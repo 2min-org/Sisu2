@@ -7,7 +7,7 @@
     <string name="Sisu">सिसु</string>
     <string name="No_Member">सदस्य नहीं हैं? साइन अप करें</string>
     <string name="Sign_up">साइन अप करें</string>
-    <string name="User_name">Username</string>
+    <string name="User_name">उपयोगकर्ता नाम</string>
     <string name="register_cpassword">उपयोगकर्ता नाम</string>
     <string name="navigation_drawer_open">नेविगेशन ड्रावर खोलें</string>
     <string name="navigation_drawer_close">नेविगेशन ड्रावर बंद करें</string>
@@ -49,177 +49,6 @@
     <string name="text_button_accept">स्वीकार</string>
     <string name="text_button_remove">सूची से हटाएं</string>
 
-<string-array name="VaccineNames">
-    <item>एक टीका चुनें</item>
-    <item>फाइजर-बायोएनटेक</item>
-    <item>मोडेना</item>
-    <item>जॉनसन एंड जॉनसन</item>
-    <item>सिनोवैक</item>
-    <item>एस्ट्राजेनेका</item>
-</string-array>
-
-<string-array name="VaccineSites">
-<item>Select Vaccine Site</item>
-<item>Arenas Complex</item>
-<item>City Mall</item>
-<item>Manzon</item>
-<item>Talang</item>
-<item>Pagal</item>
-</string-array>
-
-<string-array name="UserCategories">
-<item>Select Priority Category</item>
-<item>A1 - Health Workers</item>
-<item>A2 - Senior Citizens</item>
-<item>A3 - Person with Comorbidities</item>
-<item>A4 - Economic Frontliners</item>
-<item>A5 - Indigent Sector</item>
-<item>B1 - Teachers, Social Workers</item>
-<item>B2 - Other Government Workers</item>
-<item>B3 - Other Essential Workers</item>
-<item>B4 - Socio-Demographic Groups</item>
-<item>B5 - Overseas Filipino</item>
-<item>B6 - Other Workforce</item>
-<item>C - Rest of the Filipino Population</item>
-</string-array>
-
-<string-array name="UserStreets">
-<item>Select Street</item>
-<item>Abanon</item>
-<item>Agdao</item>
-<item>Ano</item>
-<item>Anando</item>
-<item>Antipangol</item>
-<item>Aponit</item>
-<item>Bacnar</item>
-<item>Balaya</item>
-<item>Balayong</item>
-<item>Baldog</item>
-<item>Balite Sur</item>
-<item>Balococ</item>
-<item>Bani</item>
-<item>Bocboc</item>
-<item>Bugallon-Posadas</item>
-<item>Bogaoan</item>
-<item>Bolingit</item>
-<item>Bolosan</item>
-<item>Bonifacio</item>
-<item>Buenglat</item>
-<item>Burgos-Padlan</item>
-<item>Cacaritan</item>
-<item>Caingal</item>
-<item>Calobaoan</item>
-<item>Calomboyan</item>
-<item>Burgos-Padlan</item>
-<item>Cacaritan</item>
-<item>Caingal</item>
-<item>Calobaoan</item>
-<item>Calomboyan</item>
-<item>Burgos-Padlan</item>
-<item>Cacaritan</item>
-<item>Caingal</item>
-<item>Calobaoan</item>
-<item>Calomboyan</item>
-<item>Isla</item>
-<item>Libas</item>
-<item>Lilimasan</item>
-<item>Longos</item>
-<item>Lucban</item>
-<item>Mabalbalino</item>
-<item>Mabini</item>
-<item>Magtaking</item>
-<item>Malacañang</item>
-<item>Maliwara</item>
-<item>M.Soriano</item>
-<item>Mamarlao</item>
-<item>Manzon</item>
-<item>Matangdem</item>
-<item>Mestizo Norte</item>
-<item>Naguilayan</item>
-<item>Nelintap</item>
-<item>Padilla-Gomez</item>
-<item>Pagal</item>
-<item>Palaming</item>
-<item>Palaris</item>
-<item>Palospos</item>
-<item>Pangalangan</item>
-<item>Pangoloan</item>
-<item>Pangpang</item>
-<item>Paitan-Panoypoy</item>
-<item>Parayao</item>
-<item>Payapa</item>
-<item>Payar</item>
-<item>Perez Boulevard</item>
-<item>PNR Site</item>
-<item>Polo</item>
-<item>Quezon Boulevard</item>
-<item>Quintong</item>
-<item>Rizal Avenue</item>
-<item>Roxas Boulevard</item>
-<item>Salinap</item>
-<item>San Juan</item>
-<item>San Pedro</item>
-<item>Sapinit</item>
-<item>Supo</item>
-<item>Talang</item>
-<item>Taloy</item>
-<item>Tamayo</item>
-<item>Tandoc</item>
-<item>Tarece</item>
-<item>Tarectec</item>
-<item>Tayambani</item>
-<item>Tebag</item>
-<item>Turac</item>
-<item>Tangdang Sora</item>
-</string-array>
-
-<string-array name="VaccineArmSideEffects">
-<item>In the arm where you got the shot: \n\n•Pain\n•Redness\n•Swelling</item>
-<item>In the arm where you got the shot: \n\n•Pain\n•Redness\n•Swelling</item>
-<item>In the arm where you got the shot: \n\n•Pain\n•Redness\n•Swelling</item>
-<item>In the arm where you got the shot: \n\n•Pain\n•Redness\n•Swelling</item>
-<item>In the arm where you got the shot: \n\n•Pain\n•Redness\n•Swelling</item>
-</string-array>
-
-<string-array name="VaccineBodySideEffects">
-<item>Throughout the rest of your body:\n\n•Tiredness\n•Headache\n•Muscle pain\n•Chills\n•Fever\n•Nausea</item>
-<item>Throughout the rest of your body:\n\n•Tiredness\n•Headache\n•Muscle pain\n•Chills\n•Fever\n•Nausea</item>
-<item>Throughout the rest of your body:\n\n•Tiredness\n•Headache\n•Muscle pain\n•Chills\n•Fever\n•Nausea</item>
-<item>Throughout the rest of your body:\n\n•Fever\n•Fatigue\n•Muscle pain\n•Diarrhea</item>
-<item>Throughout the rest of your body:\n\n•Fever\n•Discomfort\n•Fatigue\n•Muscle pain\n•Diarrhea\n•Nausea</item>
-</string-array>
-
-<string-array name="VaccineInformation">
-<item>Pfizer-BioNTech (COMIRNATY) vaccine was 95% effective at preventing laboratory-confirmed infection with the virus that causes COVID-19 in people who received two doses and had no evidence of being previously infected.</item>
-<item>Based on evidence from clinical trials, in people aged 18 years and older, the Moderna vaccine was 94.1% effective at preventing laboratory-confirmed COVID-19 infection in people who received two doses and had no evidence of being previously infected.</item>
-<item>The JandJ/Janssen COVID-19 Vaccine was 66.3% effective in clinical trials (efficacy) at preventing laboratory-confirmed COVID-19 infection in people who received the vaccine. People had the most protection 2 weeks after getting vaccinated.</item>
-<item>A large phase 3 trial in Brazil showed that two doses of 14 days interval, had an efficacy of 51% against symptomatic SARS-CoV-2 infection, 100% against severe COVID-19, and 100% against hospitalization starting 14 days after receiving the second dose.</item>
-<item>The AZD1222 vaccine against COVID-19 has an efficacy of 63.09% against symptomatic COVID-19 infection. Longer dose intervals within the 8 to 12 weeks range are associated with greater vaccine efficacy.</item>
-</string-array>
-
-<string-array name="VaccineManufacturers">
-<item>Pfizer, Inc., and BioNTech</item>
-<item>Moderna, NIAID</item>
-<item>Janssen Pharmaceutical Companies</item>
-<item>Sinovac</item>
-<item>Oxford Uni-AstraZeneca</item>
-</string-array>
-
-<string-array name="VaccineShots">
-<item>2 doses at least 21 days apart</item>
-<item>2 doses at least 28 days apart</item>
-<item>1 dose</item>
-<item>2 doses at least 2–4 weeks apart</item>
-<item>2 doses at least 4–12 weeks apart</item>
-</string-array>
-
-<string-array name="VaccineTypes">
-<item>messenger RNA (mRNA) vaccines</item>
-<item>messenger RNA (mRNA) vaccines</item>
-<item>Viral Vector</item>
-<item>Inactive COVID-19 Virus</item>
-<item>Viral Vector</item>
-</string-array>
     <!-- TODO: Remove or change this placeholder text -->
 <string name="hello_blank_fragment">Hello blank fragment</string>
 <string-array name="numbers">
@@ -227,38 +56,41 @@
 <item>मादा</item>
 </string-array>
     //Headings
-<string name="heading_one">Sisu The Health Care App</string>
-<string name="heading_two">Record Tracker</string>
-<string name="heading_three">Be Aware</string>
-<string name="heading_four">Childcare Facility Locater</string>
+<string name="heading_one">सिसु द हेल्थ केयर ऐप</string>
+<string name="heading_two">रिकॉर्ड ट्रैकर</string>
+<string name="heading_three">आभास होना</string>
+<string name="heading_four">चाइल्डकैअर सुविधा लोकेटर</string>
 
 
     //Description
-<string name="desc_one">Know all the information you need to take care of your babies!</string>
-<string name="desc_two">Keep track of vaccine taken by your child!</string>
-<string name="desc_three">Know about the diseases that your child may contract!</string>
-<string name="desc_four">Find the nearest childcare facility easily!</string>
+<string name="desc_one">जानिए अपने शिशुओं की देखभाल के लिए आवश्यक सभी जानकारी!</string>
+<string name="desc_two">अपने बच्चे द्वारा लिए गए टीके पर नज़र रखें!</string>
+<string name="desc_three">जानिए उन बीमारियों के बारे में जो आपके बच्चे को हो सकती हैं!</string>
+<string name="desc_four">निकटतम चाइल्डकैअर सुविधा आसानी से पाएं!</string>
 <string name="todo">TODO</string>
-<string name="vaccine_name">Vaccine Name</string>
-<string name="product_name">Product Name</string>
-<string name="sisu_the_childcare_app">Sisu The Childcare App</string>
+<string name="vaccine_name">वैक्सीन का नाम</string>
+<string name="product_name">प्रोडक्टका नाम</string>
+<string name="sisu_the_childcare_app">सिसु द चाइल्डकेयर ऐप</string>
 <string name="sisucarenepal_gmail_com">sisucarenepal@gmail.com</string>
-<string name="personal_records">Personal Records</string>
-<string name="disease_information">Disease Information</string>
-<string name="vaccine_information">Vaccine Information</string>
+<string name="personal_records">व्यक्तिगत रिकॉर्ड</string>
+<string name="disease_information">रोग सूचना</string>
+<string name="vaccine_information">वैक्सीनकी जानकारी</string>
 <string name="childcare_centres">Childcare Centres</string>
-<string name="about_us">About Us</string>
-<string name="search_about_diseases">search_about_diseases</string>
-<string name="Logout">Logout</string>
+<string name="about_us">हमारे बारे में</string>
+<string name="search_about_diseases">रोगोंके बारे में खोजें</string>
+<string name="Logout">लॉग आउट</string>
 
 <string-array name="position">
 <item>Doctor</item>
 <item>Patient</item>
 <item>Admin</item>
 </string-array>
-<string name="MakeAnAppointment">Make an Appointment</string>
-<string name="Login">Login</string>
-<string name="SignUp">Sign Up</string>
+<string name="MakeAnAppointment">एक नियुक्ति करना
+</string>
+<string name="Login">लॉग इन करें
+</string>
+<string name="SignUp">साइन अप करें
+</string>
 <string name="WaitingList">Waiting List</string>
 <string name="DoctorName">"doctor's name: "</string>
 <string name="DoctorPro">"specialization: "</string>
@@ -321,80 +153,91 @@
 <string name="Know_All_Info">जानिए अपने शिशुओं की देखभाल के लिए आवश्यक सभी जानकारी!</string>
 <string name="Changelanguage">भाषा बदलें</string>
 
-    <string name="Appointments">menu_appointments</string>
-    <string name="Save">Save</string>
-    <string name="otpverification">OTP Verification</string>
-    <string name="otpverificationtext">We will send you an one time password in this mobile number.</string>
-    <string name="entermobilenumber">Enter Mobile Number</string>
+    <string name="Appointments">अपॉइंटमेंट</string>
+    <string name="Save">सहेजें</string>
+    <string name="otpverification">OTP सत्यापन</string>
+    <string name="otpverificationtext">हम इस मोबाइल नंबर पर एक बार का पासवर्ड भेजेंगे।</string>
+    <string name="entermobilenumber">मोबाइल नंबर दर्ज करें</string>
     <string name="_977">+977-</string>
     <string name="_1234567890">1234567890</string>
-    <string name="get_otp">Get OTP</string>
-    <string name="enter_the_otp_sent_to_your_mobile_number">Enter the otp sent to your mobile number</string>
-    <string name="didn_t_receive_the_code">Didn\'t receive the code?</string>
-    <string name="resend_otp">Resend OTP</string>
-    <string name="verify_otp">Verify OTP</string>
-    <string name="doctor_s_name">Doctor\'s Name</string>
-    <string name="schedule_for">Schedule for :</string>
-    <string name="uploading">Uploading.....</string>
-    <string name="birth_0_years">Birth (0 years)</string>
-    <string name="_2_month">2 Month</string>
-    <string name="_4_months">4 Months</string>
-    <string name="_6_months">6 Months</string>
-    <string name="_12_months">12 Months</string>
-    <string name="_15_months">15 months</string>
+    <string name="get_otp">OTP प्राप्त करें</string>
+    <string name="enter_the_otp_sent_to_your_mobile_number">अपने मोबाइल नंबर पर भेजा गया otp दर्ज करें</string>
+    <string name="didn_t_receive_the_code">कोड प्राप्त नहीं हुआ?</string>
+    <string name="resend_otp">OTP फिर से भेजें</string>
+    <string name="verify_otp">OTP सत्यापित करें</string>
+    <string name="doctor_s_name">डॉक्टर का नाम</string>
+    <string name="schedule_for">अनुसूची के लिए:</string>
+    <string name="uploading">अपलोड हो रहा है.....</string>
+    <string name="birth_0_years">जन्म (0 वर्ष)</string>
+    <string name="_2_month">2 महीने</string>
+    <string name="_4_months">4 महीने</string>
+    <string name="_6_months">6 महीने</string>
+    <string name="_12_months">12 महीने</string>
+    <string name="_15_months">15 महीने</string>
     <string name="_9_months" />
     <string name="_18_months" />
     <string name="_4_6_years" />
     <string name="birth" />
-    <string name="_18_month">18 Months</string>
-    <string name="_4_6_year">4-6 Years</string>
-    <string name="birthh">Birth</string>
-    <string name="_2_months">2 Months</string>
-    <string name="dior">Hello My friend Sanjit Godar</string>
+    <string name="_18_month">18 महीने</string>
+    <string name="_4_6_year">4-6 वर्ष</string>
+    <string name="birthh">जन्म</string>
+    <string name="_2_months">2 महीने</string>
+    <string name="dior">नमस्ते मेरे दोस्त संजीत गोदार</string>
 
-    <string name="enter_your_child_s_name">Enter your child\'s name</string>
-    <string name="child_bod">Child BOD :</string>
-    <string name="jan_01_2020">JAN / 01 / 2020</string>
-    <string name="cancel">Cancel</string>
-    <string name="accept">Accept</string>
-    <string name="child_name">Child Name :</string>
-    <string name="enter_your_phone">Enter your phone</string>
-    <string name="get_otp1">Get OTP</string>
-    <string name="enter_otp">Enter OTP</string>
-    <string name="verify_otp1">Verify OTP</string>
-    <string name="phone_number">Phone Number</string>
-    <string name="name">Name</string>
-    <string name="age_18">Age : 18</string>
-    <string name="phone_1234567890">Phone : 1234567890</string>
-    <string name="book">Book</string>
-    <string name="development_team">Development Team</string>
-    <string name="rajottam_pradhan">Rajottam Pradhan</string>
-    <string name="rojan_shrestha">Rojan Shrestha</string>
-    <string name="sandesh_koirala">Sandesh Koirala</string>
-    <string name="sanjit_khanal">Sanjit Khanal</string>
-    <string name="doctor_s_speciality">Doctor\'s Speciality</string>
-    <string name="doctor_s_email">Doctor\'s Email</string>
-    <string name="doctor_s_phone">Doctor\'s Phone</string>
-    <string name="patient_list">Patient List</string>
-    <string name="vaccine_info">Vaccine Info</string>
-    <string name="disease_info">Disease Info</string>
-    <string name="appointments">Appointments</string>
-    <string name="settings">Settings</string>
-    <string name="upload_files">Upload Files</string>
-    <string name="about_us1">About Us</string>
-    <string name="caring_a_child_is_one_of_the_most_satisfying_thing_that_a_human_being_does">Caring a child is one of the most satisfying thing that a human being does.</string>
-    <string name="upload_image">Upload Image</string>
-    <string name="image_name">Image Name</string>
-    <string name="enter_image_name">Enter Image Name</string>
-    <string name="description">Description...</string>
-    <string name="image_description">Image Description</string>
-    <string name="cancel1">Cancel</string>
-    <string name="upload1">Upload</string>
-    <string name="child_name1">Child Name</string>
-    <string name="enter_your_specalization">Enter your specalization</string>
-    <string name="day">day</string>
-    <string name="month">month</string>
-    <string name="vaccine_type">Vaccine Type</string>
-    <string name="date">Date</string>
+    <string name="enter_your_child_s_name">अपने बच्चे का नाम दर्ज करें</string>
+    <string name="child_bod">बच्चे की जन्म तिथि:</string>
+    <string name="jan_01_2020">जनवरी / 01 / 2020</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="accept">स्वीकार करें</string>
+    <string name="child_name">बच्चे का नाम:</string>
+    <string name="enter_your_phone">अपना फोन नंबर दर्ज करें</string>
+    <string name="get_otp1">OTP प्राप्त करें</string>
+    <string name="enter_otp">OTP दर्ज करें</string>
+    <string name="verify_otp1">OTP सत्यापित करें</string>
+    <string name="phone_number">फोन नंबर</string>
+    <string name="name">नाम</string>
+    <string name="age_18">आयु: 18</string>
+    <string name="phone_1234567890">फोन: 1234567890</string>
+    <string name="book">बुक करें</string>
+    <string name="development_team">विकास टीम</string>
+    <string name="rajottam_pradhan">रजोत्तम प्रधान</string>
+    <string name="rojan_shrestha">रोजन श्रेष्ठ</string>
+    <string name="sandesh_koirala">संदेश कोइराला</string>
+    <string name="sanjit_khanal">संजीत खनाल</string>
+    <string name="doctor_s_speciality">डॉक्टर की विशेषता</string>
+    <string name="doctor_s_email">डॉक्टर का ईमेल</string>
+    <string name="doctor_s_phone">डॉक्टर का फोन नंबर</string>
+    <string name="patient_list">रोगी सूची</string>
+    <string name="vaccine_info">टीका सूचना</string>
+    <string name="disease_info">रोग सूचना</string>
+    <string name="appointments">नियुक्तियाँ</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="upload_files">फाइल अपलोड करें</string>
+    <string name="about_us1">हमारे बारे में</string>
+    <string name="caring_a_child_is_one_of_the_most_satisfying_thing_that_a_human_being_does">एक बच्चे की देखभाल इंसान का सबसे संतोषजनक काम है.</string>
+
+    <string name="upload_image">तस्वीर अपलोड करें</string>
+    <string name="image_name">तस्वीर का नाम</string>
+    <string name="enter_image_name">तस्वीर का नाम दर्ज करें</string>
+    <string name="description">विवरण...</string>
+    <string name="image_description">तस्वीर का विवरण</string>
+    <string name="cancel1">रद्द करें</string>
+    <string name="upload1">अपलोड करें</string>
+    <string name="child_name1">बच्चे का नाम</string>
+    <string name="enter_your_specalization">अपनी विशेषज्ञता दर्ज करें</string>
+    <string name="day">दिन</string>
+    <string name="month">महीना</string>
+    <string name="vaccine_type">वैक्सीन का प्रकार</string>
+    <string name="date">तारीख</string>
+
+    <string name="vaccine_schedule">वैक्सीन का अनुसूची</string>
+    <string name="appointment">अपॉइंटमेंट</string>
+    <string name="make_appointment">अपॉइंटमेंट बनाएँ</string>
+    <string name="user">उपयोगकर्ता</string>
+    <string name="Disease_Information">रोग की जानकारी</string>
+    <string name="Vaccine_information">वैक्सीन की जानकारी</string>
+    <string name="Schedule">अनुसूची</string>
+    <string name="make_a_appointment">अपॉइंटमेंट बनाएं</string>
+    <string name="appointment1">अपॉइंटमेंट</string>
 
     </resources>

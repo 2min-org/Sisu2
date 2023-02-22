@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">सिसु</string>
+    <string name="login">लॉग इन</string>
+    <string name="email">ईमेल</string>
+    <string name="password">पासवर्ड</string>
+    <string name="Sisu">सिसु</string>
+    <string name="No_Member">सदस्य नहीं हैं? साइन अप करें</string>
+    <string name="Sign_up">साइन अप</string>
+    <string name="User_name">उपयोगकर्ता नाम</string>
+    <string name="register_cpassword">पासवर्ड की पुष्टि करें</string>
+    <string name="navigation_drawer_open">नेविगेशन ड्रायर खोलें</string>
+    <string name="navigation_drawer_close">नेविगेशन ड्रायर बंद करें</string>
+    <string name="nav_header_title">एंड्रॉइड स्टूडियो</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">नेविगेशन हैडर</string>
+    <string name="action_settings">सेटिंग्स</string>
+
+    <string name="menu_home">होम</string>
+    <string name="menu_gallery">गैलरी</string>
+    <string name="menu_slideshow">स्लाइड शो</string>
+    <string name="text_login">लॉग इन करें</string>
+    <string name="digits_email">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890@.</string>
+    <string name="hint_email">ईमेल</string>
+    <string name="digits_password">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^*-=_+:;,.?</string>
+    <string name="hint_password">पासवर्ड</string>
+    <string name="text_register">खाता बनाएं</string>
+    <string name="digits_name">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
+    <string name="hint_first_name">पहला नाम</string>
+    <string name="hint_last_name">अंतिम नाम</string>
+    <string name="text_button_register">खाता बनाएं</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_admin_schedule">व्यवस्थापक का शेड्यूल</string>
+    <string name="title_admin_request">व्यवस्थापक का अनुरोध</string>
+    <string name="title_schedule">शेड्यूल</string>
+    <string name="title_profile">प्रोफ़ाइल</string>
+    <string name="text_button_logout">लॉग आउट</string>
+    <string name="text_select">तारीख चुनें</string>
+    <string name="hint_enter">मान दर्ज करें</string>
+    <string name="text_button_create">स्लॉट बनाएं</string>
+    <string name="text_select_1">अपनी जन्म तिथि चुनें</string>
+    <string name="digits_contact">0123456789</string>
+    <string name="hint_enter_1">अपना संपर्क नंबर दर्ज करें</string>
+    <string name="text_upload">अपना वैध पहचान अपलोड करें</string>
+    <string name="text_upload_1">सेल्फी अपलोड करें</string>
+    <string name="text_button_create_1">अनुरोध जमा करें</string>
+    <string name="text_button_reject">अस्वीकार करें</string>
+    <string name="text_button_accept">स्वीकार करें</string>
+    <string name="text_button_remove">सूची से हटाएं</string>
+
+    <string name="hello_blank_fragment">नमस्कार खाली फ्रेग्मेंट</string>
+    <string-array name="numbers">
+        <item>पुरुष</item>
+        <item>महिला</item>
+    </string-array>
+    //Headings
+    <string name="heading_one">सिसु स्वास्थ्य सेवा एप</string>
+    <string name="heading_two">रेकर्ड ट्रैकर</string>
+    <string name="heading_three">जागरूक होनुहोस्</string>
+    <string name="heading_four">बाल देखभाल सुविधा खोज्ने उपकरण</string>
+
+    <string name="desc_one">तपाईंको बच्चाको देखभाल गर्न आवश्यक सबै जानकारी जान्नुहोस्!</string>
+    <string name="desc_two">तपाईंको बच्चाको लिने टिकाको जानकारी राख्नुहोस्!</string>
+    <string name="desc_three">तपाईंको बच्चा संक्रमित हुन सक्ने रोगहरूको बारेमा जानुहोस्!</string>
+    <string name="desc_four">नजिकैको बाल देखभाल सुविधा आसानीसँग खोज्नुहोस्!</string>
+    <string name="todo">गर्ने काम</string>
+    <string name="vaccine_name">टिका नाम</string>
+    <string name="product_name">उत्पादन नाम</string>
+    <string name="sisu_the_childcare_app">शिशु देखभाल एप</string>
+    <string name="sisucarenepal_gmail_com">sisucarenepal@gmail.com</string>
+    <string name="personal_records">व्यक्तिगत रेकर्डहरु</string>
+    <string name="disease_information">रोग जानकारी</string>
+    <string name="vaccine_information">टिका जानकारी</string>
+    <string name="childcare_centres">बाल देखभाल केन्द्रहरू</string>
+    <string name="about_us">हाम्रो बारेमा</string>
+    <string name="search_about_diseases">रोग बारेमा खोज्नुहोस्</string>
+
+    <string name="Logout">लॉग आउट</string>
+
+    <string-array name="position">
+        <item>डाक्टर</item>
+        <item>रोगी</item>
+        <item>व्यवस्थापक</item>
+    </string-array>
+    <string name="MakeAnAppointment">अपॉइंटमेंट बुक करें</string>
+    <string name="Login">लॉग इन</string>
+    <string name="SignUp">साइन अप करें</string>
+    <string name="WaitingList">प्रतीक्षा सूची</string>
+    <string name="DoctorName">डॉक्टर का नाम: </string>
+    <string name="DoctorPro">विशेषज्ञता: </string>
+    <string name="CancelAppointment">अपॉइंटमेंट रद्द करें</string>
+    <string name="DoctorQueue">डॉक्टर की कतार:</string>
+    <string name="Name">नाम:</string>
+    <string name="Age">आयु:</string>
+    <string name="Enteryourname">अपना नाम दर्ज करें</string>
+    <string name="Enteryourproficiency">अपनी विशेषज्ञता दर्ज करें</string>
+    <string name="UploadPic">चित्र अपलोड करें</string>
+    <string name="Credentials">क्रेडेंशियल्स</string>
+    <string name="Enteryouremail">अपना ईमेल दर्ज करें</string>
+    <string name="EnterYourPassword">अपना पासवर्ड दर्ज करें</string>
+    <string name="SignUpAs">इस तरह से साइन अप करें:</string>
+    <string name="Book">बुक करें</string>
+    <string name="Patients">रोगियों</string>
+    <string name="Showavailable">उपलब्ध फ़िल्टर करें</string>
+    <string name="ShownotAvailable">उपलब्ध नहीं फ़िल्टर करें</string>
+    <string name="EnterYouremail">अपना ईमेल दर्ज करें</string>
+    <string name="EnterYourAge">अपनी आयु दर्ज करें</string>
+    <string name="EnterYourPhone">अपना फोन दर्ज करें</string>
+    <string name="Doctors">डॉक्टरों</string>
+    <string name="Patientss">रोगियों</string>
+    <string name="full_name">पूर्ण नाम</string>
+    <string name="register">रजिस्टर</string>
+    <string name="upload">अपलोड</string>
+    <string name="sisu">सिसु</string>
+    <string name="tel">टेल</string>
+    <string name="email2">ईमेल</string>
+    <string name="address">पता</string>
+    <string name="choose">चयन करें..</string>
+    <string name="enteringmail">अपना मेल यहाँ दर्ज करें</string>
+    <string name="sisu_capital">सिसु</string>
+    <string name="reseting_password">पासवर्ड रीसेट करें</string>
+    <string name="registering_email">रजिस्टर करें</string>
+    <string name="forgot_password">पासवर्ड भूल गए</string>
+    <string name="Skip">छोड़ें</string>
+    <string name="Back">वापस</string>
+    <string name="Next">अगला</string>
+    <string name="Welcome">सिसु में आपका स्वागत है</string>
+    <string name="Mobile">मोबाइल</string>
+    <string name="Change">बदलना</string>
+    <string name="Address">पता</string>
+    <string name="Gender">लिंग</string>
+    <string name="Date_of_Birth">जन्म की तारीख</string>
+    <string name="Birthday">जन्मदिन</string>
+    <string name="Change_Theme">थीम बदलें</string>
+    <string name="Asthma">दमा</string>
+    <string name="Hello">नमस्कार</string>
+    <string name="Search">खोजें</string>
+    <string name="Choose_File">फ़ाइल चुनें</string>
+    <string name="Upload">अपलोड</string>
+    <string name="Enter_File_name">फ़ाइल नाम दर्ज करें</string>
+    <string name="Show_Uploads">अपलोड दिखाएं</string>
+    <string name="Search_Vaccine_Info">टीका सूचना खोजें ...</string>
+    <string name="Name.">नाम</string>
+    <string name="Vaccine_Name">टीके का नाम</string>
+    <string name="Vaccine_Date">टीके की तारीख</string>
+    <string name="Vaccine_Data">टीका डेटा</string>
+    <string name="Know_All_Info">अपने बच्चों की देखभाल करने के लिए आपको सभी जानकारी पता होनी चाहिए!</string>
+    <string name="Changelanguage">भाषा बदलें</string>
+
+    <string name="Appointments">नियुक्तिहरु</string>
+    <string name="Save">बचत गर्नुहोस्</string>
+    <string name="otpverification">OTP सत्यापन</string>
+    <string name="otpverificationtext">हामी तपाईंको मोबाइल नम्बरमा एक चोटी गरिएको पासवर्ड पठाउनेछ।</string>
+    <string name="entermobilenumber">मोबाइल नम्बर प्रविष्ट गर्नुहोस्</string>
+    <string name="_977">+९७७-</string>
+    <string name="_1234567890">१२३४५६७८९०</string>
+    <string name="get_otp">OTP प्राप्त गर्नुहोस्</string>
+    <string name="enter_the_otp_sent_to_your_mobile_number">तपाईंको मोबाइल नम्बरमा पठाएको OTP प्रविष्ट गर्नुहोस्</string>
+    <string name="didn_t_receive_the_code">कोड प्राप्त नहुँदा?</string>
+    <string name="resend_otp">OTP पुनः पठाउनुहोस्</string>
+    <string name="verify_otp">OTP सत्यापन गर्नुहोस्</string>
+    <string name="doctor_s_name">डाक्टरको नाम</string>
+    <string name="schedule_for">को लागि अनुसूची:</string>
+    <string name="uploading">अपलोड गर्दै.....</string>
+    <string name="birth_0_years">जन्म (० वर्ष)</string>
+    <string name="_2_month">२ महिना</string>
+    <string name="_4_months">४ महिना</string>
+    <string name="_6_months">६ महिना</string>
+    <string name="_12_months">१२ महिना</string>
+    <string name="_15_months">१५ महिना</string>
+    <string name="_9_months">९ महिना</string>
+    <string name="_18_month">१८ महिना</string>
+    <string name="_4_6_year">४-६ वर्ष</string>
+    <string name="birthh">जन्म</string>
+    <string name="_2_months">२ महिना</string>
+    <string name="dior">नमस्ते मेरो साथी संजीत गोदार</string>
+
+    <string name="enter_your_child_s_name">अपना बच्चे का नाम दर्ज करें</string>
+    <string name="child_bod">बच्चे का जन्म तिथि:</string>
+    <string name="jan_01_2020">जनवरी / 01 / 2020</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="accept">स्वीकार करें</string>
+    <string name="child_name">बच्चे का नाम:</string>
+    <string name="enter_your_phone">अपना फोन नंबर दर्ज करें</string>
+    <string name="get_otp1">ओटीपी प्राप्त करें</string>
+    <string name="enter_otp">ओटीपी दर्ज करें</string>
+    <string name="verify_otp1">ओटीपी सत्यापित करें</string>
+    <string name="phone_number">फोन नंबर</string>
+    <string name="name">नाम</string>
+    <string name="age_18">उम्र: 18</string>
+    <string name="phone_1234567890">फोन: 1234567890</string>
+    <string name="book">बुक करें</string>
+    <string name="development_team">डेवलपमेंट टीम</string>
+    <string name="rajottam_pradhan">राजोत्तम प्रधान</string>
+    <string name="rojan_shrestha">रोजन श्रेष्ठ</string>
+    <string name="sandesh_koirala">संदेश कोइराला</string>
+    <string name="sanjit_khanal">संजित खनाल</string>
+    <string name="doctor_s_speciality">डॉक्टर की विशेषता</string>
+    <string name="doctor_s_email">डॉक्टर का ईमेल</string>
+    <string name="doctor_s_phone">डॉक्टर का फोन नंबर</string>
+    <string name="patient_list">रोगी सूची</string>
+    <string name="vaccine_info">टीका जानकारी</string>
+    <string name="disease_info">रोग जानकारी</string>
+    <string name="appointments">अपॉइंटमेंट</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="upload_files">फ़ाइलें अपलोड करें</string>
+    <string name="about_us1">हमारे बारे में</string>
+
+    <string name="caring_a_child_is_one_of_the_most_satisfying_thing_that_a_human_being_does">बच्चा देखभाल एक मानव के लिए सबसे संतोषजनक काम है।</string>
+    <string name="upload_image">चित्र अपलोड करें</string>
+    <string name="image_name">चित्र का नाम</string>
+    <string name="enter_image_name">चित्र का नाम दर्ज करें</string>
+    <string name="description">विवरण...</string>
+    <string name="image_description">चित्र विवरण</string>
+    <string name="cancel1">रद्द करें</string>
+    <string name="upload1">अपलोड करें</string>
+    <string name="child_name1">बच्चे का नाम</string>
+    <string name="enter_your_specalization">अपनी विशेषज्ञता दर्ज करें</string>
+    <string name="day">दिन</string>
+    <string name="month">माह</string>
+    <string name="vaccine_type">टीका प्रकार</string>
+    <string name="date">तारीख</string>
+
+    <string name="vaccine_schedule">टीका अनुसूची</string>
+    <string name="appointment">अपॉइंटमेंट</string>
+    <string name="make_appointment">अपॉइंटमेंट बनाएं</string>
+    <string name="user">उपयोगकर्ता</string>
+    <string name="Disease_Information">रोग सूचना</string>
+    <string name="Vaccine_information">टीका सूचना</string>
+    <string name="Schedule">अनुसूची</string>
+    <string name="make_a_appointment">अपॉइंटमेंट बनाएं</string>
+    <string name="appointment1">अपॉइंटमेंट</string>
+
+
+</resources>
