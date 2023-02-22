@@ -2,6 +2,7 @@ package com.sanjit.sisu2.ui.Patientappointment;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.sanjit.sisu2.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class book_doctor_Adapter extends RecyclerView.Adapter<book_doctor_Adapter.book_doctor_ViewHolder>{
 
@@ -57,6 +63,33 @@ public class book_doctor_Adapter extends RecyclerView.Adapter<book_doctor_Adapte
             holder.book.setText("Book");
             holder.book.setEnabled(true);
         }
+        //map appointment from firebase user collection
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        //get User document from firebase
+        db.collection("Users").document(auth.getCurrentUser().getUid()).get().addOnCompleteListener(task -> {
+            if(task.isSuccessful())
+            {
+                //get the user document
+                Map<String, Object> user = task.getResult().getData();
+                Log.d("user", "onComplete: " + user);
+                //get the user appointments
+                ArrayList<String> appointments = (ArrayList<String>) user.get("appointments");
+                Log.d("appointments", "onComplete: " + appointments);
+                if(appointments != null) {
+                    for (String appointment : appointments) {
+                        if (appointment.equals(book_doctor_arr.get(position).getU_id())) {
+                            holder.book.setTextColor(Color.parseColor("#6fc276"));
+                            holder.book.setText("Booked");
+                            holder.book.setEnabled(false);
+                        }
+                    }
+                }
+            }
+        });
+
+
         Picasso.get().load(book_doctor_arr.get(position).getPhoto()).into(holder.photo);
 
     }

@@ -204,9 +204,9 @@ public class HomeFragment extends Fragment {
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.pneumococcal,"Pneumococcal"));
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.influenza_home,"Influenza"));
         home_horizontal_modelList.add(new Home_hor_model(R.drawable.meningococcal,"Meningococcal"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Tetanus"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Typhoid"));
-        home_horizontal_modelList.add(new Home_hor_model(R.drawable.ic_logo,"Pertussis"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.tetanus_home,"Tetanus"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.typhoid_home,"Typhoid"));
+        home_horizontal_modelList.add(new Home_hor_model(R.drawable.pertussis,"Pertussis"));
     }
     //Sandesh vaccine ko nam hala
     public void setHome_horizontal_modelList_vaccine(List<Home_hor_model> home_horizontal_modelList_vaccine) {

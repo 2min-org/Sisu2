@@ -140,6 +140,16 @@ public class book_doctor extends Fragment implements book_doctor_recyclerViewInt
                                     Toast.makeText(getContext(), "Appointment Booked", Toast.LENGTH_SHORT).show();
                                     book.setText("Booked");
                                     book.setEnabled(false);
+                                    //add the doctor id to patients appointment field
+                                    db.collection("Users")
+                                            .document(mAuth.getCurrentUser().getUid())
+                                            .update("appointments", FieldValue.arrayUnion(book_model_arr.get(position).getU_id()))
+                                            .addOnSuccessListener(aVoid1 -> {
+                                                Log.d("TAG", "Appointment booked");
+                                            })
+                                            .addOnFailureListener(e -> {
+
+                                            });
                                 })
                                 .addOnFailureListener(e -> {
 
@@ -159,6 +169,16 @@ public class book_doctor extends Fragment implements book_doctor_recyclerViewInt
                                         book.setTextColor(Color.parseColor("#FFFFFF"));
                                         book.setText("Booked");
                                         book.setEnabled(false);
+
+                                        db.collection("Users")
+                                                .document(mAuth.getCurrentUser().getUid())
+                                                .update("appointments", FieldValue.arrayUnion(book_model_arr.get(position).getU_id()))
+                                                .addOnSuccessListener(aVoid1 -> {
+                                                    Log.d("TAG", "Appointment booked");
+                                                })
+                                                .addOnFailureListener(e -> {
+
+                                                });
 
                                     })
                                     .addOnFailureListener(e -> {

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sanjit.sisu2.R;
 import com.squareup.picasso.Picasso;
@@ -27,13 +28,14 @@ import java.util.Map;
 import java.lang.String;
 
 
-public class appointments extends Fragment {
+public class appointments extends Fragment implements doctor_appointment_interface {
 
     ArrayList<appointment_model> appointment_model_arr = new ArrayList<>();
     private final FirebaseAuth mAuth=FirebaseAuth.getInstance();
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     public ArrayList<String> appointment_id = new ArrayList<>();
     private RecyclerView recyclerView;
+    private final doctor_appointment_interface doctor_appointment_interface = this;
 
     public appointments() {
         // Required empty public constructor
@@ -107,14 +109,15 @@ public class appointments extends Fragment {
                                         String name = (String) data1.get("Fullname");
                                         String phone = (String) data1.get("Telephone");
                                         String profile_pic = (String) data1.get("ProfilePic");
+                                        String id= appointment;
 
-                                        appointment_model_arr.add(new appointment_model(name, phone, profile_pic));
+                                        appointment_model_arr.add(new appointment_model(name, phone, profile_pic,id));
                                         Log.d("appointments", "onSuccess: " + name + " " + phone);
 
                                         //set adapter at the end of iteration
 
                                         if(finalCount == appointment_id.size()-1){
-                                            appointmentsAdapter adapter = new appointmentsAdapter(getContext(), appointment_model_arr);
+                                            appointmentsAdapter adapter = new appointmentsAdapter(getContext(), appointment_model_arr, doctor_appointment_interface);
                                             recyclerView.setAdapter(adapter);
                                             Log.d("adapter", "after success: " + appointment_model_arr);
                                         }
@@ -135,4 +138,41 @@ public class appointments extends Fragment {
         // Inflate the layout for this fragment
         return view;
     }
+
+    @Override
+    public void onDoctorClick(int position) {
+        Toast.makeText(getContext(), "Doctor Clicked", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onCompletedClick(int position) {
+        //send a notification to the patient via firebase about the appointment completion
+
+        //remove the appointment from the doctor's appointment list
+        removeAppointment(position);
+
+
+    }
+
+    private void removeAppointment(int position) {
+        //remove the patient appointment from the doctor's appointment list
+
+       String id = appointment_model_arr.get(position).getAppointment_id();
+        appointment_id.remove(id);
+
+        db.collection("Doctors").document(mAuth.getCurrentUser().getUid()).update("appointment_id", appointment_id);
+        appointment_model_arr.remove(position);
+        appointmentsAdapter adapter = new appointmentsAdapter(getContext(), appointment_model_arr, doctor_appointment_interface);
+        recyclerView.setAdapter(adapter);
+
+
+    }
+
+    @Override
+    public void onCancelClick(int position) {
+        //send a notification to the patient via firebase about the appointment cancellation
+        //remove the appointment from the doctor's appointment list
+        removeAppointment(position);
+
+    }
+}

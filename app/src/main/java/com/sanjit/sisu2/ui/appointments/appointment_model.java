@@ -6,11 +6,13 @@ public class appointment_model {
     private String name;
     private String phone;
     private String photo_url;
+    private String appointment_id;
 
-    public appointment_model(String name, String phone, String photo_url) {
+    public appointment_model(String name, String phone, String photo_url,String appointment_id) {
         this.name = name;
         this.phone = phone;
         this.photo_url = photo_url;
+        this.appointment_id = appointment_id;
     }
 
     public String getName() {
@@ -35,5 +37,13 @@ public class appointment_model {
 
     public void setPhoto_url (String photo_url) {
         this.photo_url = photo_url;
+    }
+
+    public String getAppointment_id() {
+        return appointment_id;
+    }
+
+    public void setAppointment_id(String appointment_id) {
+        this.appointment_id = appointment_id;
     }
 }
