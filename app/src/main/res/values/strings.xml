@@ -396,5 +396,15 @@
     <string name="vaccine_type">Vaccine Type</string>
     <string name="date">Date</string>
 
+    <string name="vaccine_schedule">Vaccine Schedule</string>
+    <string name="appointment">Appointment</string>
+    <string name="make_appointment">Make Appointment</string>
+    <string name="user">User</string>
+    <string name="Disease_Information">Disease Information</string>
+    <string name="Vaccine_information">Vaccine Information</string>
+    <string name="Schedule">Schedule</string>
+    <string name="make_a_appointment">Make a Appointments</string>
+    <string name="appointment1">Appointments</string>
+
 
 </resources>

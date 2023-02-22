@@ -25,15 +25,15 @@
         <item
             android:id="@+id/nav_vaccine_schedule"
             android:icon="@drawable/slot_selector"
-            android:title="Vaccine Schedule" />
+            android:title="@string/vaccine_schedule" />
         <item
             android:id="@+id/nav_appointments"
             android:icon="@drawable/ic_baseline_how_to_reg_24"
-            android:title="Appointment" />
+            android:title="@string/appointment" />
         <item
             android:id="@+id/nav_book_doctor"
             android:icon="@drawable/admin_request_selector"
-            android:title="Make Appointment" />
+            android:title="@string/make_appointment" />
 
         <item
             android:id="@+id/nav_about_us"

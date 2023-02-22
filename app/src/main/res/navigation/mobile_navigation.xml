@@ -42,7 +42,7 @@
     <fragment
         android:id="@+id/nav_appointments"
         android:name="com.sanjit.sisu2.ui.appointments.appointments"
-        android:label="Appointments"
+        android:label="@string/appointment1"
         tools:layout="@layout/fragment_appointments" >
         <action
             android:id="@+id/action_nav_appointments_to_nav_home"
@@ -52,7 +52,7 @@
     <fragment
         android:id="@+id/nav_book_doctor"
         android:name="com.sanjit.sisu2.ui.Patientappointment.book_doctor"
-        android:label="Make a Appointments"
+        android:label="@string/make_a_appointment"
         tools:layout="@layout/fragment_book_doctor" >
         <action
             android:id="@+id/action_nav_book_doctor_to_nav_home"
@@ -62,7 +62,7 @@
     <fragment
         android:id="@+id/nav_image_upload"
         android:name="com.sanjit.sisu2.ui.Imageupload.imageUpload"
-        android:label="Upload"
+        android:label="@string/upload"
         tools:layout="@layout/fragment_image_upload" >
         <action
             android:id="@+id/action_nav_image_upload_to_nav_home"
@@ -72,7 +72,7 @@
     <fragment
         android:id="@+id/nav_vaccine_schedule"
         android:name="com.sanjit.sisu2.ui.VaccineSchedule.vaccine_schedule"
-        android:label="Schedule"
+        android:label="@string/Schedule"
         tools:layout="@layout/fragment_vaccine_schedule" >
         <action
             android:id="@+id/action_nav_vaccine_schedule_to_nav_home"
@@ -82,7 +82,7 @@
     <fragment
         android:id="@+id/nav_vaccine_information"
         android:name="com.sanjit.sisu2.ui.vaccineinformation.VaccineInformation"
-        android:label="Vaccine Information"
+        android:label="@string/Vaccine_information"
         tools:layout="@layout/fragment_vaccine_information" >
         <action
             android:id="@+id/action_nav_vaccine_information_to_nav_home"
@@ -91,7 +91,7 @@
     <fragment
         android:id="@+id/nav_disease_information"
         android:name="com.sanjit.sisu2.ui.diseaseinformation.DiseaseInformation"
-        android:label="Disease Information"
+        android:label="@string/Disease_Information"
         tools:layout="@layout/fragment_disease_information" >
         <action
             android:id="@+id/action_nav_disease_information_to_nav_home"
@@ -101,7 +101,7 @@
     <fragment
         android:id="@+id/nav_about_us"
         android:name="com.sanjit.sisu2.ui.aboutus.AboutUs"
-        android:label="About Us"
+        android:label="@string/about_us"
         tools:layout="@layout/fragment_about_us" >
         <action
             android:id="@+id/action_nav_about_us_to_nav_home"

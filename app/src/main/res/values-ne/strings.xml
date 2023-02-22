@@ -210,4 +210,14 @@
     <string name="vaccine_type">खोपको प्रकार</string>
     <string name="date">मिति</string>
 
+    <string name="vaccine_schedule">खोप तालिका</string>
+    <string name="appointment">नियुक्ति</string>
+    <string name="make_appointment">अपोइन्टमेन्ट बनाउनुहोस्</string>
+    <string name="user">प्रयोगकर्ता</string>
+    <string name="Disease_Information">रोग जानकारी</string>
+    <string name="Vaccine_information">खोप जानकारी</string>
+    <string name="Schedule">तालिका</string>
+    <string name="make_a_appointment">अपोइन्टमेन्ट बनाउनुहोस्</string>
+    <string name="appointment1">नियुक्तिहरू</string>
+
 </resources>

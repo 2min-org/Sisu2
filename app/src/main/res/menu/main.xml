@@ -6,7 +6,7 @@
         android:id="@+id/user"
         app:actionLayout="@layout/profile_menu_layout"
         android:icon="@drawable/ic_account_circle"
-        android:title="User"
+        android:title="@string/user"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_change_theme"
