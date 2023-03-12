@@ -21,7 +21,10 @@
             android:id="@+id/nav_vaccine_information"
             android:icon="@drawable/vaccine_logo"
             android:title="@string/vaccine_information" />
-
+        <item
+            android:id="@+id/nav_nutrition"
+            android:icon="@drawable/baseline_food"
+            android:title="@string/nutrition" />
         <item
             android:id="@+id/nav_vaccine_schedule"
             android:icon="@drawable/slot_selector"
@@ -34,6 +37,7 @@
             android:id="@+id/nav_book_doctor"
             android:icon="@drawable/admin_request_selector"
             android:title="@string/make_appointment" />
+
 
         <item
             android:id="@+id/nav_about_us"

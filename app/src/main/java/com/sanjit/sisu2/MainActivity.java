@@ -225,6 +225,11 @@ public class MainActivity extends AppCompatActivity implements sec_doc.sec_doc_l
                         Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
                                 .navigate(R.id.nav_about_us);
                         break;
+                    case R.id.nav_nutrition:
+                        navController.popBackStack(R.id.nav_home, false);
+                        Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
+                                .navigate(R.id.nav_nutrition);
+                        break;
                 }
                 drawer.closeDrawer(GravityCompat.START);
                 return true;

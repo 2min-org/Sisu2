@@ -107,5 +107,14 @@
             android:id="@+id/action_nav_about_us_to_nav_home"
             app:destination="@id/nav_home" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_nutrition"
+        android:name="com.sanjit.sisu2.ui.nutrition.Nutrition"
+        android:label="@string/nutrition"
+        tools:layout="@layout/fragment_nutrition" >
+        <action
+            android:id="@+id/action_nav_nutrition_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 
 </navigation>
