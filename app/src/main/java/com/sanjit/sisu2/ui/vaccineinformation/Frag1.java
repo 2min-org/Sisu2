@@ -80,6 +80,7 @@ public class Frag1 extends Fragment {
         @Override
         public void run() {
             viewPager3.setCurrentItem(viewPager3.getCurrentItem() + 1);
+
         }
     };
 }
