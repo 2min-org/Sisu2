@@ -87,7 +87,8 @@
     <string name="_6_months">६ महिना</string>
     <string name="_12_months">१२ महिना</string>
     <string name="_15_months">१५ महिना</string>
-    <string name="_9_months" />
+    <string name="_9_months" >९ महिना</string>
+    <string name="nutrition">खाना र पोषण</string>
     <string name="_18_months" />
     <string name="_4_6_years" />
     <string name="birth" />
@@ -113,6 +114,7 @@
     <string name="search_about_diseases">रोगहरू_बारे_खोज्नुहोस्</string>
     <string name="Logout">बाहिर निस्कनु</string>
 
+    <string name="hello_blank_fragment">नमस्कार खाली फ्रेग्मेंट</string>
     <string name="heading_one">सिसु  द चाइल्डकेयर एप</string>
     <string name="heading_two">रेकर्ड ट्र्याकर</string>
     <string name="heading_three">सावधान हुनु</string>
@@ -210,6 +212,7 @@
     <string name="vaccine_type">खोपको प्रकार</string>
     <string name="date">मिति</string>
 
+    <string name="completed_button">पूरा गरियो</string>
     <string name="vaccine_schedule">खोप तालिका</string>
     <string name="appointment">नियुक्ति</string>
     <string name="make_appointment">अपोइन्टमेन्ट बनाउनुहोस्</string>

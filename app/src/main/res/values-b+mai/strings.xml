@@ -222,6 +222,7 @@
     <string name="vaccine_type">टीका प्रकार</string>
     <string name="date">तारीख</string>
 
+    <string name="completed_button">पूरा गरियो</string>
     <string name="vaccine_schedule">टीका अनुसूची</string>
     <string name="appointment">अपॉइंटमेंट</string>
     <string name="make_appointment">अपॉइंटमेंट बनाएं</string>
@@ -231,6 +232,7 @@
     <string name="Schedule">अनुसूची</string>
     <string name="make_a_appointment">अपॉइंटमेंट बनाएं</string>
     <string name="appointment1">अपॉइंटमेंट</string>
+    <string name="nutrition">खाना र पोषण</string>
 
 
 </resources>

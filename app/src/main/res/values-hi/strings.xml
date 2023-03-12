@@ -50,7 +50,7 @@
     <string name="text_button_remove">सूची से हटाएं</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-<string name="hello_blank_fragment">Hello blank fragment</string>
+<string name="hello_blank_fragment">नमस्कार खाली फ्रेग्मेंट</string>
 <string-array name="numbers">
 <item>पुरुष</item>
 <item>मादा</item>
@@ -173,8 +173,9 @@
     <string name="_4_months">4 महीने</string>
     <string name="_6_months">6 महीने</string>
     <string name="_12_months">12 महीने</string>
-    <string name="_15_months">15 महीने</string>
-    <string name="_9_months" />
+    <string name="_15_months">१५ महीने</string>
+    <string name="_9_months" >९ महीने</string>
+    <string name="nutrition">खाद्य और पोषण</string>
     <string name="_18_months" />
     <string name="_4_6_years" />
     <string name="birth" />
@@ -230,6 +231,7 @@
     <string name="vaccine_type">वैक्सीन का प्रकार</string>
     <string name="date">तारीख</string>
 
+    <string name="completed_button">" पूर्ण"</string>
     <string name="vaccine_schedule">वैक्सीन का अनुसूची</string>
     <string name="appointment">अपॉइंटमेंट</string>
     <string name="make_appointment">अपॉइंटमेंट बनाएँ</string>
