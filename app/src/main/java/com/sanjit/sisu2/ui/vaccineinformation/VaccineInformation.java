@@ -33,6 +33,7 @@ public class VaccineInformation extends Fragment {
 
 
         View view = inflater.inflate(R.layout.fragment_vaccine_information, container, false);
+
         btn1 = view.findViewById(R.id.btnFrag1);
         btn2 = view.findViewById(R.id.btnFrag2);
         btn3 = view.findViewById(R.id.btnFrag3);

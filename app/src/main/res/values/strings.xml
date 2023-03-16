@@ -231,7 +231,20 @@
     <string name="Schedule">Schedule</string>
     <string name="make_a_appointment">Make Appointments</string>
     <string name="appointment1">Appointments</string>
+
+    <string name="_0_6_months" />
+    <string name="_6_9_months" />
+    <string name="_9_12_months" />
+    <string name="_1_3_years" />
+    <string name="_3_6_years" />
+    <string name="_6_8_years" />
     <string name="nutrition">Food and Nutrition</string>
+    <string name="_0_6_monthss">0-6 Months</string>
+    <string name="_6_9_monthss">6-9 Months</string>
+    <string name="_9_12_monthss">9-12 Months</string>
+    <string name="_1_3_yearss">1-3 Years</string>
+    <string name="_3_6_yearss">3-6 Years</string>
+    <string name="_6_8_yearss">6-8 Years</string>
 
 
 </resources>
