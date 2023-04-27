@@ -34,6 +34,7 @@ import com.sanjit.sisu2.MainActivity;
 import com.sanjit.sisu2.R;
 import com.sanjit.sisu2.adapters.sec_doc;
 import com.sanjit.sisu2.ui.appointments.appointment_model;
+import com.sanjit.sisu2.ui.login_register_user.ForgotPassword;
 import com.sanjit.sisu2.ui.login_register_user.Login;
 import com.squareup.picasso.Picasso;
 
@@ -52,7 +53,7 @@ public class MeroProfile extends AppCompatActivity implements View.OnClickListen
     private DatabaseReference databaseReference;
     private StorageReference storageReference;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-    TextView namep,emailp,phonep,addressp,dobp,genderp,myTextView;
+    TextView namep,emailp,phonep,addressp,dobp,genderp,myTextView,changepassword;
 
     ImageView editClick, saveClick;
     boolean isEdit = false;
@@ -71,6 +72,7 @@ public class MeroProfile extends AppCompatActivity implements View.OnClickListen
         genderp = findViewById(R.id.aayogender);
         saveClick = findViewById(R.id.done_click);
         editClick = findViewById(R.id.edit_click);
+        changepassword = findViewById(R.id.changepassword);
 
         CircleImageView profile = findViewById(R.id.aayophoto);
 
@@ -90,6 +92,7 @@ public class MeroProfile extends AppCompatActivity implements View.OnClickListen
         genderp.setOnClickListener(this);
         saveClick.setOnClickListener(this);
         editClick.setOnClickListener(this);
+        changepassword.setOnClickListener(this);
 
         namep.setText(FullName);
         emailp.setText(Email);
@@ -166,6 +169,10 @@ public class MeroProfile extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.done_click:
                 save_profile();
+                break;
+                case R.id.changepassword:
+                Intent intent = new Intent(MeroProfile.this, ForgotPassword.class);
+                startActivity(intent);
                 break;
             default:
                 break;
